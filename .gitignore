@@ -1,0 +1,6 @@
+rom/
+*.bin
+*.gpr
+*.rep/
+decomp*.c
+__pycache__/

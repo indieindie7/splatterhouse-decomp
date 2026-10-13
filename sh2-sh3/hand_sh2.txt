@@ -1,0 +1,387 @@
+0x560 func mem_copy_96_bytes hand copies 24 longs from A0 to A1
+0x592 func sys_delay_loop_60 hand busy loop counting 0x3c
+0x59e func game_init_state hand sets buffers ff2158/2258/2358 to ffff, clears pads, clears VRAM/sprites, reads pads
+0x604 func mem_clear_workram_ff0000 hand zeroes 0x7000 words from ff0000
+0x618 func spr_upload_buffer_to_vram hand writes 448 words from ff2758 to VRAM 0xB800 via vdp_Data
+0x6fa func scroll_upload_vsram hand writes 40 words from ff2b58 to VSRAM 0x40000010
+0x804 func vdp_display_enable hand sets reg1 shadow ff0024 bit 0x40 and writes VDP ctrl
+0x822 func vdp_display_disable hand clears reg1 shadow ff0024 bit 0x40 and writes VDP ctrl
+0x842 func scroll_clear_vsram_and_buffer hand writes zero to VSRAM 40 words and buffer ff2b58
+0x870 func vdp_clear_vram_b000 hand writes 0x800 zero words at VRAM 0xB000
+0x894 func spr_clear_table_and_buffer hand zeroes 512 words in VRAM 0xA800 and buffer ff2758
+0x8c2 func vdp_clear_vram_ac00 hand writes 0x100 zero words at VRAM 0xAC00
+0x8e6 func vdp_clear_vram_c000 hand writes 0x2000 zero words at VRAM 0xC000 plane
+0x90a func vdp_vblank_irq_enable hand sets reg1 shadow bit 0x20 and writes VDP ctrl
+0x92a func vdp_vblank_irq_disable hand clears reg1 shadow bit 0x20 and writes VDP ctrl
+0x944 func vdp_set_reg_with_mask hand ors D0 with byte at A4 into reg shadow ff0022 writes ctrl and sets reg 0x8a01
+0x972 func vdp_write_reg_d0 hand stores D0 into ff0036 and VDP ctrl
+0x986 func pad_read_both hand reads pads 1 and 2 with TH toggle into ff001d/1e, new-press ff001b/1c
+0xa44 func vdp_load_init_regs hand copies 19 reg words from ROM table to ff0022 shadow and VDP ctrl
+0xa84 func game_state_next_bcd hand bcdAdjust then ff0002=0 and ff0001 incremented
+0xa8c func game_state_next hand ff0002=0 and ff0001 incremented
+0xa9e func game_substate_inc hand increments ff0002
+0xaa8 func vdp_clear_all_and_init hand calls VRAM/sprite/scroll clears and buffer clears
+0xace func sys_jump_table_dispatch hand indirect call through table at stack ptr indexed by D0 low byte*4
+0xadc func snd_thunk_60c0c hand thunk to sound routine at 0x60c0c
+0xae8 func sys_call_f5e hand wrapper calls FUN_00000f5e
+0xaf2 func mem_clear_ff2e68_object_area hand zeroes 0x1000 words at ff2e68, sets ff2e28=ff
+0xb0e func sys_nop_return hand empty function
+0xb10 func mem_clear_ff2458_128w hand zeroes 128 words at ff2458
+0xb24 func game_set_ptrs_ff004a_4e_52 hand loads three long pointers from ROM tables 2d814/2d8ec/2d9c4 indexed by D0 byte
+0xb5e func game_set_ptr_ff0056_by_index hand loads long from table at 3def8 indexed by D0 byte into ff0056
+0xb88 func game_set_ptr_ff0056_from_ff0048 hand GUESS ff0056 = ff0048*0x20 + D1, tail fragment returning D0|0x15
+0xc2a func pal_update_three_pairs hand calls the three palette pair setters c38/c64/c90
+0xc38 func pal_set_color_pair_ff2664 hand picks 2 colors from ROM table 0xcbc by ff014b&3 into palette buffer, flags palette dirty
+0xc64 func pal_set_color_pair_ff2684 hand picks 2 colors from ROM table 0xcbc by ff014c&3 into palette buffer, flags dirty
+0xc90 func pal_set_color_pair_ff26a4 hand picks 2 colors from ROM table 0xcbc by ff014d&3 into palette buffer, flags dirty
+0xe2a func sys_nop_return_e2a hand empty function
+0xeb8 func game_list_add_flag_slots hand GUESS tail appends 0x2c/0x2e to byte list when ff2e94==c002 / ff2e96==c000
+0xeea func mem_collect_c002_idx_00_20 hand scans words at A1 offsets 0..0x1e for value c002 and appends offsets to byte list at A0
+0xf04 func mem_collect_c002_idx_32_40 hand scans words at A1 offsets 0x32..0x3e for c002 appending offsets to list at A0
+0xf28 func mem_collect_c000_idx_tail hand scans words at A1 step 2 up to 0x4b, appends offsets where value c000 (loop tail, sibling of mem_collect_c000_idx_4c_52)
+0xf40 func mem_collect_c000_idx_4c_52 hand scans words at A1 offsets 0x4c..0x50 for c000 appending offsets to list at A0
+0xf5e func pal_load_table_entries hand loops 4 entries in table at 2d6dc, calls f92 for each not -1
+0xf92 func pal_copy_16_colors_to_buffer hand copies 16 words from ROM 2b49c+D7*32 to palette buffer ff2658+D6 and sets dirty
+0xfc4 func pal_upload_cram_64 hand writes 64 words from ff2658 to CRAM 0xc0000000
+0xfec func pal_upload_cram_partial hand writes 4 longs to CRAM offset 0x10 or 0x30 depending on ff0006==3
+0x1058 func pal_fade_step hand timer ff0077 reload from ff0078, steps palette fade, decrements ff0076 count
+0x1100 func pal_fade_timer_dec hand decrements ff0077 (pointer table target)
+0x1122 func pal_fade_step_short hand like fade step runs to offset 0x1e then decrements ff0076 and flags palette dirty
+0x114e func pal_clear_fade_buffer hand zeroes 64 bytes at ff26d8
+0x11ae func pal_begin_fade_copy hand moves 64 bytes palette ff2658 to ff26d8 clearing source, sets fade count 8
+0x11e4 func pal_fade_step_b hand same fade timer as 1058 using helper at 1248, up to offset 0x7e
+0x12b0 func tile_write_tilemap_block hand writes block of words to VDP nametable from pointer tables 43a76/43ea6, auto-inc reg 2 or 0x80
+0x132e func math_vram_name_addr hand computes (D1*0x80+D0*2)<<16 name table address word
+0x133a func dma_flush_queue_ff2158 hand drains queue at ff2158 (addr,count,words) into VRAM write cmd 0x4000, ends at ffff
+0x139c func dma_flush_queue_ff2258 hand drains queue at ff2258 into VRAM write cmd 0x6000, ends at ffff
+0x13fe func dma_flush_queue_ff2358 hand drains queue at ff2358 into VRAM write cmd 0x7000, ends at ffff
+0x1460 func spr_build_list_from_objects hand walks object list ff2e28 up to 0x40 entries calling sprite emitter for flagged c000 objects, then zeroes tail
+0x14fa func spr_emit_metasprite_parts hand reads sprite part list from ROM table ec000, builds 4-word sprite entries (y,size/link,tile+pal,x) up to 0x4f
+0x1614 func spr_upload_attr_table_vram hand writes sprite attribute buffer ff2ba8 to VRAM 0x7c000002 until link zero, appends zero entry
+0x1684 func sys_state_dispatch_ff0001 hand increments frame counter ff0000 then calls state routine by ff0001*8 table
+0x16ca func title_start_or_init_check hand if START pressed sets fade vars and next state, else disables display clears VDP regs and advances
+0x1800 func title_init_screen_blocks hand writes three tilemap blocks, timer ff010e=0xf0, begins fade-in, advances state
+0x1844 func title_fade_in_wait_1844 hand waits for fade count ff0076 zero then advances state, else steps fade
+0x185c func title_countdown_fade_out hand decrements timer ff010e, starts fade at 0x78, sound command at 0x3c, advances at 0
+0x18c4 func title_clear_and_next hand disables display, clears VDP, sets reg 0x0c/0x11/0x12/0x0b, advances state
+0x19b8 func title_fade_out_wait hand steps fade until ff0076 zero then disables display and advances
+0x19d6 func title_load_screen_gfx hand loads palette, pointer tables, two tilemap layers, begins fade, timer 0xb4
+0x1a4a func title_fade_in_wait_1a4a hand same as fade-in wait, advances when fade done
+0x1a62 func title_timer_fade_out_1a62 hand decrements timer ff010e, at zero starts fade out and advances
+0x1a8e func title_fade_out_wait_1a8e hand steps fade, when done disables display and advances
+0x1aac func title_load_screen_gfx_1aac hand same as screen load: palette, two tilemap layers, fade, timer 0xb4
+0x1b20 func title_fade_in_wait_1b20 hand fade-in wait then advance
+0x1b38 func title_timer_fade_out_1b38 hand timer countdown then start fade out and advance
+0x1b64 func title_fade_out_clear_next hand fade out then disable display, clear VDP and advance
+0x2112 func title_logo_scroll_setup hand sets object 1 flags, timer ff010e=fff8, positions, begins fade, advances
+0x2212 func title_logo_scroll_step hand adds 10 to ff010e, copies scroll/sprite values from ROM table 2292, ends past 0x45 with VDP clear
+0x2434 func title_display_on_next hand enables display and advances state
+0x2520 func title_hscroll_wave_effect hand fills hscroll buffer ff27d8 stride 0x20, accumulates ff0114/18/1c, at ff0118 limit sets fade and advances substate
+0x2714 func title_screen_setup_layers hand loads layers, sets scroll buffers and object 1, sound 0x49, advances
+0x2800 func title_state_next_only hand just advances state via dbbe
+0x2900 func title_fade_out_wait_2900 hand fade out then disable display, clear VDP, advance
+0x295c func title_load_screen_gfx_295c hand same screen load as 19d6 with palette and two layers, timer 0xb4
+0x29d0 func title_fade_in_wait_29d0 hand fade-in wait then advance
+0x2a04 func title_set_fade_next_state hand sets fade timing then advances ff0001
+0x2a22 func obj_place_menu_sprites hand loops 5 entries from ROM table 2ab0 setting object slot flags/positions, scrolls them if ff0120==1
+0x2abc func title_spawn_timed_sprite_a hand GUESS body spawns slot with 0xc000 flag at x=0x1a0 y=0xe0 from table by ff010e, countdown ff0110, sets ff010c=1
+0x2b70 func title_spawn_timed_sprite_b hand GUESS sibling of _a: sprite slot at x=0x120 y=0x100 with timer, sets ff010d when done
+0x2c4a func game_init_new_game_vars hand when fade done sets ff00f8=3 ff0137=3 ff0136=2 ff013c=3 ff0138=20000 and clears ff00f0
+0x3000 func title_logo_arrive_check hand when slot x ff2fec==0x120 sets fade 8/2 and ff0002=10
+0x303c func title_fade_step_wrapper hand pointer table target that only calls fade step 1058
+0x3070 func menu_setup_options_screen hand loads tilemap blocks for difficulty ff fff029 and control option fff02c, places cursor object, begins fade
+0x31ba func menu_fade_in_wait hand waits for fade count ff0076 then advances else steps fade
+0x343c func menu_cursor_move_check hand GUESS plays sound on D0 match with table bytes; slot x ff2fe8==0x128 starts fade, ff010c=1
+0x3480 func menu_fade_out_wait hand advances when fade count zero else steps fade
+0x355a func menu_set_defaults_start_display hand sets ff007c..82 to 1,3,1,3 enables display advances state
+0x3586 func menu_fade_in_wait_3586 hand fade-in wait then advance
+0x3a00 func game_stage_load_parallax_3a00 hand scene load: set ptr tables, 0x28 scroll updates, hud queue ba78, hscroll parallax b37c, reg 0x8b02, fade begin
+0x3b40 func game_stage_init_players hand sets player object flags ff2eea, ff0086/88 clear, calls input sampler bebc, timer ff0062=0x10
+0x3bb0 func game_stage_intro_countdown hand decrements ff0062, enables display at negative else calls player update e3a0
+0x3bd0 func game_stage_fade_in_wait hand when fade done calls 11e2c and be62 and advances else steps fade
+0x3bf4 func game_play_frame_demo_or_normal hand START cancels, else reads input, ends on 0x6000 bits, calls object updates f014/1220a/b37c/ba78
+0x3c76 func game_fade_wait_then_next hand steps fade, advances when fade count hits zero
+0x3ca8 func menu_apply_difficulty_options hand writes lives/difficulty values 4/3/2 to fff028 and ff00f7 and control layout bytes fff02a/2b from ff007a
+0x3d56 func snd_thunk_60c0c_3d56 hand calls sound routine at 0x60c0c
+0x3d62 func menu_options_state_dispatch hand jump-table dispatch per substate, advances when fade done else steps fade
+0x4364 func game_demo_countdown_4364 hand GUESS decrements ff0062; at <0 enables display and advances else ff0086=0xf, bg anim update
+0x43a0 func game_fade_in_wait_43a0 hand fade done then 11e2c, ff0061=ff, be62, advance
+0x4460 func game_stage_clear_vdp_mode4 hand disables display, clears VDP, sets regs 0x0b/0x0c/0x11/0x12 and ff0098=4
+0x44a0 func game_stage_load_scene_a hand loads two layers, pointer tables, 0x28 init iterations, ff014a|=3, fade begin
+0x4804 func game_stage_load_scene_b hand loads layer 1 pointer tables, 0x28 inits, ff00c6|=0x80, ff014a|=3, fade begin
+0x4a84 func game_stage_play_frame_end_check hand reads input, on 0x6000 bits sets timer 0x3c, sound, fade, else object updates
+0x4aec func game_stage_branch_ff0003 hand if ff0003==ff calls b2f6 else c674
+0x4b06 func game_fade_wait_then_next_4b06 hand advance when fade done else step fade
+0x4b1e func game_stage_clear_vdp_mode6 hand disables display, clears VDP, sets ff0098=6
+0x4d22 func game_stage_fill_sprite_rows hand GUESS fills ff2758 rows stride 0x20 (0x80-0x300), zeroes ends, vsram bands b9c2, reg 0x8b06, fade begin
+0x4e50 func game_stage_start_timer_10 hand sets ff2e29=ff, calls 11e2c, 1220a, timer ff0062=0x10, advances
+0x5000 func game_stage_set_mode7 hand sets VDP regs 0x0b/0x0c/0x11/0x12 and ff0098=7, advances
+0x5038 func game_stage_load_scene_c hand loads two layers, pointer tables, 0x28 inits, ff012e=0, b422, fade begin
+0x51ae func game_stage_init_objects_e hand sets object slot 1 pos 0x60/0x120, ff00d4/d8 pointers, calls bebc, 11e2c, 1220a, timer 0x10
+0x526e func game_stage_intro_countdown_526e hand decrements ff0062, enables display at negative else calls e3a0
+0x529e func game_stage_fade_in_wait_529e hand when fade done calls be62 and advances else steps fade
+0x52d0 func game_stage_play_frame_52d0 hand reads input, on 0x6000 bits sets timer 0x3c else object updates f014/1220a/ba78 and scroll b422
+0x5318 func game_fade_wait_then_next_5318 hand advances when fade count zero else steps fade
+0x5500 func game_stage_init_objects_5500 hand sets object slot pos, ff00d4/d8 limits 0xe00000/0x600000, input sample, 11e2c, 1220a, timer 0x10
+0x55bc func game_stage_clear_inputs_run_e3a0 hand zeroes ff0086/88 and calls player update e3a0
+0x55ee func game_fade_in_step_wrapper hand only calls fade step 11e4
+0x5652 func snd_play_then_next_5652 hand plays sound 60c0c and advances state
+0x5660 func game_stage_play_frame_5660 hand updates objects 1220a, ba78, ff012e+=2 and calls b422
+0x5700 func game_stage_load_scene_5700 hand loads two layers, pointer tables, 0x28 inits, ff014a|=3, b462 scroll, fade begin
+0x5904 func game_stage_start_timer_10_5904 hand ff2e29=ff, 11e2c, 1220a, timer ff0062=0x10, advance
+0x5926 func game_stage_intro_countdown_5926 hand decrements ff0062, enables display when negative else e3a0
+0x5956 func game_stage_fade_in_wait_5956 hand when fade done calls be62 and advances else step fade
+0x5988 func game_stage_play_frame_palcycle_5988 hand cycles palette via f92 at timer ff010e 0/10/0x14/0x1e wrap 0x28, input, object updates
+0x5a4c func game_fade_wait_then_next_5a4c hand advances when fade count zero else steps fade
+0x5a66 func game_stage_clear_vdp_mode10 hand disables display, clears VDP, sets regs and ff0098=10
+0x5b62 func game_stage_load_scene_5b62 hand loads layer 3, tables, 0x28 inits, fills sprite buffer rows, b4a0, fade begin
+0x5e38 func game_stage_play_frame_palcycle_5e38 hand palette cycling with two timers ff010e (wrap 0x4f) and ff0110 (wrap 9), input, sets ff000a=0x17b on end
+0x6000 func game_fade_step_wrapper_6000 hand pointer table target that only steps fade 1058
+0x6008 func game_stage_clear_vdp_mode11 hand disables display, clears VDP, sets regs and ff0098=0xb
+0x609a func game_stage_load_water_scene_609a hand layer 1 tile load, 0x28 scroll updates, clears ff0114/18/1c, hscroll water b4c0, fade begin
+0x61f0 func game_stage_init_objects_61f0 hand sets object pos, limits d4/d8 0xe00000/0x800000, ff00e0=0x8101, bebc, 11e2c, 1220a, timer 0x10
+0x62b8 func game_stage_intro_countdown_62b8 hand decrements ff0062, enables display when negative else e3a0
+0x62e8 func game_stage_fade_in_wait_62e8 hand when fade done calls be62 and advances else step fade
+0x6306 func game_stage_play_frame_6306 hand calls b274, reads input, ends on 0x6000 bits, updates objects, b4c0
+0x6372 func game_fade_wait_then_next_6372 hand advances when fade count zero else steps fade
+0x638c func game_stage_clear_vdp_mode12 hand disables display, clears VDP, sets regs and ff0098=0xc
+0x63cc func game_stage_load_scene_63cc hand loads two layers, tables, 0x28 inits, ff014a|=3, b576, fade begin
+0x6600 func game_stage_start_timer_10_6600 hand ff2e29=ff, 11e2c, 1220a, timer ff0062=0x10, advance
+0x6636 func game_stage_clear_inputs_run_e3a0_6636 hand zeroes ff0086/88 and calls player update e3a0
+0x6700 func game_stage_palcycle_scroll_6700 hand palette copy cycle on ff010e (extra at 10/0x11, wrap 0x78), place menu sprites if ff009e>0x9ff, parallax b576
+0x679e func game_fade_wait_then_next_679e hand advances when fade count zero else steps fade
+0x67b8 func game_stage_clear_vdp_mode13 hand disables display, clears VDP, sets regs and ff0098=0xd
+0x6a5c func game_stage_play_frame_6a5c hand input, ends on 0x6000 bits with timer 0x3c, object updates, b462 scroll
+0x6a9e func game_fade_wait_then_next_6a9e hand advances when fade count zero else steps fade
+0x6ab8 func game_stage_clear_vdp_mode14 hand disables display, clears VDP, sets regs and ff0098=0xe
+0x6af8 func game_stage_load_scene_6af8 hand loads two layers, tables, 0x28 inits, ff014a|=3, b576 scroll, fade begin
+0x6f00 func game_stage_load_scene_6f00 hand loads layer 1, tables, 0x28 inits, ff014a|=3, b5d4 scroll, fade begin
+0x710a func game_stage_clear_inputs_run_e3a0_710a hand zeroes ff0086/88 and calls player update e3a0
+0x7122 func game_stage_fade_in_wait_7122 hand when fade done calls be62 and advances else step fade
+0x7154 func game_stage_play_frame_7154 hand input, ends on 0x6000 bits with timer 0x3c, object updates, b5d4 scroll
+0x7196 func game_fade_wait_then_next_7196 hand advances when fade count zero else steps fade
+0x71b0 func game_stage_clear_vdp_mode16 hand disables display, clears VDP, sets regs and ff0098=0x10
+0x7350 func game_set_fade_speed_next hand sets fade delay ff0078=2 and advances state
+0x7404 func game_stage_start_timer_10_7404 hand ff2e29=ff, 11e2c, 1220a, timer ff0062=0x10, advance
+0x7426 func game_stage_intro_countdown_7426 hand decrements ff0062, enables display when negative else e3a0
+0x7488 func game_stage_play_frame_7488 hand input, ends on 0x6000 bits with timer 0x3c, object updates, b614 scroll
+0x777a func game_stage_run_e3a0_ff0088_clear hand zeroes ff0088 and calls player update e3a0
+0x778a func game_stage_fade_in_wait_778a hand when fade done calls be62 and advances else step fade
+0x77bc func game_stage_play_frame_77bc hand input, ends on 0x6000 bits with timer 0x3c, object updates, b614 scroll
+0x7800 func game_fade_wait_then_next_7800 hand advances when fade count zero else steps fade
+0x7888 func game_stage_load_scene_7888 hand GUESS e076 setup, 0x28 scroll updates, ff014a|=3, hscroll copy b462, reg 0x8b02, fade begin
+0x7a8c func game_stage_play_frame_7a8c hand input, ends on 0x6000 bits with timer 0x3c, object updates, b462 scroll
+0x7ace func game_fade_wait_then_next_7ace hand advances when fade count zero else steps fade
+0x7ae8 func game_stage_clear_vdp_mode19 hand disables display, clears VDP, sets regs and ff0098=0x13
+0x7b7c func game_stage_load_scene_7b7c hand sets scroll/player defaults, 0x28 inits, ff014a|=3, b462, fade begin
+0x7cc8 func game_stage_init_players_7cc8 hand input sample bebc, ff2e28=2, 11e2c, 1220a, timer 0x10
+0x7cfa func game_stage_intro_countdown_7cfa hand decrements ff0062, enables display when negative else e3a0
+0x7d2a func game_stage_fade_in_wait_7d2a hand when fade done calls be62 and advances else step fade
+0x8080 func game_set_timer_10_next hand sets ff0062=0x10 and advances state
+0x8104 func game_stage_play_frame_tail_8104 hand GUESS D0&0x6000 inc ff00f7, ff0003=0, ff0004=4, sound, fade else player_update + parallax b614
+0x8114 func game_stage_set_end_state_8114 hand sets ff0003=0 ff0004=4 fade 0x20, plays sound and advances
+0x814c func game_stage_object_update_814c hand calls object updates f014, 1220a, ba78 and scroll b614
+0x8166 func game_stage_branch_ff0003_8166 hand if ff0003==ff calls b2f6 else c674
+0x8888 func game_stage_fill_sprite_rows_8888 hand GUESS like 4d22 variant: ff014a|=3, rows ff2758 fill/zero, vsram fill ba32, reg 0x8b06, fade begin
+0x8d46 func game_fade_wait_then_next_8d46 hand advances when fade zero else steps fade and calls ba32 scroll
+0x8e00 func game_stage_load_scene_8e00 hand loads layer 1, tables, 0x28 inits, ff014a|=3, b654 scroll, fade begin
+0x90a0 func game_stage_play_frame_90a0 hand GUESS masks slot flags with c000, ff009a=0x14000 if zero, player_update, bands b654
+0x90de func game_stage_branch_ff0003_90de hand if ff0003==ff calls b2f6 else c674
+0x9358 func game_stage_fill_sprite_rows_9358 hand GUESS mid-entry of row fill loop at A0 stride 0x20, zeroes 0x300-0x400, vsram b9c2, reg 0x8b06, fade begin
+0x977a func game_stage_load_scene_977a hand ff014a|=2, ba78, b79a scroll, reg 0x8b02, fade begin
+0x9976 func game_stage_play_frame_9976 hand autoscroll speed ff009a=0x10000 until ff010e 0xe1, object updates and b79a
+0x9b88 func game_stage_load_scene_9b88 hand 0x29 init iterations, player variant if ff00f9, ff014a|=3, b85e scroll, fade begin
+0x9cd2 func game_stage_init_players_9cd2 hand sets players (two-player variant if ff00f9), bebc, 11e2c, 1220a, timer 0x10
+0x9d78 func game_stage_intro_countdown_9d78 hand decrements ff0062, enables display when negative else e3a0
+0x9da8 func game_stage_fade_in_wait_9da8 hand advances when fade zero else steps fade
+0x9dd8 func game_stage_play_frame_9dd8 hand ends on input 0x6000 bits with timer 0x3c else object updates and b85e scroll
+0x9e16 func game_fade_wait_then_next_9e16 hand advances when fade count zero else steps fade
+0x9e30 func game_stage_clear_vdp_mode27 hand disables display, clears VDP, sets regs and ff0098=0x1b
+0x9f00 func game_cutscene_load_four_layers hand loads four layers via dfd8 (layers 2,3,0,1), scroll vars zero, fade begin, 11e2c, 1220a
+0xa026 func game_cutscene_fade_in_wait hand when fade done be62 and timer ff010e=0x348 else step fade and b902
+0xa052 func game_cutscene_timer_a052 hand counts ff010e down, at zero resets ff0110 and advances else 1220a and b902
+0xa0a0 func game_cutscene_palcycle_a0a0 hand GUESS palette copy at ff010e multiples 0x14..0xb4, loops 0x8c at 200, advances when ff0110>=600
+0xa1ce func game_cutscene_start_fade_out hand sets fade count 8 delay 2, b902, advances
+0xa1ea func game_cutscene_fade_out_wait hand fade out then disable display, clear VDP, advance, b902 per frame
+0xa206 func game_cutscene_fade_step hand steps fade and calls b902
+0xa214 func game_clear_vdp_regs_next hand disables display, clears VDP, sets regs 0x0c/0x11/0x12/0x0b, advances
+0xa246 func game_cutscene_load_four_layers_a246 hand loads layers 0..3 via dfd8 with palette, begins fade, timer 0xb4
+0xa33c func game_fade_in_wait_a33c hand advances when fade count zero else steps fade
+0xa354 func game_cutscene_timer_a354 hand decrements ff010e, at zero reloads 0xb4 sets scroll ff2b58=0x100 advances
+0xa378 func game_cutscene_timer_fade_out_a378 hand decrements ff010e, at zero starts fade out and advances
+0xa3a4 func game_fade_out_wait_a3a4 hand fade out then disable display and advance
+0xa8b0 func game_set_vdp_regs_mode28 hand sets regs 0x0c/0x11/0x12, ff0098=0x1c, advances
+0xac00 func game_cutscene_fade_in_wait_ac00 hand GUESS when ff0076==0 plays stage music and clears timers, advances else pal fade step + parallax b902
+0xadae func game_cutscene_palflash_adae hand GUESS palette copy, at 0x60 another, at 0x70 ff000a=0x34 sound, spawn list load, advance
+0xaf00 func game_cutscene_load_two_layers hand loads layers 0 and 1 via dfd8, timer ff010e=300, begins display
+0xaf94 func game_cutscene_timer_af94 hand counts ff010e down, at negative starts fade out and advances
+0xafb6 func game_fade_out_wait_afb6 hand fade out then disable display and advance
+0xb0e0 func game_load_layers_two_planes hand dfd8 layer load with b24/b5e table setup, repeated for ff0048 0 and 1 if fff029==2, fade begin, display on, next state
+0xb18c func game_fade_wait_then_next_b18c hand advances when fade count zero else steps fade
+0xb1a4 func game_wait_start_press_fade hand on pad new press 0xf0 sets fade 8 delay 4 and advances
+0xb1ca func game_fade_wait_reset_state hand when fade done zeroes ff0001 and ff0002 else steps fade
+0xb274 func game_pause_toggle_start hand toggles ff0009 bit 0x80 on Start press, calls 12b0 and sound 0x79
+0xb2f6 func game_stage_exit_timer_b2f6 hand decrement ff010e, at zero fade and next state from cad2 table by ff0098, sound
+0xb35c func game_inc_ff00f7_clamped hand adds 2 to ff00f7 clamped to fff028
+0xb37c func scroll_hscroll_parallax_b37c hand decrements ff0132 and fills per-line hscroll buffer ff2758 with shifted layer speeds
+0xb422 func scroll_hscroll_parallax_b422 hand fills hscroll buffer rows with ff012e>>2 for lines 0x80-0x300
+0xb462 func scroll_hscroll_copy_b462 hand fills hscroll buffer with ff2758 value for all lines
+0xb4a0 func scroll_hscroll_fill_b4a0 hand fills hscroll buffer rows 0x140-0x200 with ff275a
+0xb4c0 func scroll_hscroll_water_b4c0 hand subtracts speeds from ff0114/ff0118/ff011c and fills hscroll bands
+0xb576 func scroll_hscroll_parallax_b576 hand hscroll buffer fill with 1x and 2x layer speeds
+0xb5d4 func scroll_hscroll_parallax_b5d4 hand hscroll buffer fill with value and quarter speed
+0xb614 func scroll_hscroll_parallax_b614 hand hscroll buffer fill with value and double speed
+0xb654 func scroll_hscroll_bands_b654 hand ff0114 -= 0x8000 and writes eleven hscroll bands at varied shifts
+0xb79a func scroll_hscroll_parallax_b79a hand ff0132 -= 2 and writes hscroll bands at shifts 1,2,3
+0xb85e func scroll_hscroll_parallax_b85e hand ff0132 -= 1 and writes hscroll bands at shifts 1,2
+0xb902 func scroll_hscroll_parallax_b902 hand ff0132 -= 1 and writes hscroll bands, one band zero
+0xb9c2 func scroll_vsram_bands_b9c2 hand fills vscroll buffer ff2b58 with ff0130 shifted by 2 and 3
+0xba32 func scroll_vsram_fill_ba32 hand fills vscroll buffer ff2b58 with ff0130 on all entries
+0xba6c func hud_build_status_queue_ba6c hand builds HUD VRAM write queue at ff2158 (score digits via bc82, life and power icons from ff00f7/ff00f8), size header truncated
+0xba78 func hud_build_status_queue_ba78 hand same HUD builder writing queue at ff2258 (score via bc82, lives ff00f7, power ff00f8)
+0xbc82 func hud_score_to_digit_tiles hand divides value by decimal table at bcf6, writes 6 digit tile words with leading-zero blanking
+0xbe62 func game_play_stage_music hand sound command from table be82 indexed by ff0098
+0xbebc func pad_sample_or_demo_script hand copies ff001d/ff001b to ff00f5/f6 or plays scripted demo input from table c11e, handles end codes -1..-7
+0xc0d2 func pad_demo_idle_input hand sets demo pad bytes ff00f6=0, ff00f5=8
+0xc0e8 func pad_demo_advance_step hand writes demo pad bytes from script entry, counts ff012c, advances script by 6 words
+0xc674 func title_fade_wait_c674 hand ace call, advances ff0003 when fade done else steps fade
+0xc6a4 func title_fade_wait_c6a4 hand advances ff0003 when fade done else steps fade
+0xc6bc func title_clear_vdp_setup hand display off, clear VDP, regs 0x8b00 0x8c81 0x9100 0x9200, advance ff0003
+0xc6f4 func title_load_layers_c6f4 hand loads six layers via dfd8, clears scroll buffers, timers, sound command, fade begin, display on
+0xc8a8 func title_fade_in_wait_c8a8 hand when fade done sets ff0062=12 and advances else steps fade
+0xc8c8 func title_delay_c8c8 hand decrements ff0062, advances when negative
+0xc8dc func title_palcycle_wait_start hand Start press sets timer 0x3c ff0003=ff, palette cycles f92 at ff0110 multiples of 8, at 0x38 timer 0xb4 and advances
+0xc9d2 func title_wait_timer_vscroll hand Start press exits, countdown ff010e then ff2b58=0x100, timer 0xb4 and advances
+0xca14 func title_wait_timer_ca14 hand Start press exits, countdown ff010e advances at negative
+0xca46 func title_exit_set_timer hand sets ff010e=0x3c and ff0003=0xff
+0xcac8 func title_next_substate hand increments ff0003
+0xcbb2 func game_fade_wait_then_next_cbb2 hand ace call, advances state when fade done else steps fade
+0xcc00 func game_clear_vdp_regs_cc00 hand clear VDP, regs 0x8b00 0x8c81 0x9100 0x9200, advances state
+0xcdde func game_intro_countdown_cdde hand decrements ff0062, display on and advance when negative else player update e3a0
+0xce04 func game_fade_wait_set_timer_ce04 hand GUESS flag-driven entry: sets ff0112=0x2d0 and advances else pal fade step
+0xce34 func game_countdown_start_fade_ce34 hand decrements ff0112, at zero fade 0x20 delay 4, sound, advance
+0xce62 func game_fade_wait_reset_state_ce62 hand when fade done zeroes ff0001 and ff0002 else steps fade
+0xcfdc func game_sound_clear_ff0086_player hand sound command, ff0086=0, player update e3a0
+0xcff6 func game_fade_wait_then_next_cff6 hand ace call, advances state when fade done else steps fade
+0xd0d0 func game_begin_fade_display_on hand two 12b0 calls, fade begin, delay 2, display on, advance
+0xd0fc func game_fade_in_wait_clear_ff0062 hand when fade done clears ff0062 and advances else steps fade
+0xd11e func game_empty_state_d11e hand function containing only return
+0xd214 func game_set_fade_out_8_2 hand sets fade count 8 and delay 2
+0xd2d4 func game_thunk_fade_step_d2d4 hand thunk to fade step 1058
+0xd758 func menu_set_ff02a_start_next hand sets fff02a=0x10 fff02b=0x60, on button 0x20 press sets substate 4
+0xd782 func menu_fade_wait_then_next hand advances substate when fade done else steps fade
+0xd798 func menu_clear_vdp_setup hand display off, clear VDP, regs 0x8b00 0x8c81 0x9100 0x9200, advance
+0xd7ce func menu_load_tiles_setup hand tile load dd54 and dcc6, palette f5e, five 12b0 calls, sets ff013e..ff0144 vars, fade begin, display on
+0xd856 func menu_fade_in_wait_clear_ff0062 hand when fade done clears ff0062 and advances else steps fade
+0xdb4a func game_empty_state_db4a hand function containing only return
+0xdb4c func game_display_on_set_state_13 hand display on then substate ff0002=0x13
+0xdbbc func game_empty_state_dbbc hand function containing only return
+0xdbbe func game_advance_substate hand increments ff0002
+0xdc00 func txt_queue_one_word_dc00 hand GUESS stores D1 word to ff2162 and terminator ffff at ff2164
+0xdc34 func txt_queue_two_words_dc34 hand GUESS stores two D1 words to ff215c/ff215e, terminator ffff at ff2160
+0xdc62 func game_empty_return_dc62 hand function containing only return
+0xdcc6 func tile_load_vram_list_42d26 hand reads pointer list at 42d26 by D0, sets VRAM addr per entry, copies tiles to vdp_Data, 0xfe clears 16 words, 0xff ends
+0xdd54 func tile_load_vram_list_432d4 hand same VRAM tile list loader using pointer table at 432d4
+0xddde func vdp_write_16_zero_words hand writes 16 zero words to vdp_Data (one blank tile)
+0xde00 func vdp_write_8_tile_rows_de00 hand calls de56 eight times
+0xde10 func vdp_write_8_tile_rows_de10 hand calls de56 eight times, size includes extra data
+0xde56 func vdp_write_16_words_from_a4 hand sets VRAM write address from D0, copies 16 words from A4 to vdp_Data
+0xdebe func dec_rle_zero_to_ffd000 hand copies words from D1 into ffd000 buffer up to 0x1000, zero word triggers zero fill via deee
+0xdeee func mem_clear_words_a2_d2 hand clears D2 words at A2 to zero
+0xdf02 func tile_write_block_4x4_vdp hand sets VRAM address, writes 4x4 words of tile pattern from map data using ff0007 palette bit and ff0049 index
+0xdf90 func vdp_make_vram_cmd_by_ff0007 hand builds VRAM write command from D0 plus plane offset chosen by ff0007 (0, -0x2000, -0x5000)
+0xdfd8 func tile_load_layer_8x8_blocks hand loads 8x8 blocks of 4x4 tiles into plane for layer ff0048 via df02, advancing ff0066 by 8 and 0x1c8
+0xe06a func scroll_fill_map_4blocks hand GUESS size-1 stub entering scroll init (ff0007=0, ff005e=8, ff0048=0) before tile-grid fill
+0xe13a func scroll_fill_map_block_c40 hand last block of map fill, offset 0xc40
+0xe180 func scroll_draw_tile_grid hand nested loop calling df02 per tile
+0xe1a0 func scroll_draw_tile_grid_cont hand same loop as e180 without setup
+0xe1fe func obj_anim_step hand per-object anim frame counter, steps frame records, calls e320
+0xe320 func obj_anim_load_frame hand reads anim table 0x18000 frame: delay, sprite id, flags
+0xe3a0 func scroll_bg_anim_update hand animated background tile frames, ptr table, state flags
+0xe514 func scroll_bg_anim_reset_e514 hand GUESS fragment: clears ptr, toggles ff008e, loads frame via table, ff008c=0
+0xe54a func scroll_bg_anim_tail_e54a hand GUESS fragment: loads frame via table index, ff008c+=1
+0xe576 func scroll_bg_anim_advance_e576 hand next frame ff31ea+=4 wrap by table size byte, dma tiles, toggles ff008e
+0xe684 func scroll_bg_table_index hand D0*8, +4 if D1 high byte is 0x10
+0xe696 func scroll_bg_frame_ptr_e696 hand GUESS small helper called by anim advance to compute next frame offset, result in D0
+0xe6c4 func scroll_bg_read_word hand returns word from ptr table entry plus offset
+0xe6d8 func scroll_bg_read_byte hand returns byte from ptr table entry
+0xe6ec func scroll_bg_check_special hand scans word list for match with ff0086, sets bg flags
+0xe74c func scroll_bg_dma_tiles hand VDP reg write then 0xc0 words to vdp data
+0xe818 func scroll_update_dispatch hand tests ff00c6 flag bits, calls ea3c/e990/e866
+0xe866 func scroll_move_xy hand adds/subtracts scroll speed to camera x/y per direction flag
+0xe990 func scroll_step_x_bounded hand moves camera x, stops at table limit, draws column
+0xea3c func scroll_step_y_bounded hand moves camera y, stops at table limit, draws row
+0xeae8 func scroll_draw_column_vdp hand VRAM write cmd then 0x40 words from plane buffer ff3000
+0xeb7e func scroll_draw_col_tiles hand builds 8-tile column from map via tile tables to vdp
+0xecfa func scroll_draw_row_tiles hand builds 10-tile row from map via tile tables to vdp
+0xf014 func player_update hand pad input to state ff0086, speed, pos ff00d4/d8, hurt/death timers
+0xfbe0 func player_jump_arc_step hand walks y velocity table to move y, apex and landing flags
+0xfdc0 func player_set_anim_by_weapon hand ff0086 from table indexed by object type
+0xfdfa func player_sync_held_obj hand copies player pos and held object anim into obj arrays
+0xff0e func sys_nop_ff0e hand bare return
+0x1058c func col_probe_hitbox hand GUESS jump-table dispatch then sys_ret_107ba, branch on ff00d0==2; used by enemy_wall_check with probe pos ff00c8/cc
+0x1064c func player_probe_set_flag_10000 hand sets ff00e0 bit 0x10000
+0x10664 func player_start_death_timer hand ff00ea=0x78, flags 0xc00, drops held obj
+0x106c0 func player_probe_set_flag_unless_40 hand sets ff00e0 bit 0x10000 if ff0009 bit6 clear
+0x10754 func col_probe_call_ace hand calls 0ace then returns
+0x10796 func col_probe_set_d2_bit0_cond hand ff00d2 |= 1 if obj flag 0x1000 clear
+0x107ae func col_probe_set_d2_bit1 hand ff00d2 |= 2 then ret
+0x107ba func sys_ret_107ba hand bare return shared tail
+0x11e2c func stage_load_spawn_list hand reads 10-word spawn records into object arrays ff2e68..
+0x12040 func stage_spawn_list_loop_12040 hand GUESS mid-entry of spawn loader: stores type<<1, loops slots into ff2e68/ff2f68/ff3568 until hi byte nonzero
+0x12064 func stage_spawn_list_loop_12064 hand GUESS mid-entry of spawn loader: type=2 variant, same slot fill loop
+0x12086 func stage_load_spawn_list_alt hand spawn loader choosing list pointer by ff00f9
+0x1220a func obj_activate_by_scroll hand compares object x to camera window, sets active/offscreen flags
+0x12348 func enemy_run_script hand runs script opcode loop, anim step, move, clamp to screen
+0x12484 func enemy_script_fetch_op hand advances script ptr, dispatches opcode handler
+0x1259a func enemy_script_op_set_anim_wait hand sets facing, type, dir and wait counter
+0x12626 func enemy_script_op_clear_c000 hand obj flags &= 0x3fff
+0x12630 func enemy_script_op_check_input hand GUESS tests ff0000 bits vs arg; then enemy_calc_player_rel sets ff0088; script ptr +4
+0x12674 func enemy_script_op_jump hand script ptr = longword arg
+0x12690 func enemy_script_op_set_loop_start hand saves script ptr in obj+0xc00
+0x126ae func enemy_script_op_loop_n hand loop counter at obj+0xd00, jump back
+0x1273a func enemy_script_op_set_facing_wait hand sets ff0088 and wait counter
+0x127b2 func enemy_script_op_set_type_wait hand sets obj+0x500 sub-state and wait counter
+0x12828 func enemy_script_op_set_dir_wait hand sets ff0086 direction and wait counter
+0x1289a func enemy_script_op_clear_4000 hand obj flags &= 0xbfff
+0x12fe4 func enemy_script_br_scrx_le hand branch on screen x vs arg
+0x13004 func enemy_script_op_skip_8 hand script ptr = A0+8
+0x1301a func enemy_script_op_load_var hand ff0088 = obj word table entry indexed by arg
+0x1304c func enemy_script_br_state_eq hand jump if arg equals obj facing
+0x13080 func enemy_script_br_all_dead hand jump if listed objects have 0x8000 cleared
+0x13134 func enemy_script_br_scry_le hand branch on screen y vs arg
+0x1316a func enemy_script_br_scrx_ge hand branch on screen x vs arg
+0x131a0 func enemy_script_br_scry_ge hand branch on screen y vs arg
+0x131d6 func enemy_script_op_play_sound hand ff000a = arg, calls sound command thunk
+0x13200 func enemy_script_op_spawn_obj hand initialises object slot from record like spawn loader
+0x1339e func enemy_script_op_add_ofs_x hand ff0132 += longword arg
+0x133cc func enemy_script_op_scroll_camera_clamp hand ff0132 camera x += longword arg, sets ff27da hscroll, slot x clamped at 0x980, script ptr +6
+0x13414 func enemy_script_op_sync_ofs_x hand ff0132 from obj x minus camera
+0x13446 func enemy_script_op_face_player hand picks facing from player x, approach by distance
+0x134e0 func enemy_script_op_set_attack_kind hand arg 1..4 selects sub-state and dir
+0x1354e func enemy_script_br_d4_lt hand calls enemy_calc_player_rel then branches (script ptr = arg) if D4 < arg byte
+0x13586 func enemy_script_op_lr_bits_3_2 hand ff0136=3 ff0137=2
+0x135aa func enemy_script_op_lr_bits_2_3 hand ff0136=2 ff0137=3
+0x135ce func enemy_script_op_flip_facing hand facing ^= 0x10
+0x135f0 func enemy_script_op_clear_flag_200 hand obj flags &= 0xfdff
+0x1360a func enemy_script_op_set_flag_200 hand obj flags |= 0x200
+0x13624 func enemy_script_op_scroll_unlock hand ff00e0 &= ~0x8000
+0x13648 func enemy_script_op_scroll_lock hand ff00e0 |= 0x8000, scroll speed zeroed
+0x13790 func enemy_script_spawn_tail_13790 hand GUESS tail of spawn op: sets 0x8000 flag, clears slot state arrays ff3068..ff3e68, script ptr +0x16
+0x13862 func enemy_script_op_end_13862 hand bare return shared by script opcodes
+0x13868 func obj_update_screen_xy hand screen xy = world pos - camera + 0x80
+0x138ae func enemy_apply_move_table hand moves obj pos by table 0x1eb52 indexed by direction
+0x1395e func enemy_y_velocity_step hand walks y velocity table adding to y
+0x139fa func enemy_calc_player_rel hand GUESS relative dir/distance to player, decompiled empty (results in D4/D5 registers)
+0x13ef0 func enemy_wall_check hand probes points around pos via 1058c, snaps x
+0x143c2 func col_hitbox_vs_player hand hit box tables 0x14eac, player vs enemy boxes, calls dmg handlers
+0x149ae func col_touch_special_26_27 hand GUESS slot type 0x26/0x27 touch: flags|=0x80, ff0009 bit6, pad sample, clears high bits
+0x14a3a func player_drop_held_obj hand clears weapon flag, resets held obj, y -0x180000
+0x14b16 func dmg_player_hit hand enemy touches player: hurt flags, timer 0x78, knockback
+0x14c7a func dmg_enemy_hit_by_weapon hand enemy hp reduced, score ff00f0 added, hit script, sound
+0x14d56 func dmg_enemy_hit_by_punch hand like 14c7a, hit script +0x900, no sound
+0x6000c func snd_tick_stub hand calls 6001a
+0x6001a func snd_driver_update hand per-frame sequencer opcodes 0xd0-0xf4, writes Z80 RAM and PSG
+0x60b20 func snd_init_call hand calls 60b34
+0x60b34 func snd_driver_init hand loads Z80 program, resets Z80, clears channel RAM
+0x60c0c func snd_play_cmd_impl hand dispatches sound id by range to music/sfx/psg queues

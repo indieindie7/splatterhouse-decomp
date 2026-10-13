@@ -1,0 +1,1414 @@
+F 00000200 exc_Reset USER_DEFINED 500
+C 00000604
+C 0000059e
+C 00060004
+C 0000090a
+C 00000804
+C 00000822
+C 00000fc4
+C 00000fec
+C 00000618
+C 00001614
+C 0000133a
+C 0000139c
+C 000013fe
+C 00000986
+C 00001684
+C 00001460
+C 00000804
+C 0000092a
+F 00000460 irq_VBlank USER_DEFINED 56
+C 000006fa
+C 0006000c
+F 00000498 irq_HBlank USER_DEFINED 106
+F 00000502 exc_Spurious_irq_Level1_irq_External_irq_Level3_irq_Level5_i USER_DEFINED 2
+F 00000560 mem_copy_96_bytes USER_DEFINED 50
+F 00000592 sys_delay_loop_60 USER_DEFINED 10
+F 0000059e game_init_state USER_DEFINED 102
+C 00000986
+C 00000a44
+C 000008e6
+C 00000870
+C 00000894
+C 000008c2
+F 00000604 mem_clear_workram_ff0000 USER_DEFINED 20
+F 00000618 spr_upload_buffer_to_vram USER_DEFINED 226
+F 000006fa scroll_upload_vsram USER_DEFINED 266
+F 00000804 vdp_display_enable USER_DEFINED 30
+F 00000822 vdp_display_disable USER_DEFINED 32
+F 00000842 scroll_clear_vsram_and_buffer USER_DEFINED 46
+F 00000870 vdp_clear_vram_b000 USER_DEFINED 36
+F 00000894 spr_clear_table_and_buffer USER_DEFINED 46
+F 000008c2 vdp_clear_vram_ac00 USER_DEFINED 36
+F 000008e6 vdp_clear_vram_c000 USER_DEFINED 36
+F 0000090a vdp_vblank_irq_enable USER_DEFINED 32
+F 0000092a vdp_vblank_irq_disable USER_DEFINED 24
+F 00000944 vdp_set_reg_with_mask USER_DEFINED 32
+F 00000972 vdp_write_reg_d0 USER_DEFINED 20
+F 00000986 pad_read_both USER_DEFINED 190
+F 00000a44 vdp_load_init_regs USER_DEFINED 34
+F 00000a84 game_state_next_bcd USER_DEFINED 8
+F 00000a8c game_state_next USER_DEFINED 18
+F 00000a9e game_substate_inc USER_DEFINED 10
+F 00000aa8 vdp_clear_all_and_init USER_DEFINED 38
+C 000008e6
+C 00000870
+C 00000894
+C 00000842
+C 000008c2
+C 00000af2
+C 00000b0e
+C 00000b10
+C 00000ae8
+F 00000ace sys_jump_table_dispatch USER_DEFINED 14
+F 00000adc snd_thunk_60c0c USER_DEFINED 12
+C 00060000
+F 00000ae8 sys_call_f5e USER_DEFINED 10
+C 00000f5e
+F 00000af2 mem_clear_ff2e68_object_area USER_DEFINED 28
+F 00000b0e sys_nop_return USER_DEFINED 2
+F 00000b10 mem_clear_ff2458_128w USER_DEFINED 20
+F 00000b24 game_set_ptrs_ff004a_4e_52 USER_DEFINED 58
+F 00000b5e game_set_ptr_ff0056_by_index USER_DEFINED 26
+F 00000b88 game_set_ptr_ff0056_from_ff0048 USER_DEFINED 28
+F 00000c2a pal_update_three_pairs USER_DEFINED 14
+C 00000c38
+C 00000c64
+C 00000c90
+F 00000c38 pal_set_color_pair_ff2664 USER_DEFINED 44
+F 00000c64 pal_set_color_pair_ff2684 USER_DEFINED 44
+F 00000c90 pal_set_color_pair_ff26a4 USER_DEFINED 26
+F 00000e2a sys_nop_return_e2a USER_DEFINED 2
+F 00000eb8 game_list_add_flag_slots USER_DEFINED 46
+F 00000eea mem_collect_c002_idx_00_20 USER_DEFINED 26
+F 00000f04 mem_collect_c002_idx_32_40 USER_DEFINED 30
+F 00000f28 mem_collect_c000_idx_tail USER_DEFINED 24
+F 00000f40 mem_collect_c000_idx_4c_52 USER_DEFINED 30
+F 00000f5e pal_load_table_entries USER_DEFINED 52
+C 00000f92
+F 00000f92 pal_copy_16_colors_to_buffer USER_DEFINED 50
+F 00000fc4 pal_upload_cram_64 USER_DEFINED 40
+F 00000fec pal_upload_cram_partial USER_DEFINED 108
+F 00001058 pal_fade_step USER_DEFINED 90
+F 00001100 pal_fade_timer_dec USER_DEFINED 10
+F 00001122 pal_fade_step_short USER_DEFINED 44
+F 0000114e pal_clear_fade_buffer USER_DEFINED 26
+F 000011ae pal_begin_fade_copy USER_DEFINED 54
+F 000011e4 pal_fade_step_b USER_DEFINED 54
+F 000012b0 tile_write_tilemap_block USER_DEFINED 74
+C 0000132e
+F 0000132e math_vram_name_addr USER_DEFINED 12
+F 0000133a dma_flush_queue_ff2158 USER_DEFINED 98
+F 0000139c dma_flush_queue_ff2258 USER_DEFINED 98
+F 000013fe dma_flush_queue_ff2358 USER_DEFINED 98
+F 00001460 spr_build_list_from_objects USER_DEFINED 154
+C 000014fa
+F 000014fa spr_emit_metasprite_parts USER_DEFINED 282
+F 00001614 spr_upload_attr_table_vram USER_DEFINED 112
+F 00001684 sys_state_dispatch_ff0001 USER_DEFINED 30
+F 000016a2 title_start_or_init_check DEFAULT 6
+F 000016ca title_start_or_init_check USER_DEFINED 284
+C 00000a8c
+C 00000ace
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 00001800 title_init_screen_blocks USER_DEFINED 68
+C 000012b0
+C 000012b0
+C 000012b0
+C 000011ae
+C 00000804
+C 0000dbbe
+F 00001844 title_fade_in_wait_1844 USER_DEFINED 24
+C 0000dbbe
+C 000011e4
+F 0000185c title_countdown_fade_out USER_DEFINED 104
+C 00001058
+C 00060000
+C 0000dbbe
+F 000018c4 title_clear_and_next USER_DEFINED 50
+C 00000822
+C 00000aa8
+C 0000dbbe
+F 000019b8 title_fade_out_wait USER_DEFINED 30
+C 00000822
+C 0000dbbe
+C 00001058
+F 000019d6 title_load_screen_gfx USER_DEFINED 116
+C 00000f5e
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 0000dfd8
+C 000011ae
+C 00000804
+C 0000dbbe
+F 00001a4a title_fade_in_wait_1a4a USER_DEFINED 24
+C 0000dbbe
+C 000011e4
+F 00001a62 title_timer_fade_out_1a62 USER_DEFINED 44
+C 0000dbbe
+F 00001a8e title_fade_out_wait_1a8e USER_DEFINED 30
+C 00000822
+C 0000dbbe
+C 00001058
+F 00001aac title_load_screen_gfx_1aac USER_DEFINED 116
+C 00000f5e
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 0000dfd8
+C 000011ae
+C 00000804
+C 0000dbbe
+F 00001b20 title_fade_in_wait_1b20 USER_DEFINED 24
+C 0000dbbe
+C 000011e4
+F 00001b38 title_timer_fade_out_1b38 USER_DEFINED 44
+C 0000dbbe
+F 00001b64 title_fade_out_clear_next USER_DEFINED 36
+C 00000822
+C 00000aa8
+C 0000dbbe
+C 00001058
+F 00002112 title_logo_scroll_setup USER_DEFINED 74
+C 000011ae
+C 00000804
+C 0000dbbe
+F 00002212 title_logo_scroll_step USER_DEFINED 128
+C 00000822
+C 00000aa8
+C 0000dbbe
+F 00002434 title_display_on_next USER_DEFINED 12
+C 00000804
+C 0000dbbe
+F 00002520 title_hscroll_wave_effect USER_DEFINED 220
+C 0000dbbe
+C 000011e4
+F 00002714 title_screen_setup_layers USER_DEFINED 198
+C 0000dfd8
+C 0000dfd8
+C 0000dfd8
+C 00000804
+C 00060000
+C 0000dbbe
+F 00002800 title_state_next_only USER_DEFINED 16
+C 0000dbbe
+F 00002900 title_fade_out_wait_2900 USER_DEFINED 66
+C 00000822
+C 00000aa8
+C 0000dbbe
+C 00001058
+F 0000295c title_load_screen_gfx_295c USER_DEFINED 116
+C 00000f5e
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 0000dfd8
+C 000011ae
+C 00000804
+C 0000dbbe
+F 000029d0 title_fade_in_wait_29d0 USER_DEFINED 24
+C 0000dbbe
+C 000011e4
+F 00002a04 title_set_fade_next_state USER_DEFINED 28
+C 00000a8c
+F 00002a22 obj_place_menu_sprites USER_DEFINED 142
+F 00002abc title_spawn_timed_sprite_a USER_DEFINED 176
+F 00002b70 title_spawn_timed_sprite_b USER_DEFINED 186
+F 00002c4a game_init_new_game_vars USER_DEFINED 200
+C 00000ace
+C 0000dbbe
+C 00001058
+F 00003000 title_logo_arrive_check USER_DEFINED 44
+F 0000303c title_fade_step_wrapper USER_DEFINED 8
+C 00001058
+F 00003070 menu_setup_options_screen USER_DEFINED 330
+C 0000dd54
+C 00000f5e
+C 000012b0
+C 000012b0
+C 000012b0
+C 000012b0
+C 000012b0
+C 000012b0
+C 000012b0
+C 000012b0
+C 0000dc34
+C 000012b0
+C 000012b0
+C 000012b0
+C 000012b0
+C 000012b0
+C 000012b0
+C 000011ae
+C 00000804
+C 0000dbbe
+F 000031ba menu_fade_in_wait USER_DEFINED 24
+C 0000dbbe
+C 000011e4
+F 0000343c menu_cursor_move_check USER_DEFINED 68
+C 00060000
+F 00003480 menu_fade_out_wait USER_DEFINED 24
+C 0000dbbe
+C 00001058
+F 0000355a menu_set_defaults_start_display USER_DEFINED 44
+C 00000804
+C 0000dbbe
+F 00003586 menu_fade_in_wait_3586 USER_DEFINED 24
+C 0000dbbe
+C 000011e4
+F 00003a00 game_stage_load_parallax_3a00 USER_DEFINED 236
+C 00000b24
+C 00000b5e
+C 00000b24
+C 00000b5e
+C 0000e818
+C 0000ba78
+C 0000b37c
+C 000011ae
+C 0000dbbe
+F 00003b40 game_stage_init_players USER_DEFINED 112
+C 0000bebc
+C 0000dbbe
+F 00003bb0 game_stage_intro_countdown USER_DEFINED 32
+C 00000804
+C 0000dbbe
+C 0000e3a0
+F 00003bd0 game_stage_fade_in_wait USER_DEFINED 36
+C 00011e2c
+C 0000be62
+C 0000dbbe
+C 000011e4
+F 00003bf4 game_play_frame_demo_or_normal USER_DEFINED 130
+C 0000dbbe
+C 0000bebc
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000b37c
+C 0000ba78
+F 00003c76 game_fade_wait_then_next USER_DEFINED 24
+C 00001058
+C 0000dbbe
+F 00003ca8 menu_apply_difficulty_options USER_DEFINED 174
+C 000012b0
+C 000012b0
+C 000012b0
+F 00003d56 snd_thunk_60c0c_3d56 USER_DEFINED 12
+C 00060000
+F 00003d62 menu_options_state_dispatch USER_DEFINED 960
+C 00000ace
+C 0000dbbe
+C 00001058
+F 00004364 game_demo_countdown_4364 USER_DEFINED 60
+C 00000804
+C 0000dbbe
+C 0000e3a0
+F 000043a0 game_fade_in_wait_43a0 USER_DEFINED 44
+C 00011e2c
+C 0000be62
+C 0000dbbe
+C 000011e4
+F 00004460 game_stage_clear_vdp_mode4 USER_DEFINED 64
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 000044a0 game_stage_load_scene_a USER_DEFINED 376
+C 0000dd54
+C 0000dcc6
+C 00000f5e
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 00000b24
+C 00000b5e
+C 0000e818
+C 0000ba78
+C 0000b37c
+C 000011ae
+C 0000dbbe
+F 00004804 game_stage_load_scene_b USER_DEFINED 286
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 00000b24
+C 00000b5e
+C 0000e818
+C 0000ba78
+C 000011ae
+C 0000dbbe
+F 00004a84 game_stage_play_frame_end_check USER_DEFINED 104
+C 0000bebc
+C 0000b35c
+C 00060000
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000ba78
+F 00004aec game_stage_branch_ff0003 USER_DEFINED 24
+C 0000b2f6
+C 0000c674
+F 00004b06 game_fade_wait_then_next_4b06 USER_DEFINED 24
+C 0000dbbe
+C 00001058
+F 00004b1e game_stage_clear_vdp_mode6 USER_DEFINED 64
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 00004d22 game_stage_fill_sprite_rows USER_DEFINED 144
+C 0000ba6c
+C 0000b9c2
+C 000011ae
+C 0000dbbe
+F 00004e50 game_stage_start_timer_10 USER_DEFINED 34
+C 00011e2c
+C 0001220a
+C 0000dbbe
+F 00005000 game_stage_set_mode7 USER_DEFINED 56
+C 00000adc
+C 0000dbbe
+F 00005038 game_stage_load_scene_c USER_DEFINED 374
+C 0000dd54
+C 0000dcc6
+C 00000f5e
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 00000b24
+C 00000b5e
+C 0000e818
+C 0000ba78
+C 0000b422
+C 000011ae
+C 0000dbbe
+F 000051ae game_stage_init_objects_e USER_DEFINED 192
+C 0000bebc
+C 00011e2c
+C 0001220a
+C 0000dbbe
+F 0000526e game_stage_intro_countdown_526e USER_DEFINED 48
+C 00000804
+C 0000dbbe
+C 0000e3a0
+F 0000529e game_stage_fade_in_wait_529e USER_DEFINED 30
+C 0000be62
+C 0000dbbe
+C 000011e4
+F 000052d0 game_stage_play_frame_52d0 USER_DEFINED 68
+C 0000bebc
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b422
+F 00005314 game_stage_exit_timer_b2f6 DEFAULT 4
+F 00005318 game_fade_wait_then_next_5318 USER_DEFINED 26
+C 0000dbbe
+C 00001058
+F 00005500 game_stage_init_objects_5500 USER_DEFINED 168
+C 0000bebc
+C 00011e2c
+C 0001220a
+C 0000dbbe
+F 000055bc game_stage_clear_inputs_run_e3a0 USER_DEFINED 28
+C 0000e3a0
+F 000055ee game_fade_in_step_wrapper USER_DEFINED 8
+C 000011e4
+F 00005652 snd_play_then_next_5652 USER_DEFINED 12
+C 00060000
+C 0000dbbe
+F 00005660 game_stage_play_frame_5660 USER_DEFINED 30
+C 0001220a
+C 0000ba78
+C 0000b422
+F 00005700 game_stage_load_scene_5700 USER_DEFINED 350
+C 00000f5e
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 00000b24
+C 00000b5e
+C 0000e818
+C 0000ba78
+C 0000b462
+C 000011ae
+C 0000dbbe
+F 00005904 game_stage_start_timer_10_5904 USER_DEFINED 34
+C 00011e2c
+C 0001220a
+C 0000dbbe
+F 00005926 game_stage_intro_countdown_5926 USER_DEFINED 48
+C 00000804
+C 0000dbbe
+C 0000e3a0
+F 00005956 game_stage_fade_in_wait_5956 USER_DEFINED 30
+C 0000be62
+C 0000dbbe
+C 000011e4
+F 00005988 game_stage_play_frame_palcycle_5988 USER_DEFINED 192
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 0000bebc
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b462
+F 00005a48 game_stage_exit_timer_b2f6 DEFAULT 4
+F 00005a4c game_fade_wait_then_next_5a4c USER_DEFINED 26
+C 0000dbbe
+C 00001058
+F 00005a66 game_stage_clear_vdp_mode10 USER_DEFINED 64
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 00005b62 game_stage_load_scene_5b62 USER_DEFINED 420
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000e818
+C 00000b24
+C 00000b5e
+C 0000e06a
+C 00000b24
+C 00000b5e
+C 0000ba6c
+C 0000b4a0
+C 000011ae
+C 0000dbbe
+F 00005e38 game_stage_play_frame_palcycle_5e38 USER_DEFINED 292
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 0000bebc
+C 0000b35c
+C 00060000
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000ba6c
+C 0000b4a0
+F 00006000 game_fade_step_wrapper_6000 USER_DEFINED 8
+C 00001058
+F 00006008 game_stage_clear_vdp_mode11 USER_DEFINED 64
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 0000609a game_stage_load_water_scene_609a USER_DEFINED 342
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 00000b24
+C 00000b5e
+C 0000e818
+C 0000ba78
+C 0000b4c0
+C 000011ae
+C 0000dbbe
+F 000061f0 game_stage_init_objects_61f0 USER_DEFINED 200
+C 0000bebc
+C 00011e2c
+C 0001220a
+C 0000dbbe
+F 000062b8 game_stage_intro_countdown_62b8 USER_DEFINED 48
+C 00000804
+C 0000dbbe
+C 0000e3a0
+F 000062e8 game_stage_fade_in_wait_62e8 USER_DEFINED 30
+C 0000be62
+C 0000dbbe
+C 000011e4
+F 00006306 game_stage_play_frame_6306 USER_DEFINED 104
+C 0000b274
+C 0000bebc
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b4c0
+F 0000636e game_stage_exit_timer_b2f6 DEFAULT 4
+F 00006372 game_fade_wait_then_next_6372 USER_DEFINED 26
+C 0000dbbe
+C 00001058
+F 0000638c game_stage_clear_vdp_mode12 USER_DEFINED 64
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 000063cc game_stage_load_scene_63cc USER_DEFINED 366
+C 0000dd54
+C 0000dcc6
+C 00000f5e
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 00000b24
+C 00000b5e
+C 0000e818
+C 0000ba78
+C 0000b576
+C 000011ae
+C 0000dbbe
+F 00006600 game_stage_start_timer_10_6600 USER_DEFINED 34
+C 00011e2c
+C 0001220a
+C 0000dbbe
+F 00006636 game_stage_clear_inputs_run_e3a0_6636 USER_DEFINED 28
+C 0000e3a0
+F 00006700 game_stage_palcycle_scroll_6700 USER_DEFINED 154
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00002a22
+C 0000ba78
+C 0000b576
+F 0000679a game_stage_exit_timer_b2f6 DEFAULT 4
+F 0000679e game_fade_wait_then_next_679e USER_DEFINED 26
+C 0000dbbe
+C 00001058
+F 000067b8 game_stage_clear_vdp_mode13 USER_DEFINED 64
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 00006a5c game_stage_play_frame_6a5c USER_DEFINED 62
+C 0000bebc
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b462
+F 00006a9a game_stage_exit_timer_b2f6 DEFAULT 4
+F 00006a9e game_fade_wait_then_next_6a9e USER_DEFINED 26
+C 0000dbbe
+C 00001058
+F 00006ab8 game_stage_clear_vdp_mode14 USER_DEFINED 64
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 00006af8 game_stage_load_scene_6af8 USER_DEFINED 374
+C 0000dd54
+C 0000dcc6
+C 00000f5e
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 00000b24
+C 00000b5e
+C 0000e818
+C 0000ba78
+C 0000b576
+C 000011ae
+C 0000dbbe
+F 00006f00 game_stage_load_scene_6f00 USER_DEFINED 290
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 00000b24
+C 00000b5e
+C 0000e818
+C 0000ba78
+C 0000b5d4
+C 000011ae
+C 0000dbbe
+F 00007100 game_advance_substate DEFAULT 10
+C 0000dbbe
+F 0000710a game_stage_clear_inputs_run_e3a0_710a USER_DEFINED 24
+C 0000e3a0
+F 00007122 game_stage_fade_in_wait_7122 USER_DEFINED 30
+C 0000be62
+C 0000dbbe
+C 000011e4
+F 00007154 game_stage_play_frame_7154 USER_DEFINED 62
+C 0000bebc
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b5d4
+F 00007192 game_stage_exit_timer_b2f6 DEFAULT 4
+F 00007196 game_fade_wait_then_next_7196 USER_DEFINED 26
+C 0000dbbe
+C 00001058
+F 000071b0 game_stage_clear_vdp_mode16 USER_DEFINED 64
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 00007350 game_set_fade_speed_next USER_DEFINED 14
+C 0000dbbe
+F 00007404 game_stage_start_timer_10_7404 USER_DEFINED 34
+C 00011e2c
+C 0001220a
+C 0000dbbe
+F 00007426 game_stage_intro_countdown_7426 USER_DEFINED 48
+C 00000804
+C 0000dbbe
+C 0000e3a0
+F 00007488 game_stage_play_frame_7488 USER_DEFINED 62
+C 0000bebc
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b614
+F 000074c6 game_stage_exit_timer_b2f6 DEFAULT 4
+F 0000777a game_stage_run_e3a0_ff0088_clear USER_DEFINED 16
+C 0000e3a0
+F 0000778a game_stage_fade_in_wait_778a USER_DEFINED 30
+C 0000be62
+C 0000dbbe
+C 000011e4
+F 000077bc game_stage_play_frame_77bc USER_DEFINED 62
+C 0000bebc
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b614
+F 00007800 game_fade_wait_then_next_7800 USER_DEFINED 24
+C 0000dbbe
+C 00001058
+F 00007888 game_stage_load_scene_7888 USER_DEFINED 218
+C 00000b24
+C 00000b5e
+C 0000e818
+C 0000ba78
+C 0000b462
+C 000011ae
+C 0000dbbe
+F 00007a8c game_stage_play_frame_7a8c USER_DEFINED 62
+C 0000bebc
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b462
+F 00007aca game_stage_exit_timer_b2f6 DEFAULT 4
+F 00007ace game_fade_wait_then_next_7ace USER_DEFINED 26
+C 0000dbbe
+C 00001058
+F 00007ae8 game_stage_clear_vdp_mode19 USER_DEFINED 64
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 00007b7c game_stage_load_scene_7b7c USER_DEFINED 182
+C 0000e818
+C 0000ba78
+C 0000b462
+C 000011ae
+C 0000dbbe
+F 00007cc8 game_stage_init_players_7cc8 USER_DEFINED 50
+C 0000bebc
+C 00011e2c
+C 0001220a
+C 0000dbbe
+F 00007cfa game_stage_intro_countdown_7cfa USER_DEFINED 48
+C 00000804
+C 0000dbbe
+C 0000e3a0
+F 00007d2a game_stage_fade_in_wait_7d2a USER_DEFINED 30
+C 0000be62
+C 0000dbbe
+C 000011e4
+F 00008080 game_set_timer_10_next USER_DEFINED 22
+C 0000dbbe
+F 00008104 game_stage_play_frame_tail_8104 USER_DEFINED 10
+F 00008114 game_stage_set_end_state_8114 USER_DEFINED 56
+C 00060000
+C 0000dbbe
+F 0000814c game_stage_object_update_814c USER_DEFINED 26
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b614
+F 00008166 game_stage_branch_ff0003_8166 USER_DEFINED 24
+C 0000b2f6
+C 0000c674
+F 00008888 game_stage_fill_sprite_rows_8888 USER_DEFINED 142
+C 0000ba6c
+C 0000ba32
+C 000011ae
+C 0000dbbe
+F 00008d42 game_stage_exit_timer_b2f6 DEFAULT 4
+F 00008d46 game_fade_wait_then_next_8d46 USER_DEFINED 32
+C 0000dbbe
+C 00001058
+C 0000ba32
+F 00008e00 game_stage_load_scene_8e00 USER_DEFINED 286
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 00000b24
+C 00000b5e
+C 0000e818
+C 0000ba78
+C 0000b654
+C 000011ae
+C 0000dbbe
+F 000090a0 game_stage_play_frame_90a0 USER_DEFINED 62
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b654
+F 000090de game_stage_branch_ff0003_90de USER_DEFINED 24
+C 0000b2f6
+C 0000c674
+F 00009358 game_stage_fill_sprite_rows_9358 USER_DEFINED 76
+C 0000b9c2
+C 000011ae
+C 0000dbbe
+F 0000977a game_stage_load_scene_977a USER_DEFINED 48
+C 0000ba78
+C 0000b79a
+C 000011ae
+C 0000dbbe
+F 00009976 game_stage_play_frame_9976 USER_DEFINED 86
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b79a
+F 00009b88 game_stage_load_scene_9b88 USER_DEFINED 202
+C 0000e818
+C 0000ba78
+C 0000b85e
+C 000011ae
+C 0000dbbe
+F 00009cd2 game_stage_init_players_9cd2 USER_DEFINED 166
+C 0000bebc
+C 0000bebc
+C 0000be62
+C 00011e2c
+C 0001220a
+C 0000dbbe
+F 00009d78 game_stage_intro_countdown_9d78 USER_DEFINED 48
+C 00000804
+C 0000dbbe
+C 0000e3a0
+F 00009da8 game_stage_fade_in_wait_9da8 USER_DEFINED 24
+C 0000dbbe
+C 000011e4
+F 00009dd8 game_stage_play_frame_9dd8 USER_DEFINED 58
+C 0000dbbe
+C 0000f014
+C 0001220a
+C 0000ba78
+C 0000b85e
+F 00009e12 game_stage_exit_timer_b2f6 DEFAULT 4
+F 00009e16 game_fade_wait_then_next_9e16 USER_DEFINED 26
+C 0000dbbe
+C 00001058
+F 00009e30 game_stage_clear_vdp_mode27 USER_DEFINED 64
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 00009f00 game_cutscene_load_four_layers USER_DEFINED 294
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 000011ae
+C 00011e2c
+C 0001220a
+C 0000dbbe
+F 0000a026 game_cutscene_fade_in_wait USER_DEFINED 44
+C 0000be62
+C 0000dbbe
+C 000011e4
+C 0000b902
+F 0000a052 game_cutscene_timer_a052 USER_DEFINED 54
+C 0000dbbe
+C 0001220a
+C 0000b902
+F 0000a0a0 game_cutscene_palcycle_a0a0 USER_DEFINED 302
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 0000dbbe
+C 0000b902
+F 0000a1ce game_cutscene_start_fade_out USER_DEFINED 28
+C 0000b902
+C 0000dbbe
+F 0000a1ea game_cutscene_fade_out_wait USER_DEFINED 28
+C 00000822
+C 00000aa8
+C 0000dbbe
+F 0000a206 game_cutscene_fade_step USER_DEFINED 14
+C 00001058
+C 0000b902
+F 0000a214 game_clear_vdp_regs_next USER_DEFINED 50
+C 00000822
+C 00000aa8
+C 0000dbbe
+F 0000a246 game_cutscene_load_four_layers_a246 USER_DEFINED 246
+C 0000dcc6
+C 00000f5e
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 000011ae
+C 00000804
+C 0000dbbe
+F 0000a33c game_fade_in_wait_a33c USER_DEFINED 24
+C 0000dbbe
+C 000011e4
+F 0000a354 game_cutscene_timer_a354 USER_DEFINED 36
+C 0000dbbe
+F 0000a378 game_cutscene_timer_fade_out_a378 USER_DEFINED 44
+C 0000dbbe
+F 0000a3a4 game_fade_out_wait_a3a4 USER_DEFINED 30
+C 00000822
+C 0000dbbe
+C 00001058
+F 0000a8b0 game_set_vdp_regs_mode28 USER_DEFINED 38
+C 0000dbbe
+F 0000ac00 game_cutscene_fade_in_wait_ac00 USER_DEFINED 66
+C 0000be62
+C 0000dbbe
+C 000011e4
+C 0000b902
+F 0000adae game_cutscene_palflash_adae USER_DEFINED 122
+C 00000f92
+C 00000f92
+C 00060000
+C 00011e2c
+C 0001220a
+C 0000dbbe
+C 0000b902
+F 0000af00 game_cutscene_load_two_layers USER_DEFINED 148
+C 0000dcc6
+C 00000f5e
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000804
+C 0000dbbe
+F 0000af94 game_cutscene_timer_af94 USER_DEFINED 34
+C 0000dbbe
+F 0000afb6 game_fade_out_wait_afb6 USER_DEFINED 30
+C 00000822
+C 0000dbbe
+C 00001058
+F 0000b0e0 game_load_layers_two_planes USER_DEFINED 172
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 000011ae
+C 00000804
+C 0000dbbe
+F 0000b18c game_fade_wait_then_next_b18c USER_DEFINED 24
+C 0000dbbe
+C 000011e4
+F 0000b1a4 game_wait_start_press_fade USER_DEFINED 38
+C 0000dbbe
+F 0000b1ca game_fade_wait_reset_state USER_DEFINED 36
+C 00001058
+F 0000b274 game_pause_toggle_start USER_DEFINED 130
+C 000012b0
+C 00060000
+C 000012b0
+C 00060000
+F 0000b2f6 game_stage_exit_timer_b2f6 USER_DEFINED 102
+C 00060000
+F 0000b35c game_inc_ff00f7_clamped USER_DEFINED 32
+F 0000b37c scroll_hscroll_parallax_b37c USER_DEFINED 166
+F 0000b422 scroll_hscroll_parallax_b422 USER_DEFINED 64
+F 0000b462 scroll_hscroll_copy_b462 USER_DEFINED 62
+F 0000b4a0 scroll_hscroll_fill_b4a0 USER_DEFINED 32
+F 0000b4c0 scroll_hscroll_water_b4c0 USER_DEFINED 182
+F 0000b576 scroll_hscroll_parallax_b576 USER_DEFINED 94
+F 0000b5d4 scroll_hscroll_parallax_b5d4 USER_DEFINED 64
+F 0000b614 scroll_hscroll_parallax_b614 USER_DEFINED 64
+F 0000b654 scroll_hscroll_bands_b654 USER_DEFINED 326
+F 0000b79a scroll_hscroll_parallax_b79a USER_DEFINED 196
+F 0000b85e scroll_hscroll_parallax_b85e USER_DEFINED 164
+F 0000b902 scroll_hscroll_parallax_b902 USER_DEFINED 192
+F 0000b9c2 scroll_vsram_bands_b9c2 USER_DEFINED 112
+F 0000ba32 scroll_vsram_fill_ba32 USER_DEFINED 58
+F 0000ba6c hud_build_status_queue_ba6c USER_DEFINED 10
+F 0000ba78 hud_build_status_queue_ba78 USER_DEFINED 516
+C 00060000
+C 0000bc82
+F 0000bc82 hud_score_to_digit_tiles USER_DEFINED 116
+F 0000be62 game_play_stage_music USER_DEFINED 32
+C 00060000
+F 0000bebc pad_sample_or_demo_script USER_DEFINED 510
+C 00014a3a
+C 00000f92
+F 0000c0cc pad_demo_advance_step DEFAULT 6
+C 0000c0e8
+F 0000c0d2 pad_demo_idle_input USER_DEFINED 20
+F 0000c0e8 pad_demo_advance_step USER_DEFINED 54
+F 0000c674 title_fade_wait_c674 USER_DEFINED 1
+F 0000c6a4 title_fade_wait_c6a4 USER_DEFINED 22
+C 0000cac8
+C 00001058
+F 0000c6bc title_clear_vdp_setup USER_DEFINED 54
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000cac8
+F 0000c6f4 title_load_layers_c6f4 USER_DEFINED 434
+C 0000dcc6
+C 00000f5e
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 0000dfd8
+C 0000dfd8
+C 0000dfd8
+C 00000b24
+C 00000b5e
+C 0000dfd8
+C 0000dfd8
+C 00060000
+C 000011ae
+C 00000804
+C 0000cac8
+F 0000c8a8 title_fade_in_wait_c8a8 USER_DEFINED 30
+C 0000cac8
+C 000011e4
+F 0000c8c8 title_delay_c8c8 USER_DEFINED 18
+C 0000cac8
+F 0000c8dc title_palcycle_wait_start USER_DEFINED 244
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 00000f92
+C 0000cac8
+F 0000c9d2 title_wait_timer_vscroll USER_DEFINED 64
+C 0000cac8
+F 0000ca14 title_wait_timer_ca14 USER_DEFINED 48
+C 0000cac8
+F 0000ca46 title_exit_set_timer USER_DEFINED 18
+F 0000cac8 title_next_substate USER_DEFINED 10
+F 0000cbb2 game_fade_wait_then_next_cbb2 USER_DEFINED 76
+C 00000ace
+C 0000dbbe
+C 00001058
+F 0000cc00 game_clear_vdp_regs_cc00 USER_DEFINED 54
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 0000cdde game_intro_countdown_cdde USER_DEFINED 32
+C 00000804
+C 0000dbbe
+C 0000e3a0
+F 0000ce04 game_fade_wait_set_timer_ce04 USER_DEFINED 26
+C 0000dbbe
+C 000011e4
+F 0000ce34 game_countdown_start_fade_ce34 USER_DEFINED 46
+C 00060000
+C 0000dbbe
+F 0000ce62 game_fade_wait_reset_state_ce62 USER_DEFINED 36
+C 00001058
+F 0000cfdc game_sound_clear_ff0086_player USER_DEFINED 26
+C 00060000
+C 0000e3a0
+F 0000cff6 game_fade_wait_then_next_cff6 USER_DEFINED 126
+C 00000ace
+C 0000dbbe
+C 00001058
+F 0000d0d0 game_begin_fade_display_on USER_DEFINED 44
+C 000012b0
+C 000012b0
+C 000011ae
+C 00000804
+C 0000dbbe
+F 0000d0fc game_fade_in_wait_clear_ff0062 USER_DEFINED 30
+C 0000dbbe
+C 000011e4
+F 0000d11a game_advance_substate DEFAULT 4
+F 0000d11e game_empty_state_d11e USER_DEFINED 2
+F 0000d214 game_set_fade_out_8_2 USER_DEFINED 18
+F 0000d2d0 game_advance_substate DEFAULT 4
+C 0000dbbe
+F 0000d2d4 game_thunk_fade_step_d2d4 USER_DEFINED 8
+C 00001058
+F 0000d758 menu_set_ff02a_start_next USER_DEFINED 42
+F 0000d782 menu_fade_wait_then_next USER_DEFINED 22
+C 0000dbbe
+C 00001058
+F 0000d798 menu_clear_vdp_setup USER_DEFINED 54
+C 00000822
+C 00000aa8
+C 00000adc
+C 0000dbbe
+F 0000d7ce menu_load_tiles_setup USER_DEFINED 136
+C 0000dd54
+C 0000dcc6
+C 00000f5e
+C 000012b0
+C 000012b0
+C 000012b0
+C 000012b0
+C 000012b0
+C 000011ae
+C 00000804
+C 0000dbbe
+F 0000d856 menu_fade_in_wait_clear_ff0062 USER_DEFINED 30
+C 0000dbbe
+C 000011e4
+F 0000db42 game_advance_substate DEFAULT 8
+C 0000dbbe
+F 0000db4a game_empty_state_db4a USER_DEFINED 2
+F 0000db4c game_display_on_set_state_13 USER_DEFINED 16
+C 00000804
+F 0000dbbc game_empty_state_dbbc USER_DEFINED 2
+F 0000dbbe game_advance_substate USER_DEFINED 10
+F 0000dc00 txt_queue_one_word_dc00 USER_DEFINED 26
+C 0000dc62
+F 0000dc34 txt_queue_two_words_dc34 USER_DEFINED 44
+C 0000dc62
+C 0000dc62
+F 0000dc62 game_empty_return_dc62 USER_DEFINED 14
+F 0000dcc6 tile_load_vram_list_42d26 USER_DEFINED 142
+C 0000ddde
+F 0000dd54 tile_load_vram_list_432d4 USER_DEFINED 86
+F 0000ddde vdp_write_16_zero_words USER_DEFINED 18
+F 0000de00 vdp_write_8_tile_rows_de00 USER_DEFINED 16
+F 0000de10 vdp_write_8_tile_rows_de10 USER_DEFINED 70
+C 0000de56
+F 0000de56 vdp_write_16_words_from_a4 USER_DEFINED 18
+F 0000debe dec_rle_zero_to_ffd000 USER_DEFINED 24
+F 0000deee mem_clear_words_a2_d2 USER_DEFINED 20
+F 0000df02 tile_write_block_4x4_vdp USER_DEFINED 142
+C 0000df90
+F 0000df90 vdp_make_vram_cmd_by_ff0007 USER_DEFINED 72
+F 0000dfd8 tile_load_layer_8x8_blocks USER_DEFINED 146
+C 0000df02
+F 0000e06a scroll_fill_map_4blocks USER_DEFINED 1
+F 0000e13a scroll_fill_map_block_c40 USER_DEFINED 70
+C 0000e180
+F 0000e180 scroll_draw_tile_grid USER_DEFINED 16
+F 0000e1a0 scroll_draw_tile_grid_cont USER_DEFINED 94
+C 0000df02
+F 0000e1fe obj_anim_step USER_DEFINED 290
+C 0000e320
+C 0000e320
+C 0000e320
+C 0000e320
+C 0000e320
+C 0000e320
+F 0000e320 obj_anim_load_frame USER_DEFINED 128
+F 0000e3a0 scroll_bg_anim_update USER_DEFINED 358
+C 0000e6ec
+C 0000e6ec
+C 0000e74c
+F 0000e514 scroll_bg_anim_reset_e514 USER_DEFINED 54
+C 0000e684
+F 0000e54a scroll_bg_anim_tail_e54a USER_DEFINED 44
+C 0000e684
+F 0000e576 scroll_bg_anim_advance_e576 USER_DEFINED 270
+C 0000e684
+C 0000e74c
+C 0000e684
+C 0000e6d8
+C 0000e696
+F 0000e684 scroll_bg_table_index USER_DEFINED 18
+F 0000e696 scroll_bg_frame_ptr_e696 USER_DEFINED 32
+F 0000e6c4 scroll_bg_read_word USER_DEFINED 20
+F 0000e6d8 scroll_bg_read_byte USER_DEFINED 20
+F 0000e6ec scroll_bg_check_special USER_DEFINED 80
+F 0000e74c scroll_bg_dma_tiles USER_DEFINED 188
+C 0000e684
+C 0000e6c4
+F 0000e818 scroll_update_dispatch USER_DEFINED 78
+C 0000ea3c
+C 0000e990
+C 0000e866
+F 0000e866 scroll_move_xy USER_DEFINED 298
+C 0000eae8
+C 0000eae8
+F 0000e990 scroll_step_x_bounded USER_DEFINED 172
+C 0000eb7e
+F 0000ea3c scroll_step_y_bounded USER_DEFINED 172
+C 0000ecfa
+F 0000eae8 scroll_draw_column_vdp USER_DEFINED 150
+F 0000eb7e scroll_draw_col_tiles USER_DEFINED 380
+C 0000df90
+F 0000ecfa scroll_draw_row_tiles USER_DEFINED 394
+C 0000df90
+F 0000f014 player_update USER_DEFINED 1298
+C 00060000
+C 0000fdc0
+C 0000fdc0
+C 0000fbe0
+C 0000fbe0
+C 0001058c
+C 0001058c
+F 0000fbe0 player_jump_arc_step USER_DEFINED 8
+F 0000fdc0 player_set_anim_by_weapon USER_DEFINED 58
+F 0000fdfa player_sync_held_obj USER_DEFINED 94
+F 0000ff0e sys_nop_ff0e USER_DEFINED 2
+F 0001058c col_probe_hitbox USER_DEFINED 192
+C 00000ace
+C 000107ba
+F 0001064c player_probe_set_flag_10000 USER_DEFINED 24
+C 000107ba
+F 00010664 player_start_death_timer USER_DEFINED 92
+C 00014a3a
+C 000107ba
+F 000106c0 player_probe_set_flag_unless_40 USER_DEFINED 36
+C 000107ba
+F 00010754 col_probe_call_ace USER_DEFINED 34
+C 00000ace
+C 000107ba
+F 00010776 sys_ret_107ba DEFAULT 12
+C 000107ba
+F 00010782 sys_ret_107ba DEFAULT 20
+C 000107ba
+F 00010796 col_probe_set_d2_bit0_cond USER_DEFINED 24
+C 000107ba
+F 000107ae col_probe_set_d2_bit1 USER_DEFINED 12
+C 000107ba
+F 000107ba sys_ret_107ba USER_DEFINED 6
+F 00011e2c stage_load_spawn_list USER_DEFINED 532
+C 00000ace
+F 00012040 stage_spawn_list_loop_12040 USER_DEFINED 36
+F 00012064 stage_spawn_list_loop_12064 USER_DEFINED 34
+F 00012086 stage_load_spawn_list_alt USER_DEFINED 24
+F 0001220a obj_activate_by_scroll USER_DEFINED 310
+C 00012348
+C 00012348
+F 00012348 enemy_run_script USER_DEFINED 316
+C 00012484
+C 0000e1fe
+C 000138ae
+C 0001395e
+C 00013ef0
+C 000143c2
+F 00012484 enemy_script_fetch_op USER_DEFINED 278
+C 00000ace
+C 00013862
+F 0001259a enemy_script_op_set_anim_wait USER_DEFINED 136
+S 1234
+S 1234
+S 1234
+S 1234
+S 1234
+S 1234
+C 00013862
+F 00012626 enemy_script_op_clear_c000 USER_DEFINED 10
+C 00013862
+F 00012630 enemy_script_op_check_input USER_DEFINED 68
+C 000139fa
+C 00013862
+F 00012674 enemy_script_op_jump USER_DEFINED 28
+C 00013862
+F 00012690 enemy_script_op_set_loop_start USER_DEFINED 30
+C 00013862
+F 000126ae enemy_script_op_loop_n USER_DEFINED 136
+C 00013862
+C 00013862
+C 00013862
+F 0001273a enemy_script_op_set_facing_wait USER_DEFINED 116
+S 1234
+S 1234
+S 1234
+S 1234
+S 1234
+S 1234
+C 00013862
+F 000127b2 enemy_script_op_set_type_wait USER_DEFINED 114
+S 1234
+S 1234
+S 1234
+S 1234
+S 1234
+S 1234
+C 00013862
+F 00012828 enemy_script_op_set_dir_wait USER_DEFINED 110
+S 1234
+S 1234
+S 1234
+S 1234
+S 1234
+S 1234
+C 00013862
+F 0001289a enemy_script_op_clear_4000 USER_DEFINED 28
+C 00013862
+F 00012fd8 enemy_script_op_end_13862 DEFAULT 12
+C 00013862
+F 00012fe4 enemy_script_br_scrx_le USER_DEFINED 32
+F 00013004 enemy_script_op_skip_8 USER_DEFINED 22
+C 00013862
+F 0001301a enemy_script_op_load_var USER_DEFINED 50
+C 00013862
+F 0001304c enemy_script_br_state_eq USER_DEFINED 52
+C 00013862
+F 00013080 enemy_script_br_all_dead USER_DEFINED 170
+C 00013862
+F 00013134 enemy_script_br_scry_le USER_DEFINED 52
+C 00013862
+F 0001316a enemy_script_br_scrx_ge USER_DEFINED 52
+C 00013862
+F 000131a0 enemy_script_br_scry_ge USER_DEFINED 52
+C 00013862
+F 000131d6 enemy_script_op_play_sound USER_DEFINED 42
+C 00060000
+C 00013862
+F 00013200 enemy_script_op_spawn_obj USER_DEFINED 414
+C 00013862
+F 0001339e enemy_script_op_add_ofs_x USER_DEFINED 46
+C 00013862
+F 000133cc enemy_script_op_scroll_camera_clamp USER_DEFINED 72
+F 00013414 enemy_script_op_sync_ofs_x USER_DEFINED 50
+C 00013862
+F 00013446 enemy_script_op_face_player USER_DEFINED 154
+C 000139fa
+C 00013862
+F 000134e0 enemy_script_op_set_attack_kind USER_DEFINED 110
+C 00013862
+F 0001354e enemy_script_br_d4_lt USER_DEFINED 54
+C 000139fa
+C 00013862
+C 00013862
+F 00013586 enemy_script_op_lr_bits_3_2 USER_DEFINED 36
+C 00013862
+F 000135aa enemy_script_op_lr_bits_2_3 USER_DEFINED 36
+C 00013862
+F 000135ce enemy_script_op_flip_facing USER_DEFINED 34
+C 00013862
+F 000135f0 enemy_script_op_clear_flag_200 USER_DEFINED 26
+C 00013862
+F 0001360a enemy_script_op_set_flag_200 USER_DEFINED 26
+C 00013862
+F 00013624 enemy_script_op_scroll_unlock USER_DEFINED 36
+C 00013862
+F 00013648 enemy_script_op_scroll_lock USER_DEFINED 46
+C 00013862
+F 00013790 enemy_script_spawn_tail_13790 USER_DEFINED 208
+C 00013862
+F 00013862 enemy_script_op_end_13862 USER_DEFINED 6
+F 00013868 obj_update_screen_xy USER_DEFINED 70
+F 000138ae enemy_apply_move_table USER_DEFINED 170
+F 0001395e enemy_y_velocity_step USER_DEFINED 156
+S SEGA GENESIS    
+F 000139fa enemy_calc_player_rel USER_DEFINED 174
+F 00013ef0 enemy_wall_check USER_DEFINED 674
+C 0001058c
+C 0001058c
+S 1234
+S 1234
+C 0001058c
+S 1234
+C 0001058c
+S 1234
+F 000143c2 col_hitbox_vs_player USER_DEFINED 1516
+C 00014a3a
+C 0000fdfa
+S 1234
+C 00014c7a
+C 00014d56
+C 00014c7a
+C 00014b16
+C 000149ae
+C 00014b16
+F 000149ae col_touch_special_26_27 USER_DEFINED 140
+C 0000bebc
+C 0000bebc
+F 00014a3a player_drop_held_obj USER_DEFINED 220
+F 00014b16 dmg_player_hit USER_DEFINED 356
+C 00014a3a
+S 1234
+S 1234
+F 00014c7a dmg_enemy_hit_by_weapon USER_DEFINED 220
+C 00060000
+S 1234
+S 1234
+F 00014d56 dmg_enemy_hit_by_punch USER_DEFINED 198
+S 1234
+S 1234
+F 00060000 snd_play_cmd_impl DEFAULT 4
+F 00060004 snd_init_call DEFAULT 4
+F 0006000c snd_tick_stub USER_DEFINED 14
+C 0006001a
+F 0006001a snd_driver_update USER_DEFINED 2564
+F 00060b20 snd_init_call USER_DEFINED 20
+C 00060b34
+F 00060b34 snd_driver_init USER_DEFINED 216
+F 00060c0c snd_play_cmd_impl USER_DEFINED 208

@@ -1,0 +1,16 @@
+0x1100 func ptr_1100 hand pointer-table target (orphan) sites 1c468 1c47c 1c490 1c4a4 1c4b8
+0x3000 func ptr_3000 hand pointer-table target (orphan) sites 12172 1217e 1218c 121b2 121cc
+0x303c func ptr_303c hand pointer-table target (orphan) sites cc68 cefa
+0x3a00 func ptr_3a00 hand pointer-table target (undef) sites 1ce42 1ce56 1ce6a
+0x6000 func ptr_6000 hand pointer-table target (orphan) sites 472c 4ee2 5618 6692 6ddc
+0x6600 func ptr_6600 hand pointer-table target (orphan) sites d24 1304 ded8 fe9c 127f4
+0x6700 func ptr_6700 hand pointer-table target (orphan) sites f480 f628 fb78 12b12 12fcc
+0xc6a4 func ptr_c6a4 hand pointer-table target (orphan) sites c680
+0xc6bc func ptr_c6bc hand pointer-table target (orphan) sites c684
+0xc6f4 func ptr_c6f4 hand pointer-table target (orphan) sites c688
+0xc8a8 func ptr_c8a8 hand pointer-table target (orphan) sites c68c
+0xc8c8 func ptr_c8c8 hand pointer-table target (orphan) sites c690
+0xc8dc func ptr_c8dc hand pointer-table target (orphan) sites c694
+0xc9d2 func ptr_c9d2 hand pointer-table target (orphan) sites c698
+0xca14 func ptr_ca14 hand pointer-table target (orphan) sites c69c
+0xca46 func ptr_ca46 hand pointer-table target (orphan) sites c6a0

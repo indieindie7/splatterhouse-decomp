@@ -1,0 +1,746 @@
+0x480 func mem_copy_200_bytes hand copies 50 longs A0 to A1
+0x4e6 func game_init_region_defaults hand sets default option vars and button masks
+0x580 func sys_delay_loop_60 hand empty countdown loop 0x3c
+0x58c func game_init_ram_state hand clears buffers, calls vdp init and clears
+0x608 func mem_clear_workram_ff0000 hand zeroes 0x70000 words from ff0000
+0x61c func vdp_dma_hscroll_table_f000 hand copies 448 words from ff4e0e to VRAM cmd 0x70000003 (hscroll)
+0x708 func vdp_write_vsram_from_buffer hand writes 40 words ff520e to VSRAM 0x40000010
+0x81c func vdp_display_on hand reg1 shadow or 0x40 to vdp ctrl
+0x83a func vdp_display_off hand reg1 shadow and not 0x40 to vdp ctrl
+0x85a func vdp_clear_vsram_and_buffer hand writes 0 to VSRAM and ff520e buffer
+0x892 func vdp_clear_vram_block_6000 hand writes 0x400 zero words VRAM cmd 0x60000001
+0x8c0 func vdp_clear_hscroll_table_and_buf hand zeroes 0x200 words VRAM 0x70000003 and ff4e0e
+0x8f8 func vdp_clear_sprite_table_f400 hand writes 0x100 zero words VRAM cmd 0x74000003
+0x926 func vdp_clear_planes_a_b hand fills two nametables with fill word, 2048 or 4096 words
+0x9ba func irq_vblank_enable hand reg1 shadow or 0x20
+0x9da func irq_vblank_disable hand reg1 shadow and not 0x20
+0xa04 func vdp_set_reg10_from_d0 hand stores D0 to reg shadow and vdp ctrl
+0xa24 func vdp_set_hint_counter_0 hand writes 0x8a00 reg10
+0xa36 func pad_read_both hand TH toggle read io_Data1/2, held and new-press bytes
+0xb8c func vdp_regs_load_and_tick hand frame counter inc, state call, copies 19 vdp reg words
+0xbde func vdp_load_regs_table hand copies 19 words from 0xc00 to vdp ctrl and shadow
+0xc04 func game_unk_c04 hand GUESS decompile failed size 50 near state helpers
+0xc36 func game_state_reset_sub hand clears substate, decrements mode
+0xc46 func game_substate_inc hand increments substate ff0002
+0xc4e func vdp_clear_all_and_bufs hand clears planes, sprites, vsram and several buffers
+0xc80 func game_state_dispatch_jump hand indirect jump via table indexed by D0 low byte
+0xc8e func snd_init_volume_7f hand sets ff000a/ff000c 0x7f then thunk sound
+0xca6 func snd_set_value_if_changed hand store D0 to ff000a if different then sound call
+0xcbe func snd_set_value_ff000c hand store D0 to ff000c then sound call
+0xcd2 func game_wrapper_ace0 hand wrapper calls FUN_0000ace0
+0xcde func mem_clear_obj_table_ff551e hand zero 0xf00 words, sets ff54de=0xff
+0xcfa func mem_clear_six_small_tables hand zeroes 4 words in six tables ff2216..ff2234
+0xd38 func mem_clear_ff731e hand zero 0x2a0 words
+0xd4c func mem_clear_ff4b0e hand zero 0x80 words
+0xd60 func stage_load_table_ptrs_3 hand D0*4 index into three tables to ff004e/52/56
+0xd9a func stage_load_table_ptr_1 hand D0*4 index into ptr table to ff005a
+0xdb4 func game_substate_inc_db4 hand increments substate ff0002
+0xdbe func txt_queue_4_words hand VRAM write command queue entry with 4 tiles
+0xe40 func txt_queue_1_word hand VRAM write command queue entry with 1 tile
+0xe96 func txt_queue_2_words hand VRAM write command queue entry with 2 tiles
+0xf0c func txt_queue_string_a4 hand queue entry from A4 x,y then zero terminated tiles
+0xf76 func txt_queue_string_2line hand ascii string to two tile rows via font tables 861a/86da
+0x10c2 func sys_nop_10c2 hand returns immediately
+0x10ea func math_decimal_digits hand repeated subtraction by table of powers of ten
+0x1138 func rng_seed_init hand sets ff7c/ff7e to 0x8526
+0x1140 func rng_next hand LCG seed*5+0x8521, returns high byte
+0x1170 func sys_cmd_queue_push hand append D0 byte to queue ff00d3, 0xff terminator
+0x11ae func vdp_setup_mode_a hand sets VRAM addresses, plane size regs 0x28/6/0x81 shadows
+0x125a func vdp_setup_mode_b hand sets VRAM addresses e000, plane size regs 0x38/7
+0x1306 func mem_init_list_ff01c8 hand clears/sets list head values ff01c8 ff01cc ff21cc
+0x13c4 func mem_list_append_word hand store D0 word at A0 and bump counter
+0x140c func game_mode_set_5_140c hand saves mode, sets mode 5 substate 0
+0x1438 func game_substate_set_3_1438 hand substate=3
+0x14b8 func game_mode_set_6_14b8 hand mode 6 substate 0
+0x14d0 func sys_nop_14d0 hand returns immediately
+0x14d2 func title_init_screen_load hand display on, vdp mode, clears, loads tables, sets timer 0xb4
+0x1592 func title_logo_update hand countdown timer, ramps two counters, then mode 5
+0x165c func title_menu_dispatch_setup hand checks option bit, sets mode 0xc or init player vars
+0x175c func game_mode_set_5_175c hand saves mode sets mode 5
+0x1788 func stage_init_vars hand sound init, clears vars, loads player start from table 3c7a
+0x1808 func stage_init_screen_load hand display off, vdp mode, load graphics, then mode 7
+0x18ce func stage_fade_in_wait hand when fade done reset obj tables else call update chain
+0x1924 func stage_demo_loop_exit_on_start hand updates, returns to mode 1 on Start press
+0x1a28 func intro_scene_script_init hand sets script ptr, clears 0x18 slots
+0x1a8a func game_mode_set_5_1a8a hand saves mode sets mode 5
+0x1aba func intro_scene_load_layers hand loads several map layers via a7e2 and tables
+0x1c5c func intro_scene_script_update hand moves objects, runs script opcode via jump table at 233e
+0x1dbe func game_mode_set_6_1dbe hand sets timer and mode 6
+0x1e02 func game_substate_set_3_1e02 hand substate=3
+0x1e0c func game_mode_set_1_fade hand fade params, mode 1
+0x1e2e func intro_scene_update_fadein hand moves objects then waits fade done
+0x1f42 func intro_scene_update_fadeout hand moves objects then waits fade done
+0x2054 func script_cmd_spawn_actor hand allocs slot and fills obj fields from script stream
+0x20d2 func script_cmd_set_field_5d9e hand store script word into obj field
+0x20f0 func script_cmd_set_field_5e1e hand store script word into obj field
+0x210e func script_cmd_set_delay hand reads delay byte from script ptr
+0x2128 func script_cmd_alloc_until_2e hand loops slot alloc until 0x2e then calls b1a6
+0x2154 func script_cmd_fade_out_sub4 hand fade 2, substate 4
+0x216e func script_cmd_fade_in_1 hand display on, fade 1, substate 7
+0x218e func script_cmd_fade_in_8 hand display on, fade 8, substate 7
+0x21ae func script_cmd_fade_out_sub1 hand fade 2, substate 1
+0x21c8 func script_cmd_fadeA_sub8 hand a9ee, fade 1, substate 8
+0x21e8 func script_cmd_fadeB_sub8 hand a9ee, fade 8, substate 8
+0x2208 func script_cmd_substate_6 hand substate=6
+0x226c func script_cmd_init_scroll_ptr hand sets scroll values from A0 and script ptr
+0x2290 func script_cmd_call_a9ee hand wrapper
+0x2298 func script_cmd_set_scroll_xy hand sets layer 0/1 scroll pos from script
+0x22ca func script_cmd_set_snd_a hand skip 2 then ca6
+0x22e0 func script_cmd_set_snd_b hand skip 2 then cbe
+0x22f6 func script_cmd_set_obj_pos hand sets obj x,y from script
+0x231a func script_cmd_set_obj_flag_2000 hand sets bit 0x2000 and value
+0x2978 func game_mode_set_5_2978 hand mode 5 substate 0
+0x2b0c func game_mode_set_6_2b0c hand mode 6
+0x2b1e func menu_wait_start_or_timeout hand Start prints strings and advances, else timer then cycles ff0138
+0x2e64 func game_mode_set_5_2e64 hand mode 5
+0x2e76 func game_substate_set_3_2e76 hand substate=3
+0x2e80 func game_set_substate_0x11 hand sets ff0099 0x12 substate 0x11
+0x2fa4 func game_mode_set_6_2fa4 hand mode 6
+0x2fb6 func game_timer_then_fade hand countdown then fade 8 next substate
+0x2ff0 func game_mode_set_5_2ff0 hand mode 5
+0x3100 func game_mode_set_5_3100 hand mode 5
+0x3210 func game_mode_set_7_3210 hand mode 7
+0x3378 func obj_set_flags_player3 hand ors flag, ff0098 or 8, ff0097=3, substate c
+0x3394 func obj_set_flags_player2 hand ors flag, ff0098 or 4, ff0097=2, substate c
+0x33a2 func obj_select_slot_by_compare hand compares A0 value to D0, sets ff0098 bit and ff0097, substate c
+0x3400 func game_set_mode3_fade8 hand fade 8, mode 3 substate 0
+0x3494 func sys_nop_3494 hand returns immediately
+0x3496 func game_timer_then_snd_state11 hand countdown then fade, sound, substate 0x11
+0x351c func game_mode_set_5_351c hand mode 5
+0x3688 func game_mode_set_0xd_3688 hand mode 0xd
+0x36d0 func game_mode_set_5_36d0 hand mode 5
+0x36e8 func game_snd_init_substate8 hand sound init, substate 8
+0x375c func game_mode_set_5_375c hand mode 5
+0x38cc func game_mode_set_0xd_38cc hand mode 0xd
+0x3914 func game_mode_set_5_3914 hand mode 5
+0x3926 func game_inc_ff0138_substate_0x12 hand increments ff0138, substate 0x12
+0x3a0a func game_select_ending_by_score hand compares score ff00b6 to two thresholds per stage ff0166, sets ff0090[stage] bits 1/2/4, ff0096/ff0099 from tables
+0x3bb8 func game_set_ff0099_0x11 hand ff0099=0x11
+0x3bc2 func game_advance_stage_index hand bumps ff0166 or picks next from table 3d4e
+0x40c0 func game_mode_set_5_40c0 hand mode 5
+0x436c func game_mode_set_6_436c hand mode 6
+0x4924 func snd_menu_input_beep hand sound command on mode value and button presses
+0x4996 func sys_nop_4996 hand returns immediately
+0x499a func sys_nop_499a hand returns immediately
+0x499c func sys_nop_499c hand returns immediately
+0x49d8 func game_mode_set_5_49d8 hand mode 5
+0x49ea func menu_password_init hand clears planes, loads layers, prints 5 strings, clears entry vars
+0x4b4c func game_mode_set_6_4b4c hand mode 6
+0x4c2c func menu_password_input hand cursor grid 13 cols, buttons add/delete char, 6 chars then next
+0x51d4 func game_mode_set_5_51d4 hand saves mode sets 5
+0x5200 func menu_options_init hand display off, queues option strings, inits ff01a6/a8/aa, cursor ff0064=0, substate inc
+0x532e func game_mode_set_6_532e hand saves mode sets 6
+0x535a func menu_options_input_update hand up/down select row 0..3, left/right/buttons adjust ff01a8 (max 0x7f) ff01aa (0x7fff) ff01a6 (0xfff), row 3 Start exits
+0x5660 func menu_options_init2 hand calls 7726, ace0, substate inc
+0x567e func game_display_on_substate2 hand display on, substate 2
+0x568e func sys_nop_568e hand returns immediately
+0x5690 func sys_nop_5690 hand returns immediately
+0x5692 func sys_nop_5692 hand returns immediately, size 84 probably part data
+0x56e6 func sys_nop_56e6 hand returns immediately, size 84 probably part data
+0x57ac func game_mode_set_5_57ac hand saves mode sets 5
+0x57da func menu_viewer_init hand display off, clears scroll regs, loads tiles/pal, text, player_init_stage_start, ff009a=0x16, mode 7
+0x5904 func game_mode_set_6_5904 hand saves mode sets 6
+0x5930 func menu_viewer_input hand left/right step index ff01c6 0..0x3f with cmd queue pushes at 0x20/0x2d, up/down sets ff009c facing, player_anim_step_update, Start exits
+0x5a94 func sys_nop_5a94 hand returns immediately
+0x5a96 func sys_nop_5a96 hand returns immediately
+0x5a98 func sys_nop_5a98 hand returns immediately
+0x5a9a func sys_nop_5a9a hand returns immediately
+0x5ad8 func game_mode_set_5_5ad8 hand a9ee then mode 5
+0x5b0a func game_continue_screen_init hand clears planes, loads stage map and pal, prints 3 strings, spawns cursor obj, timer ff0160=600
+0x5cce func game_continue_fade_wait hand waits fade then sound, substate inc
+0x5d04 func game_continue_input hand up/down toggles ff0064 0..1, Start on 0 sets mode 4 (restart), on 1 prints strings and next substate (exit)
+0x5e8c func game_continue_timer hand Start or timer expiry then next substate
+0x5eea func game_mode_set_5_5eea hand saves mode sets 5
+0x5f16 func game_reset_to_mode0 hand ff0138=0, mode 0 substate 0
+0x5f30 func game_pick_stage_text_index hand by stage ff0166 and player flags sets ff0010 text id then prints
+0x6302 func txt_print_stage_string hand copies 6 byte string from table 6352 by ff0010 to buffer and queues
+0x65c0 func game_mode_set_5_65c0 hand a9ee then mode 5
+0x65f2 func credits_screen_init hand mode a vdp, loads two map layers, text index ff013a=0, timer 0x1000, scroll ff520e=0, fade out
+0x66c0 func credits_fade_wait hand waits fade then sound, substate inc
+0x66f0 func credits_scroll_text_update hand prints next text line when counter wraps, scrolls vsram by 0x80 per frame
+0x67b8 func credits_wait_or_skip hand Start or timer ends, fade, substate inc
+0x6810 func game_mode_set_5_6810 hand saves mode sets 5
+0x683c func intro_text_init hand prints 2-line strings chosen by fff02a value 0..3, fade out, substate inc
+0x6976 func intro_text_init2 hand prints strings per option, timer 600, mode 6
+0x6a3a func intro_text_wait hand Start or timer expiry then fade and substate inc
+0x6a7a func game_mode_set_5_6a7a hand saves mode sets 5
+0x6aa6 func sys_soft_reset_main_loop hand clears ff0138, copy of reset main loop
+0x7200 func menu_stage_select_cursor_spawn hand pushes cmd, spawns cursor obj (anim 0x16) at pos from table PTR_00007452[ff0166], substate inc
+0x72ae func menu_stage_select_load_map hand loads map layer for stage ff0166
+0x733c func vdp_window_slide_up hand decrements window v pos reg to 0x80 then substate inc
+0x7378 func menu_stage_select_start_clear_objs hand on Start clears objs (cursor, 16 slots) and substate inc, else resets ff009a/9c and player_anim_step_update
+0x7404 func vdp_window_slide_down hand increments window v pos reg to 0x9c then restores mode
+0x749a func vdp_copy_words_to_vram hand sets VRAM write address from D5 and writes D7 words from D6
+0x74f6 func dma_rom_to_vram hand sets DMA regs 93-97 from D5/D6/D7 with Z80 bus request
+0x7676 func sys_nop_7676 hand returns immediately
+0x7678 func tile_load_set_list_a hand reads list at ptr table 54796, VRAM addr, copies blocks, decodes
+0x7726 func tile_load_set_list_b hand reads list at ptr table 55b1c, VRAM addr, copies blocks, decodes
+0x77d4 func tile_stream_queue_step hand streams up to 0x200 words per frame from queue ff00d3 to VRAM
+0x78a8 func vdp_write_16_zero_words hand writes 16 zero words
+0x78ba func tile_decode_256_blocks hand calls tile block decoder 256 times into ff260e
+0x78ec func tile_decode_block_masked hand expands 16 words, bit mask picks repeat or new word
+0x79bc func spr_build_sprite_list hand walks object order list ff54de, animates flags, builds sprite entries, zero terminates
+0x7a90 func spr_build_obj_sprites hand expands sprite mapping data (count, x/y offsets, tile, flags) into sprite buffer ff525e
+0x7bc0 func vdp_upload_sprite_table_f400 hand copies sprite buffer entries to VRAM 0x74000003, fixes link word
+0x7c3a func vdp_write_tile_block_from_table hand looks up block ptr table, writes words at computed VRAM address
+0x7ccc func math_calc_vram_offset_xy hand returns (y*0x80 + x*2) << 16
+0x7cd8 func vdp_flush_queue_plane_a hand writes queued blocks from ff460e to plane A address until 0xffff
+0x7d50 func vdp_flush_queue_plane_b hand writes queued blocks from ff480e to plane B address until 0xffff
+0x7dc8 func vdp_flush_queue_vram_6000 hand writes queued blocks from ff4a0e to VRAM 0x60000001 until 0xffff
+0x7e40 func tile_anim_update_slots hand three anim script slots at ff2216 queue tile frames into ff460e
+0x7f80 func txt_queue_string_ptr_2line hand string from ptr table 88c8 to two tile rows with palette bits
+0x8114 func intro_script_load_ptr hand loads script pointer from table 878c, substate inc
+0x816c func intro_script_print_line hand prints a line unless opcode 0xf4..0xfb, substate inc
+0x8234 func game_substate_from_ff0004 hand substate = saved ff0004
+0x8240 func sys_nop_8240 hand returns immediately
+0x846c func game_substate_set_6_846c hand substate=6
+0x847a func game_call_ad1c_substate_0x10 hand ad1c then substate 0x10
+0x8492 func game_substate_set_1_8492 hand substate=1
+0x849c func game_restore_mode_substate hand mode and substate restored from saved ff0003/ff0004
+0x84b2 func intro_wait_counter_8 hand counts ff014e to 16 calling ad1c then substate inc
+0x84fc func intro_script_print_lines hand prints several lines unless opcodes 0xf5..0xfc, substate inc
+0x8580 func game_ad1c_x2_substate_1 hand two ad1c calls, substate=1
+0x85a6 func game_display_on_substate_inc hand display on, substate inc
+0x85c8 func game_wrapper_b05c hand wrapper calls FUN_0000b05c
+0x85e4 func game_wrapper_ae84 hand wrapper calls FUN_0000ae84
+0x85ec func obj_slot0_apply_pos hand if slot0 active copies fields to temps and calls b2fe
+0xa6ba func map_write_block_4x4 hand writes 4 rows of 4 tile words from ptr ff0056 to VRAM
+0xa796 func vdp_calc_nametable_addr_cmd hand picks plane base by ff0007 and builds VRAM write command
+0xa7e2 func map_draw_8x8_block_grid hand 8x8 loop calls 4x4 block writer with map bytes from ff004c*0x40+ff005a, row step by plane mode
+0xa8cc func map_draw_grid_plane_a_0 hand ff0007=0x80, 8x1 blocks, offset 0, calls a970
+0xa8d8 func map_draw_grid_plane_b_0 hand ff0007=0x81, 8x1 blocks, offset 0, calls a970
+0xa91e func map_draw_grid_plane_a_c00 hand ff0007=0x80, 8x1 blocks, offset 0xc00, calls a970
+0xa92a func map_draw_grid_plane_b_c00 hand ff0007=0x81, 8x1 blocks, offset 0xc00, calls a970
+0xa970 func map_draw_block_rows hand draws ff0061 rows of ff0060 4x4 blocks from map ptr ff006a
+0xa9ee func pal_fade_state_clear hand clears fade slot arrays ff223a..ff224c and ff2252 tables
+0xaa38 func pal_anim_script_update hand three palette anim slots step scripts, write 16-word palettes to ff4d0e, flag ff0006
+0xace0 func pal_load_all_from_table hand loops 4 entries of table 39f32, calls ad1c when entry not 0xffff
+0xad1c func pal_load_16_to_buffer hand sets ff0006 bit by offset, copies 16 words from table 361f2 to ff4d0e
+0xad90 func pal_upload_cram_flagged hand writes CRAM palettes flagged in ff0006 from ff4d0e, clears flag
+0xae84 func pal_fade_step_a hand timed step of 8-step palette fade using ff0078..ff007a, sets ff0006=0xf
+0xaede func sys_nop_aede hand returns immediately, size 56 probably part data
+0xaf16 func pal_fade_step_single hand timed fade step of one palette, flags ff0006 bit by index
+0xafb6 func pal_clear_fade_buffer hand zeroes 64 words at ff4d8e
+0xb01e func pal_fade_out_start hand copies ff4d0e to ff4d8e, clears it, fade counter 8 delay 2
+0xb05c func pal_fade_step_b hand timed step of palette fade using ff0078..ff007a, sets ff0006=0xf
+0xb13c func game_ptr_b13c_calls_081c_db4 hand pointer-table target calls 081c and db4
+0xb148 func game_fade_wait_b_then_restore hand when fade done restores mode/substate else fade step b
+0xb180 func game_fade_wait_a_then_restore hand when fade done restores mode/substate else fade step a
+0xb1a6 func obj_order_list_clear hand ff0192=0, ff54de=0xff list terminator
+0xb1b8 func obj_order_list_insert hand inserts object id in D0 into ff54de list at ff0192, shifting
+0xb20a func obj_order_list_sort hand sorts ff54de ids by key table ff619e, ties by id
+0xb296 func obj_order_list_find_end hand scans ff54de until 0xff
+0xb2aa func obj_order_list_remove hand removes id in D0 from ff54de and adjusts ff0192
+0xb2fe func player_anim_step_update hand per-frame anim timer (+0x500/+0x580), advances frame index +0x480, reloads on action change
+0xb41c func player_anim_load_frame hand reads anim script ptr table d8000, handles opcodes -3 loop -2 jump -1 end, sets frame/flip flags
+0xb51a func player_anim_load_sub_script hand picks sub script from tables c0000/e0000 by id +0x780, advances index or ends, then DMA tile load
+0xb5d8 func player_set_frame_from_table hand sets +0x280 from ptr table 5a9da by ff57a0 and char type
+0xb628 func player_anim_run_then_restore hand runs b660 and restores mode/substate when anim flag clear
+0xb660 func player_state_update_main hand big player controller: pad bits, state flags ff00a0, speed ff00a8, attack/jump/hit/death anims, calls anim step
+0xc72e func player_set_state_from_buttons hand sets state ff009a from D7 flags and combo counter ff00cd
+0xc898 func player_start_jump_or_special hand sets state 0x39/0x19, resets combo buffer, flags obj bit
+0xc9ec func player_jump_arc_init hand sets velocity ptr dd80 then falls into arc step
+0xca0c func player_jump_arc_step hand walks y-velocity table at dd08..ddc4 adds to y, picks next state
+0xcc1c func player_land_ground_check hand if y below ground y reset y, clear arc ptr, state change
+0xcd46 func scroll_follow_player_horiz hand camera ff00f0 follows player x vs 0x1080000 / 0xf80000 edges
+0xcf24 func scroll_follow_player_clamped hand camera follow with section min/max clamp, writes ff4e8e scroll
+0xd0e4 func scroll_player_x_on_screen hand returns player x minus camera x plus 0x800000
+0xd0f8 func scroll_player_y_on_screen hand returns player y minus camera y plus 0x800000
+0xd10c func obj_spawn_player_shot_by_facing hand finds free obj slot 0x3a-0x4e, anim 0x61, pos = player x +-8 by facing ff009c, y -0x28
+0xd1ee func player_init_stage_start hand clears player obj slot, sets start pos/anim per ff018e entry flags
+0xd51a func pad_scripted_input_step hand demo/cutscene script feeding ff00b0/b1 pad bytes, -1..-9 opcodes
+0xde04 func stage_load_section_params hand reads stage section table, sets scroll bounds ff016a-ff0184, inits camera
+0x10472 func stage_scroll_lock_check hand when scroll lock flags set checks enemies dead, spawns GO arrow, next wave
+0x10738 func obj_spawn_marker_by_screen_edge hand obj slot 2 anim 0xf/0xa/0xb/0xc and pos at right/left/top/bottom screen edge by D4 0..3
+0x1084a func obj_spawn_enemy_by_entry_side hand D7b 0-5 entry side selects anim id and edge position in new obj
+0x109b2 func stage_load_wave_spawn_list hand picks spawn list by section map ff24ee, runs it, sets flags ff0168
+0x10bb4 func stage_spawn_run_and_save_ptr hand calls spawn interpreter then saves script ptr ff0128
+0x10c18 func stage_spawn_run_skip4 hand advances spawn list ptr 4 and runs interpreter
+0x10c50 func stage_spawn_list_interpreter hand parses spawn list opcodes 0xffff/fffb/fff5, allocs objs with pos/anim/hp
+0x1104e func stage_spawn_scenery_objs hand spawns breakables/scenery objs from list into slots from 0x50
+0x111f8 func obj_spawn_go_arrow hand spawns screen-edge obj at camera+0x40/0xc0 flipped by scroll direction
+0x112c0 func obj_spawn_item_drop hand GUESS allocs obj slot 0x1c-0x24, anim 2/4/8 from flags, snd, copies pos (pickup)
+0x114fe func stage_load_static_objs hand copies static object list into ff731e table
+0x115a6 func obj_activate_static_in_view hand moves static table entries within scroll range into live obj slots
+0x1186c func obj_slot_clear hand zeroes all per-object fields of slot D4 in ff551e..ff721e arrays
+0x119ca func mem_clear_ff24ee_256b hand clears 0x100 bytes at ff24ee (section map)
+0x119e6 func sys_jmp_1140_119e6 hand noreturn jump to FUN_00001140
+0x11a0e func mem_load_byte_tbl_d0 hand loads byte from A0+(D0 & 0xff07) into (A2), 14-byte table helper
+0x11aaa func obj_cull_update_all hand loops objs: offscreen clears active bit then per-obj update, combo counter
+0x11b9c func obj_cull_update_all_11b9c hand same loop as obj_cull_update_all
+0x11d0e func obj_update_anim_move_clamp hand anim script step, applies velocity, clamps to section x bounds, sprite pos
+0x11f92 func obj_apply_dir_offset_table hand adds dir-indexed x/y offsets from table 2c12e
+0x12042 func obj_fall_arc_step hand steps y velocity table 2c000..2c0a0 scaled by 0xe80, lands
+0x12104 func obj_set_anim_script_ptr hand loads anim script ptr from table 2c752 by id, resets timers
+0x121b6 func player_input_combo_record hand records pad bytes into ff21d8 buffer with timeout 0x2d
+0x12280 func player_combo_match_check hand compares ff21d8 buffer to combo sequence table at 12330
+0x122f6 func player_combo_buffer_reset hand resets timeout 0x2d, index, fills ff21d8 0xff x61
+0x1242e func enemy_a_end_group_if_44 hand type 0x44 clears flag bit0 slots 0x26-0x2c, sets ff0134 bit7, else resume script step
+0x1243a func enemy_a_pick_hit_react_anim hand type 0x82 selects hit anim by hp counter D4 else rand table
+0x1245c func enemy_a_set_dir_anim hand stores D5 dir to ff009d then anim by D4<2
+0x1247c func enemy_a_pick_attack_anim hand picks anim from ptr table 126f2 or random 177a8 by D4
+0x124dc func enemy_a_load_anim_rec hand copies anim id, speed, timing from record A0 to obj
+0x124f4 func enemy_a_sync_flag_0134 hand sync bit in ff0134 with obj flag 0x80 grab/group sync
+0x12578 func enemy_a_clear_state_anim hand sets state ff009a=0 and continues
+0x1258a func enemy_a_idle_wait_roll hand idle/wander choice by rand D0 thresholds and hp D4
+0x12762 func enemy_a2_ai_update hand per-frame enemy AI: hit timer, offscreen check, hit/dist decisions, attack pick
+0x12932 func enemy_a2_sync_flag_0134 hand sync bit in ff0134 with obj flag 0x80 grab/group sync
+0x129c8 func enemy_a2_idle_wait_roll hand idle/wander choice by rand D0 thresholds and hp D4
+0x12ba0 func enemy_b_ai_update hand per-frame enemy AI: hit timer, offscreen check, hit/dist decisions, attack pick
+0x12cd8 func enemy_b_set_dir_anim hand stores D5 dir to ff009d then anim by D4<3
+0x12cf8 func enemy_b_pick_attack_anim hand picks anim from ptr table 12f6a or random 177a8 by D4
+0x12d54 func enemy_b_load_anim_rec hand copies anim id, speed, timing from record A0 to obj
+0x12d6c func enemy_b_sync_flag_0134 hand sync bit in ff0134 with obj flag 0x80 grab/group sync
+0x12df0 func enemy_b_clear_state_anim hand sets state ff009a=0 and continues
+0x12e02 func enemy_b_idle_wait_roll hand idle/wander choice by rand D0 thresholds and hp D4
+0x138bc func enemy_c_set_dir_anim hand stores D5 dir to ff009d then anim by D4<2
+0x138dc func enemy_c_pick_attack_anim hand picks anim from ptr table 13b58 or random 177a8 by D4
+0x1393c func enemy_c_load_anim_rec hand copies anim id, speed, timing from record A0 to obj
+0x13954 func enemy_c_sync_flag_0134 hand sync bit in ff0134 with obj flag 0x80 grab/group sync
+0x13992 func enemy_c_reset_ai_timer hand clears obj byte 0x1b01 then next script step
+0x139f0 func enemy_c_idle_wait_roll hand idle/wander choice by rand D0 thresholds and hp D4
+0x13bc8 func enemy_c2_ai_update_13bc8 hand prefix of enemy_c2_ai_update body, falls into it
+0x13bd0 func enemy_c2_ai_update hand per-frame enemy AI: hit timer, offscreen check, hit/dist decisions, attack pick
+0x13d00 func enemy_c2_set_dir_anim hand stores D5 dir to ff009d then anim by D4<3
+0x13d20 func enemy_c2_pick_attack_anim hand picks anim from ptr table 13f9c or random 177a8 by D4
+0x13d80 func enemy_c2_load_anim_rec hand copies anim id, speed, timing from record A0 to obj
+0x13d98 func enemy_c2_sync_flag_0134 hand sync bit in ff0134 with obj flag 0x80 grab/group sync
+0x13dd6 func enemy_c2_reset_ai_timer hand clears obj byte 0x1b01 then next script step
+0x13e34 func enemy_c2_idle_wait_roll hand idle/wander choice by rand D0 thresholds and hp D4
+0x1400c func enemy_d_ai_update_1400c hand prefix of enemy_d_ai_update body, falls into it
+0x14014 func enemy_d_ai_update hand per-frame enemy AI: hit timer, offscreen check, hit/dist decisions, attack pick
+0x14144 func enemy_d_set_dir_anim hand stores D5 dir to ff009d then anim by D4<3
+0x14164 func enemy_d_pick_attack_anim hand picks anim from ptr table 143e0 or random 177a8 by D4
+0x141c4 func enemy_d_load_anim_rec hand copies anim id, speed, timing from record A0 to obj
+0x141dc func enemy_d_sync_flag_0134 hand sync bit in ff0134 with obj flag 0x80 grab/group sync
+0x1421a func enemy_d_reset_ai_timer hand clears obj byte 0x1b01 then next script step
+0x14278 func enemy_d_idle_wait_roll hand idle/wander choice by rand D0 thresholds and hp D4
+0x1458c func enemy_e_set_dir_anim hand stores D5 dir to ff009d then anim by D4<2
+0x145ac func enemy_e_pick_attack_anim hand picks anim from ptr table 1482c or random 177a8 by D4
+0x1460c func enemy_e_load_anim_rec hand copies anim id, speed, timing from record A0 to obj
+0x14624 func enemy_e_sync_flag_0134 hand sync bit in ff0134 with obj flag 0x80 grab/group sync
+0x14678 func mem_store_d1_then_next hand stores D1b at A5-1 then next script step
+0x146c0 func enemy_e_idle_wait_roll hand idle/wander choice by rand D0 thresholds and hp D4
+0x149d4 func enemy_f_set_dir_anim hand stores D5 dir to ff009d then load anim rec if D4>=2
+0x14bd8 func enemy_g_resume_script hand clears obj bit1, saves script ptr ff0128, calls 19898
+0x14bea func enemy_g_script_start_anim hand script opcode 8 picks script by facing else loads anim/pos from record
+0x14c14 func enemy_g_resume_script_14c14 hand clears obj bit1, saves script ptr ff0128, calls 19898
+0x14c2a func enemy_g_pause_timer_idle hand timer 1480 from table by rand D0&3, state 0, anim 0x100
+0x14fc4 func enemy_h_clear_state_anim hand sets state ff009a=0 and continues
+0x1509c func enemy_h_set_script_2cfd6 hand sets script ptr ff0128 to 0x2cfd6 then resumes
+0x150a6 func enemy_h_resume_script hand clears obj bit1, saves script ptr ff0128, calls 19898
+0x150b8 func enemy_h_script_start_anim hand script opcode 8 picks script 2cf9e/2d008 by facing else loads anim/pos
+0x150d8 func enemy_h_set_script_2d008 hand sets script ptr ff0128 to 0x2d008 then resumes
+0x150e2 func enemy_h_resume_script_150e2 hand clears obj bit1, saves script ptr ff0128, calls 19898
+0x150f8 func enemy_h_pause_timer_idle hand timer 1480 from table by rand D0&3, state 0, anim 0x100
+0x15370 func enemy_aiA_facing_then_step hand sets 009d facing; D4<3 -> anim step else set anim from A0
+0x15390 func enemy_aiA_hit_react hand table 156ce pick anim; script ptr 0x1100; else 29e66 knock + 177a8 table
+0x153f0 func enemy_aiA_set_anim_a0 hand 009a=A0[2], obj+901=A0[4], obj+580=A0[6], jmp 173be
+0x15408 func enemy_aiA_token_claim hand attack-token bit in 0134 by obj+1b80, sets 901/580 from A0
+0x15480 func enemy_aiA_set_script_2d1a2 hand ff0128=0x2d1a2 then clear flags and run script
+0x1548a func enemy_aiA_run_script hand clears 1980 bits 0x80,0x02; script ptr=ff0128; jmp 19898
+0x154e8 func enemy_aiA_attack_branch hand 1980 bit0 -> clear 4 slot flags; D4 range picks anim or wait
+0x155b8 func enemy_aiA_run_script_155b8 hand clear 1980 bit1; script ptr=ff0128; jmp 19898
+0x155ca func enemy_aiA_pick_grab_or_anim hand D0==8 -> grab script else next anim w/ lane check
+0x155f4 func enemy_aiA_run_script_155f4 hand clear 1980 bit1; script ptr=ff0128; jmp 19898
+0x1560a func enemy_aiA_idle_wait_set hand 1480=wait from table by D0&3, 580=0x100, 9a=0
+0x1575a func enemy_aiB_tick hand GUESS shared AI tick shape: wait timer 1480, hurt check ff00a0&0x6900, offscreen range, token, variant B table
+0x1588c func enemy_aiB_face_then_step hand sets 009d facing; D4<2 -> anim step else set anim from A0
+0x158ac func enemy_aiB_hit_react hand table 15ba6 pick anim; else 29e66 knock + 177a8 table
+0x1590c func enemy_aiB_set_anim_a0 hand 009a=A0[2], obj+901=A0[4], obj+580=A0[6], jmp 173be
+0x15924 func enemy_aiB_token_claim hand attack-token bit in 0134 by obj+1b80, sets 901/580 from A0
+0x15962 func enemy_aiB_clear_1b01_next_anim hand obj+1b01=0 then jmp 175ba
+0x159c0 func enemy_aiB_attack_branch hand 1980 bit0 -> clear 4 slot flags; D4 range picks anim or wait
+0x15a90 func enemy_aiB_run_script_15a90 hand clear 1980 bit1; script ptr=ff0128; jmp 19898
+0x15aa2 func enemy_aiB_pick_grab_or_anim hand D0==8 -> grab script else next anim w/ lane check
+0x15acc func enemy_aiB_run_script_15acc hand clear 1980 bit1; script ptr=ff0128; jmp 19898
+0x15ae2 func enemy_aiB_idle_wait_set hand 1480=wait from table by D0&3, 580=0x100, 9a=0
+0x15e7c func enemy_aiC_clear_9a_step hand 009a=0 then jmp 173be
+0x15f54 func enemy_aiC_set_script_2d384 hand ff0128=0x2d384 then clear flag and run script
+0x15f5e func enemy_aiC_run_script hand clear 1980 bit1; script ptr=ff0128; jmp 19898
+0x15f70 func enemy_aiC_pick_grab_or_anim hand D0==8 -> grab script 2d364/2d3b8 else next anim
+0x15f90 func enemy_aiC_set_script_2d3b8 hand ff0128=0x2d3b8 then clear flag and run script
+0x15f9a func enemy_aiC_run_script_15f9a hand clear 1980 bit1; script ptr=ff0128; jmp 19898
+0x15fb0 func enemy_aiC_idle_wait_set hand 1480=wait from table by D0&3, 580=0x100, 9a=0
+0x160f8 func enemy_aiD_tick hand GUESS shared AI tick shape: wait timer 1480, hurt check ff00a0&0x6900, offscreen range, token, variant D table
+0x16200 func enemy_aiD_bset_then_return hand GUESS orphan table target; bset (a2) then enemy_ai_resume_script_step
+0x16206 func enemy_aiD_hit_react_full hand 0x82 branch, table 16586 pick anim, else knock 29e66 + 177a8
+0x16228 func enemy_aiD_face_then_step hand sets 009d facing; D4<2 -> anim step else set anim from A0
+0x16248 func enemy_aiD_hit_react hand table 16586 pick anim; else 29e66 knock + 177a8 table
+0x162a8 func enemy_aiD_set_anim_a0 hand 009a=A0[2], obj+901=A0[4], obj+580=A0[6], jmp 173be
+0x162c0 func enemy_aiD_token_claim hand attack-token bit in 0134 by obj+1b80, sets 901/580 from A0
+0x162fe func enemy_aiD_pick_grab_or_anim hand table 16600+2; char 9 -> grab script else next anim
+0x16338 func enemy_aiD_set_script_2d50a hand ff0128=0x2d50a then clear flags and run script
+0x16342 func enemy_aiD_run_script hand clear 1980 bits 0x80,0x02; script ptr=ff0128; jmp 19898
+0x163a0 func enemy_aiD_attack_branch hand 1980 bit0 -> clear 4 slot flags; D4 range picks anim or wait
+0x16418 func enemy_aiD_next_anim_16418 hand wrapper jmp 175ba
+0x16470 func enemy_aiD_run_script_16470 hand clear 1980 bit1; script ptr=ff0128; jmp 19898
+0x16482 func enemy_aiD_pick_grab_or_anim_16482 hand D0==8 -> grab script 2d46e/2d4c2 else next anim
+0x164ac func enemy_aiD_run_script_164ac hand clear 1980 bit1; script ptr=ff0128; jmp 19898
+0x164c2 func enemy_aiD_idle_wait_set hand 1480=wait from table by D0&3, 580=0x100, 9a=0
+0x16600 func enemy_aiE_tick hand GUESS shared AI tick shape: wait timer 1480, hurt check ff00a0&0x6900, offscreen range, token, variant E table
+0x1681a func enemy_aiE_pick_grab_or_anim hand table 16b1e char 9 -> script 2d63c/2d660 else next anim
+0x16854 func enemy_aiE_set_script_2d660 hand ff0128=0x2d660 then clear flags and run script
+0x1685e func enemy_aiE_run_script hand clear 1980 bits 0x80,0x02; script ptr=ff0128; jmp 19898
+0x168bc func enemy_aiE_attack_branch hand 1980 bit0 -> clear 4 slot flags; D4 range picks anim or wait
+0x16b2e func enemy_aiF_tick hand GUESS shared AI tick shape: wait timer 1480, hurt check ff00a0&0x6900, offscreen range, token, variant F table
+0x16c60 func enemy_aiF_face_then_step hand sets 009d facing; D4<2 -> anim step else set anim from A0
+0x16c80 func enemy_aiF_hit_react hand table 16f00 by D0&1 as next script; else 29e66 knock + 177a8
+0x16ce0 func enemy_aiF_set_anim_a0 hand 009a=A0[2], obj+901=A0[4], obj+580=A0[6], jmp 173be
+0x16cf8 func enemy_aiF_token_claim hand attack-token bit in 0134 by obj+1b80, sets 901/580 from A0
+0x16d36 func enemy_aiF_clear_1b01_next_anim hand obj+1b01=0 then jmp 175ba
+0x16d94 func enemy_aiF_attack_branch hand 1980 bit0 -> clear 4 slot flags; D4 range picks next anim or wait
+0x16f78 func enemy_ai_assign_tokens_16f78 hand entry copy of 16f9c: dist from 29b8e, loop 4 enemy slots
+0x16f9c func enemy_ai_assign_tokens hand ptr+=2, 29b8e dist/facing to 009c, loop 4 slots at ff5544 clear tokens
+0x17098 func enemy_ai_pick_attacker_of3 hand if D0&3 grant token 171c6, check bits 0x20,0x40,0x80 of 0134
+0x170d2 func enemy_ai_pick_attacker_of2 hand if D0&3 grant token 171c6, check bits 0x40,0x80 of 0134
+0x17106 func enemy_ai_pick_attacker_of1 hand if D0&3 grant token 171c6, check bit 0x80 of 0134
+0x1716c func enemy_ai_update_target_tile hand slot pos>>3 into 1a00/1a01, flag 0x10 if obj+80&0x18
+0x171c6 func enemy_ai_grant_attack_token hand picks slot with lowest 1b00 range, sets flag 0x80 and 1b80=D3
+0x1726e func enemy_ai_surround_flag_update hand counts active slots w/o 0x40, toggles flag bit0 and 0135 bit 0x20
+0x173be func obj_anim_apply_flip_run hand if flip flag 0x10 remap 009a 2->4,3->5,+0x16; jmp 19898
+0x17420 func enemy_ai_hurt_stagger_check hand if obj+100&0x30==0 set facing 17452 else stagger 1480=0x38
+0x17434 func enemy_ai_hurt_stagger hand 901=0, 580=0x100, 9a=0, 1480=0x38 wait; jmp 173be
+0x17452 func enemy_ai_set_face_9d hand 009d=0x10 or 0 by obj flag 0x40
+0x1746e func enemy_ai_idle_face_player hand 901=2, clear 0x86 flags, 009a=1, 009d by facing
+0x17478 func enemy_ai_walk_state_10 hand 901=0x10, clear flags, 009a=1, 009d by facing
+0x174b8 func enemy_ai_resume_script_step hand D7 state check, clear flags, 009a=script[2], 901=0
+0x1755e func enemy_ai_clear_token_resume hand 0134&=0x7f, clear flags, 009a=A0[2], 901=0
+0x17584 func enemy_ai_apply_anim_step_flag4 hand clear flag2, 9a/901/580 from A0, flag4 from A0[8]
+0x175ba func enemy_ai_next_anim_lane_pick hand 1b01=0, two lane picks 17650, sets pos tile, anim from A0
+0x17650 func enemy_ai_lane_occupancy_map hand scans 4 slots, builds lane bitmask in 1801, picks free via 17752
+0x17752 func enemy_ai_find_free_lane hand scans bits 2..0 then 3..5 of 1801, returns lane+0x13
+0x177c8 func script_op_call_0c80 hand ff0125=0; call 00c80; script ptr+=2; jmp 19898
+0x17a72 func script_op_set_9d_byte hand 009d = script byte arg, ptr+=2, set run flag
+0x17a96 func script_op_set_9c_byte hand 009c = script byte arg, ptr+=2, set run flag
+0x17aba func script_op_set_obj_901 hand obj+901 = script byte arg, ptr+=2
+0x17adc func script_op_set_9a_frame hand 009a = script byte arg, ptr+=2
+0x17b04 func script_op_set_obj_580_pair hand obj+580/581 = two script bytes, ptr+=4
+0x17b58 func script_op_wait_counter hand D1==0 clear else decrement 1480; at zero skip4
+0x17b86 func script_op_skip4_clear_1480 hand ptr+=4, 1480=0, jmp 19898
+0x17bd8 func script_op_nop_skip2_17bd8 hand ptr+=2, set run flag
+0x17c2c func script_op_nop_skip2_17c2c hand ptr+=2, set run flag
+0x17c6c func script_op_nop_skip2_17c6c hand ptr+=2, set run flag
+0x17c7e func script_op_set_facing_from_flip hand 009d = 0x10 or 0 by obj ff5da0 bit 0x1000
+0x17cc8 func script_op_set_anim_table hand anim table ptr = 0x2c000+table[arg], clear/set flag bits in 81
+0x17d10 func script_op_set_9a_hi_if_anim_end hand if obj+81&1 set high byte of 009a unless 0xff
+0x17d3e func script_op_set_pos_offset_flip hand x/y = parent pos + signed dx (negated if flipped)
+0x17da8 func script_op_wait_until_00a0_bit25 hand ptr+=2 only if 00a0 bit 0x2000000 clear
+0x17dca func script_op_set_flag_100 hand obj+80 |= 0x100, ptr+=2
+0x17de4 func script_op_clear_flag_100 hand obj+80 &= 0xfeff, ptr+=2
+0x17dfe func script_op_jump_abs hand script ptr = long at ptr+2, saved to 1100
+0x17e22 func script_op_clear_flag_1 hand obj+80 &= 0xfffe, ptr+=2
+0x18000 func script_op_skip4_18000 hand GUESS head mid-instruction; ptr ff0128+=4, sets ff0125 bit0, table target
+0x1801a func script_op_goto_saved_1300 hand script ptr = saved ptr at obj+1300
+0x18032 func script_op_wait_hit_frames hand hp counter 980 -= table byte (5a7ba); at zero end attack reset 12104
+0x180de func script_op_copy_parent_pos hand x/y/z = parent pos ff5fa2/ff60a2/ff61a2, z+1
+0x182a0 func script_op_write_byte_term hand (A0)=D0, (A0+1)=0xff, ptr+=2
+0x182c0 func script_op_remove_from_list_set_380 hand state 380=2/3 by type; remove id from list ff226e
+0x18362 func script_op_end_object hand saves ptr, clears obj flags, calls b2aa, clears token bit, 10bb4
+0x183a2 func script_op_spawn_object_a hand find free slot 0x3a-0x50, fill fields from script args, call b296
+0x1847e func script_op_grab_player_if_close hand dist via enemy_calc_dist_dir_to_player; if D4<2 sets target 380=6, ff009c=0x100e, copies pos, ptr+=2
+0x18564 func script_op_spawn_object_b hand spawn fixed type 0x19/5 child at offset if slot free and not dup
+0x18652 func script_op_set_x_from_screen hand x = camera ff00f0 + 0x40 or 0xc0 by 0118 bit2
+0x18696 func script_op_turn_toward_player hand 29b8e; adjust facing 009c/009d by script mode; set 901
+0x187b8 func script_op_branch_if_dist_le hand 29b8e; jump to target if dist<=arg else skip 8
+0x1881c func script_op_flip_facing hand 009d -= 0x10 or +0x10, mask 0x1f
+0x1884c func script_op_branch_if_dist_xy hand adjusts slot pos by args, 29b8e, branch by distance
+0x188e8 func script_op_branch_if_hp_gt hand compare obj+980 with arg; branch or skip 8
+0x18924 func script_op_goto_table_script hand script = table by obj type 300 and arg; clears 1400/1480/1300/1600, token
+0x18990 func script_op_morph_self_from_args hand rewrites own obj fields (pos, anim, type) from script args, new script ptr from 2c54e table
+0x18a1e func script_op_set_flag_2000 hand obj |= 0x2000, 800/1001 = arg, ptr+=2
+0x18a46 func script_op_clear_flag_2000 hand obj &= 0xdfff, ptr+=2
+0x18a5e func script_op_call_subscript hand return ptr 1600 = ptr+6; jump to ptr[2]
+0x18a80 func script_op_return_subscript hand if 1600 !=0 script ptr = saved return
+0x18b10 func script_op_end_attack_reset hand 00a0 &= 0xfd07ff7f, 190=0, 12104, ptr=saved 1200, 980=0
+0x18b90 func script_op_end_attack_reset_set_980 hand like 18b10 with 980=D1 and obj+80 |=0x10
+0x18be0 func script_op_loop_until_hit_frames hand if 00a0 bits 0x10020 and 980 <= table, end attack else skip2
+0x18c66 func script_op_call_0ca6 hand call 00ca6; ptr+=2
+0x18c8c func script_op_call_0ca6_if_slot_active hand scan slots 0x26-0x2e, call 00ca6 on first active
+0x18cd6 func script_op_call_0cbe hand call 00cbe; ptr+=2
+0x18cfc func script_op_set_pos_from_table_flip hand x/y offsets from table 198f0 by type, negate x if flipped
+0x18d82 func script_op_call_1170 hand call 01170; ptr+=2
+0x18da8 func script_op_set_2242_arg hand ff2242 = arg, ff2248=0xfffe, ff224e=0
+0x18e04 func script_op_copy_z_from_a2 hand 009c = D5, obj z (c80) = A2 z
+0x19270 func script_op_spawn_object_c hand spawn type 9 effect at parent x/z, call b296
+0x192e0 func script_op_spawn_object_d hand free slot 0x48-0x50, spawn with x&0xfff8 and y masked
+0x193f0 func script_op_branch_if_dist_gt hand call 29d7a; jump if arg<D4 else skip 8
+0x19514 func script_op_nop_skip2_19514 hand ptr+=2, set run flag
+0x19526 func script_op_branch_on_input_bits hand obj+101 bit 0x10 -> target1, 0x20 -> target2, else skip 10
+0x195ac func script_op_wait_counter_input hand like 17b58 plus ends wait if obj+101&3 pressed
+0x195ee func script_op_gate_dist_input hand 29b8e; halt if D4<5 or obj+100&0x33, else skip 6
+0x19640 func script_op_branch_if_d0_lt hand if D0 < arg jump to target else skip 6
+0x1967e func script_op_wait_hit_frames_b hand hp counter 980 -= table byte; at zero 12104 and saved ptr
+0x19898 func script_return_stub_19898 hand 6-byte stub, same shape as script_next_op_dispatch at 18560 (renamed to avoid duplicate name)
+0x1989e func math_remap_facing_by_tables hand two byte table lookups on 009c low byte (19ad4, 19af4)
+0x19b42 func enemy_aiG_tick hand wait timer 1480, 16f9c tokens, hit check, range, token, anim; table 19ee8
+0x19c48 func enemy_aiG_face_then_step hand sets 009d facing; D4<3 -> anim step else set anim from A0
+0x19c68 func enemy_aiG_hit_react hand table 19ee8 by D0&1 as next script; else 29e66 knock + 177a8
+0x19cc8 func enemy_aiG_set_anim_a0 hand 009a=A0[2], obj+901=A0[4], obj+580=A0[6], jmp 173be
+0x19ce0 func enemy_aiG_token_claim hand attack-token bit in 0134 by obj+1b80, sets 901/580 from A0
+0x19d1e func enemy_aiG_clear_1b01_next_anim hand obj+1b01=0 then jmp 175ba
+0x19d7c func enemy_aiG_attack_branch hand 1980 bit0 -> clear 4 slot flags; D4 range picks next anim or wait
+0x19f58 func enemy_aiH_tick hand wait timer 1480, 16f9c tokens, hit check, range, token, anim; table 1a338
+0x19f60 func enemy_ai_tick_19f60 hand per-object tick: decrement delay at +0x1480, hitstun/pause check, screen-edge range check vs ff00f0/ff00f4, anim script step, sync-bit logic
+0x1a098 func enemy_set_dir_then_frame_1a098 hand stores D5 to ff009d, if state<3 jumps to 17584 else applies anim frame
+0x1a0b8 func enemy_pick_attack_script_1a0b8 hand picks script ptr from table by D0&1, else random facing table 177a8, branches on state<6/>0xd
+0x1a118 func enemy_apply_anim_frame_1a118 hand copies script entry +2/+4/+6 into ff009a, obj+0x901, obj+0x580 then 173be
+0x1a130 func enemy_sync_flag_check_1a130 hand tests ff0134 bitmask by obj+0x1b80 index, type 0x82 sets bit and loads frame params
+0x1a16e func enemy_clear_substate_next_1a16e hand clears obj+0x1b01 then jumps to script advance 175ba
+0x1a1cc func enemy_hit_reaction_branch_1a1cc hand if flag1 clears grab bits and sets ff0134 bit7 else picks script from table by D0&1 or delay table by D0&3
+0x1a3b0 func enemy_ai_tick_1a3b0 hand same per-object tick as 19f60 using script table 1a7c2
+0x1a4e0 func enemy_set_dir_then_frame_1a4e0 hand stores D5 to ff009d, state<3 goes 17584 else apply frame 1a560
+0x1a500 func enemy_pick_attack_script_1a500 hand script ptr from table 1a7c2 by D0&1 or random facing, state thresholds 6 and 0xd
+0x1a560 func enemy_apply_anim_frame_1a560 hand copies script entry +2/+4/+6 into ff009a, obj+0x901, obj+0x580 then 173be
+0x1a578 func enemy_sync_flag_check_1a578 hand tests ff0134 bitmask by obj+0x1b80, type 0x82 sets bit and loads frame params
+0x1a5c4 func enemy_clear_substate_next_1a5c4 hand clears obj+0x1b01 then jumps to script advance 175ba
+0x1a5fc func enemy_set_script_from_ff0128_1a5fc hand clears obj flags 0x80/0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1a644 func enemy_clear_anim_frame_1a644 hand sets ff009a=0 then 173be
+0x1a656 func enemy_hit_reaction_branch_1a656 hand grab-flag clear, script from table 1a7c2 by D0&1, delay table 1a72a by D0&3, thresholds 0xa0/0xe0
+0x1a832 func enemy_ai_tick_1a832 hand per-object tick variant with state limits 9/8/3 and attack script call 1ab2a
+0x1aa3e func enemy_clear_substate_next_1aa3e hand clears obj+0x1b01 then jumps to script advance 175ba
+0x1aa9c func enemy_hit_reaction_script_load_1aa9c hand grab-flag clear, wait 0x30/0x31 or load script ptr from table 1b064 with type 7/8 special scripts
+0x1aabc func enemy_jmp_next_step_1aabc hand tail jump to 1ab14 (script advance)
+0x1aac2 func enemy_reaction_pick_1aac2 hand D0 above 0xc0 sets wait 0x31/0x30 else loads script ptr from table 1b064 by D0&3
+0x1ab14 func enemy_next_script_step_1ab14 hand wrapper calling script advance 175ba
+0x1ab2a func enemy_pick_script_from_table_1ab2a hand script ptr from table 1b064 by D0&3, type 7/8 use ff0128 scripts, else sets up frame and anim-active flag
+0x1ab6c func enemy_set_script_from_ff0128_1ab6c hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1ab7e func enemy_load_script_frame_1ab7e hand type 8 picks scripts 2d974/2d9d0 else sets position bytes from D2/D3 and frame params, sets flag 2
+0x1aba8 func enemy_set_script_from_ff0128_1aba8 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1abbe func enemy_set_wait_delay_1abbe hand D0&2 sets ff009a=0x31 wait 0x30 else delay from table 1afcc by D0&3, then 173be
+0x1ac10 func enemy_ai_tick_1ac10 hand per-object tick variant with script table 1b1a4 and limits 0xd/3/0xb
+0x1ad1c func enemy_set_dir_then_frame_1ad1c hand stores D5 to ff009d, state<3 goes 17584 else apply frame 1ad9c
+0x1ad3c func enemy_pick_attack_script_1ad3c hand if flag 0x40 and state<3 loads script ptr from table 1b1a4 by D0&3 else random facing table 177a8
+0x1ad9c func enemy_apply_anim_frame_1ad9c hand copies script entry +2/+4/+6 into ff009a, obj+0x901, obj+0x580 then 173be
+0x1adb4 func enemy_sync_flag_check_1adb4 hand tests ff0134 bitmask by obj+0x1b80, type 0x82 sets bit and loads frame params
+0x1adf2 func enemy_clear_substate_next_1adf2 hand clears obj+0x1b01 then jumps to script advance 175ba
+0x1ae50 func enemy_hit_reaction_branch_1ae50 hand grab-flag clear, script from table 1b1a4, delay table 1b10c, wait 0x32 plus 0xcbe call
+0x1af20 func enemy_set_script_from_ff0128_1af20 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1af32 func enemy_load_script_frame_1af32 hand type 8 picks scripts 2d974/2d9d0 else sets position from D2/D3 and frame params
+0x1af5c func enemy_set_script_from_ff0128_1af5c hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1af72 func enemy_set_wait_delay_1af72 hand D0&2 sets ff009a=0x32 wait 0x60 and calls 0xcbe else delay table 1b10c by D0&3
+0x1b358 func enemy_state_lt2_or_apply_1b358 hand state<2 jumps 17584 else applies anim frame from A0+2/+4/+6
+0x1b474 func enemy_clear_anim_frame_1b474 hand sets ff009a=0 then 173be
+0x1b54c func enemy_set_script_2dac0_1b54c hand ff0128=0x2dac0, clears obj flag 0x02, copies to obj+0x1100, calls 19898
+0x1b556 func enemy_set_script_from_ff0128_1b556 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1b568 func enemy_load_script_frame_1b568 hand type 8 picks script 2da8e/2daea by facing bit 0x10 else sets frame params from script entry
+0x1b588 func enemy_set_script_2daea_1b588 hand ff0128=0x2daea, clears obj flag 0x02, copies to obj+0x1100, calls 19898
+0x1b592 func enemy_set_script_from_ff0128_1b592 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1b5a8 func enemy_set_wait_delay_1b5a8 hand D0&2 sets ff009a=0x31 wait 0x30 else delay from table 1b9b6 by D0&3
+0x1b784 func enemy_apply_anim_frame_1b784 hand copies script entry +2/+4/+6 into ff009a, obj+0x901, obj+0x580 then 173be
+0x1b828 func enemy_clear_anim_frame_1b828 hand sets ff009a=0 then 173be
+0x1b900 func enemy_set_script_2dac0_1b900 hand ff0128=0x2dac0, clears obj flag 0x02, copies to obj+0x1100, calls 19898
+0x1b90a func enemy_set_script_from_ff0128_1b90a hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1b91c func enemy_load_script_frame_1b91c hand type 8 picks script 2da8e/2daea by facing bit 0x10 else sets frame params from script entry
+0x1b93c func enemy_set_script_2daea_1b93c hand ff0128=0x2daea, clears obj flag 0x02, copies to obj+0x1100, calls 19898
+0x1b946 func enemy_set_script_from_ff0128_1b946 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1b95c func enemy_set_wait_delay_1b95c hand D0&2 sets ff009a=0x32 wait 0x60 and calls 0xcbe else delay table 1baf6 by D0&3
+0x1bf6c func enemy_set_script_from_ff0128_1bf6c hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1bf7e func enemy_load_script_frame_1bf7e hand type 8 picks script 2dba8/2dc04 by facing bit 0x10 else sets frame params from script entry
+0x1bfa8 func enemy_set_script_from_ff0128_1bfa8 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1bfbe func enemy_set_wait_delay_1bfbe hand D0&2 sets ff009a=0x31 wait 0x30 else delay table 1c3cc by D0&3
+0x1c010 func enemy_ai_tick_1c010 hand per-object tick variant with script table 1c5a4 and limits 0xc/3/0xc, type 7/8 special scripts 2db7e/2dba8
+0x1c11c func enemy_set_dir_then_frame_1c11c hand stores D5 to ff009d, state<3 goes 17584 else apply frame 1c19c
+0x1c13c func enemy_pick_attack_script_1c13c hand if flag 0x40 and state<4 loads script ptr from table 1c5a4 by D0&3 else random facing table 177a8
+0x1c19c func enemy_apply_anim_frame_1c19c hand copies script entry +2/+4/+6 into ff009a, obj+0x901, obj+0x580 then 173be
+0x1c1b4 func enemy_sync_flag_check_1c1b4 hand tests ff0134 bitmask by obj+0x1b80, type 0x82 sets bit and loads frame params
+0x1c1f2 func enemy_clear_substate_next_1c1f2 hand clears obj+0x1b01 then jumps to script advance 175ba
+0x1c250 func enemy_hit_reaction_branch_1c250 hand grab-flag clear, script from table 1c5a4, delay table 1c50c, wait 0x32 plus 0xcbe call
+0x1c320 func enemy_set_script_from_ff0128_1c320 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1c332 func enemy_load_script_frame_1c332 hand type 8 picks script 2dba8/2dc04 by facing bit 0x10 else sets frame params from script entry
+0x1c35c func enemy_set_script_from_ff0128_1c35c hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1c372 func enemy_set_wait_delay_1c372 hand D0&2 sets ff009a=0x32 wait 0x60 and calls 0xcbe else delay table 1c50c by D0&3
+0x1c7b8 func enemy_set_dir_then_frame_1c7b8 hand stores D5 to ff009d, state<3 goes 17584 else apply frame 1c838
+0x1c7d8 func enemy_pick_attack_script_1c7d8 hand script ptr from table 1ca5c by D0&1 if state<10 else random facing table 177a8
+0x1c838 func enemy_apply_anim_frame_1c838 hand copies script entry +2/+4/+6 into ff009a, obj+0x901, obj+0x580 then 173be
+0x1c850 func enemy_sync_flag_check_1c850 hand tests ff0134 bitmask by obj+0x1b80, type 0x82 sets bit and loads frame params (state<0xd)
+0x1c8f0 func enemy_hit_reaction_branch_1c8f0 hand grab-flag clear, script from table 1ca5c by D0&1, delay table 1c9c4, thresholds 0x90/0xf0
+0x1cc08 func enemy_state_lt3_or_apply_1cc08 hand state<3 goes 17584 else apply frame
+0x1cc18 func enemy_special_script_2ddb0_1cc18 hand if facing bit clear and state 6..0x16 loads script 2ddb0, clears flag 0x80, else apply frame
+0x1ccc2 func enemy_apply_anim_frame_1ccc2 hand copies script entry +2/+4/+6 into ff009a, obj+0x901, obj+0x580 then 173be
+0x1cd64 func enemy_clear_anim_frame_1cd64 hand sets ff009a=0 then 173be
+0x1ce3c func enemy_set_script_2dd7a_1ce3c hand ff0128=0x2dd7a, clears obj flag 0x02, copies to obj+0x1100, calls 19898
+0x1ce46 func enemy_set_script_from_ff0128_1ce46 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1ce58 func enemy_load_script_frame_1ce58 hand type 8 picks script 2dd5e/2dd94 by facing bit 0x10 else sets frame params from script entry
+0x1ce78 func enemy_set_script_2dd94_1ce78 hand ff0128=0x2dd94, clears obj flag 0x02, copies to obj+0x1100, calls 19898
+0x1ce82 func enemy_set_script_from_ff0128_1ce82 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1ce98 func enemy_set_idle_delay_1ce98 hand delay at obj+0x1480 from table 1cec4 by D0&3, ff009a=0, wait frame params, then 173be
+0x1d066 func enemy_ai_tick_1d066 hand per-object tick variant: sets facing bit from D0 sign, limits 0xc/8/7/4/5, script table 1d3f4
+0x1d22a func enemy_clear_substate_next_1d22a hand clears obj+0x1b01 then jumps to script advance 175ba
+0x1d288 func enemy_hit_reaction_branch_1d288 hand grab-flag clear, script from table 1d3f4 by D0&1, delay table 1d35c, thresholds 0x80/0xf0
+0x1d4f2 func enemy_ai_tick_1d4f2 hand per-object tick variant with script table 1d8fa and special scripts 2df64/2df7e
+0x1d6b6 func enemy_clear_substate_next_1d6b6 hand clears obj+0x1b01 then jumps to script advance 175ba
+0x1d714 func enemy_hit_reaction_branch_1d714 hand grab-flag clear, script from table 1d8fa, delay table 1d862, thresholds 0xc0/0xf0
+0x1d7e4 func enemy_set_script_from_ff0128_1d7e4 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1d7f6 func enemy_load_script_frame_1d7f6 hand type 8 picks script 2df7e/2dfb4 by facing bit 0x10 else sets frame params from script entry
+0x1d820 func enemy_set_script_from_ff0128_1d820 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1d836 func enemy_set_idle_delay_1d836 hand delay at obj+0x1480 from table 1d862 by D0&3, ff009a=0, then 173be
+0x1dacc func enemy_state_lt3_or_apply_1dacc hand state<3 goes 17584 else apply frame
+0x1dadc func enemy_special_script_2e0de_1dadc hand if facing bit clear and state 7..0x14 loads script 2e0de with ff009a=3, else apply frame
+0x1db8e func enemy_apply_anim_frame_1db8e hand copies script entry +2/+4/+6 into ff009a, obj+0x901, obj+0x580 then 173be
+0x1dc30 func enemy_clear_anim_frame_1dc30 hand sets ff009a=0 then 173be
+0x1dd08 func enemy_set_script_2e0a8_1dd08 hand ff0128=0x2e0a8, clears obj flag 0x02, copies to obj+0x1100, calls 19898
+0x1dd12 func enemy_set_script_from_ff0128_1dd12 hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1dd24 func enemy_load_script_frame_1dd24 hand type 8 picks script 2e08c/2e0c2 by facing bit 0x10 else sets frame params from script entry
+0x1dd44 func enemy_set_script_2e0c2_1dd44 hand ff0128=0x2e0c2, clears obj flag 0x02, copies to obj+0x1100, calls 19898
+0x1dd4e func enemy_set_script_from_ff0128_1dd4e hand clears obj flag 0x02, copies ff0128 to obj+0x1100, calls 19898
+0x1dd64 func enemy_set_idle_delay_1dd64 hand delay at obj+0x1480 from table 1dd90 by D0&3, ff009a=0, then 173be
+0x1deb4 func enemy_pick_anim_state_1deb4 hand chooses anim state 1/6/8/10/0x10/0x11 from pad ff00a0 bits, screen bounds ff0170/71 and D4/D5, dispatches via state table 1e1f8
+0x1e244 func enemy_st_idle_1e244 hand state handler: ff009c=ff0012, obj+0x900=0, ff009a=0, obj+0x580=0x100
+0x1e264 func enemy_st_walk_timer_1e264 hand state handler: obj+0x900=8, obj+0x580=0x180, ff009a=1, 15-frame timer at +0x1900
+0x1e2c2 func enemy_st_walk_dirtable_1e2c2 hand like walk state, anim byte from table 1ed7e/1ed9e by facing bit 4 plus D0, 15-frame timer
+0x1e370 func enemy_st_walk_table_1e370 hand like walk state, anim byte from table 1ed5e indexed by ff0012 low byte, 15-frame timer
+0x1e40e func enemy_st_script_skip_1e40e hand 3-frame timer at +0x1900, advances ff0128 script pointer by 2 or 0x14, sets ff0125 bit0
+0x1e476 func enemy_st_script_skip_1e476 hand 3-frame timer, advances ff0128 by 8 or 0xe, resets substate, sets ff0125 bit0
+0x1e506 func enemy_st_reset_state_1e506 hand clears state bytes +0x1880/+0x1881/+0x1900, advances ff0128 by 8, sets ff0125 bit0
+0x1e57a func enemy_st_anim_from_table_1e57a hand anim byte from table 1ed5e, adds 0x10 for values 9..0x17, advances ff0128 by 0xe, sets ff0125 bit0
+0x1e5ca func enemy_st_hop_dodge_1e5ca hand state handler: faces player using x diff vs ff00f8 minus 300, 0x10/0x20-frame timers, anim tables 1edbe-1edf1, speed obj+0x900=8/0xc, clears busy flag at end
+0x1e8ac func obj_state6_dispatch hand sets state byte A4+0x1880=6, indexes jump table by substate+6, calls 19898
+0x1eb0e func obj_st6_idle_pose hand copies facing ff0012->ff009c, anim 0xf, zero speed
+0x1eb66 func obj_st6_walk_timer10 hand 10-frame timer, anim 0x10, reload facing on expiry
+0x1ebb0 func obj_st6_walk_timer10_remap hand same as walk timer but facing remapped via byte table 1ed5e
+0x1ec3a func obj_st6_hit_flash_score2 hand 3-frame timer, adds 2 to ff0128 and sets ff0125 bit0 (score/dirty), advances substate
+0x1ec7a func obj_st6_award_score8 hand adds 8 to ff0128, sets ff0125 bit0, substate 1
+0x1ee02 func obj_score_step_by_counter hand adds 2/8/0xe by counter 0..2 else 0x14 depending on dist to ff5fa2, calls 19898
+0x1ee9a func obj_end_face_by_pad_bits hand sets facing flags 1800 from bits of A4+0x101 then calls 29b8e and no-return 1140
+0x1f1cc func enemy_st_hold_72_anim27 hand anim 0x27, 0x48 frame timer, calls cbe at start and end, clears flag 0x80
+0x1f23a func enemy_st_stand_timer15_spd180 hand speed 0x180, anim 1, 15 frame timer reload facing
+0x1f298 func enemy_st_walk_facing_table hand picks facing table 1fd86/1fda6 by flag 4, anim 1, 15-frame timer
+0x1f346 func enemy_st_walk_facing_remap hand facing remapped via table 1fd66, anim 1, 15 frame timer
+0x1f3e4 func enemy_st_stun_score14 hand 3-frame timer then adds 0x14 to ff0128 and sets ff0125 bit0
+0x1f4b0 func enemy_set_facing_7c_score14 hand ORs 0x7c into A0 byte, facing|0x81, adds 0xe to ff0128
+0x1f4dc func enemy_st_reset_state_score8 hand clears state/substate/timer, adds 8 to ff0128, sets ff0125 bit0
+0x1f50c func enemy_award_score14 hand copies facing, adds 0xe to ff0128, sets ff0125 bit0
+0x1f52a func enemy_award_score14_facing_adj hand facing from table 1fd66, +0x10 when value 9..0x17, adds 0xe to ff0128
+0x1f57a func enemy_st_jump_attack_arc hand sets flags 1800/1801 by dx to target (A2+0xc80 vs ff00f8), 0x10 then 0x20 timers, anim 1/0x10, speed 0xc
+0x1f7c0 func enemy_end_face_by_pad_bits_1f7c0 hand same as 1ee9a: facing flags from A4+0x101 bits, 29b8e, no-return 1140
+0x1fa8c func enemy_st_wait_16_anim15 hand 16-frame timer anim 0xf, clears flag 0x80 on expiry
+0x1fae0 func enemy_st_wait_8_then_die hand 8-frame timer anim 0x10, calls no-return 1140 at expiry
+0x1fb32 func obj_set_pal_bits_timer8 hand ff009d = D0&0x1f, timer=8
+0x1fb44 func enemy_st_walk_timer10_1fb44 hand 10-frame timer, anim 0x10, speed 6
+0x1fb8e func enemy_st_walk_timer10_remap_1fb8e hand 10-frame timer, facing remapped via 1fd66
+0x1fc18 func enemy_st_stun_score2_1fc18 hand 3-frame timer, adds 2 to ff0128, advances substate
+0x1fc58 func enemy_st_reset_score8_1fc58 hand zero timer/substate, adds 8 to ff0128, sets ff0125 bit0
+0x1fc82 func enemy_st_reset_score14_1fc82 hand zero timer/substate, adds 0x14 to ff0128, sets ff0125 bit0
+0x1fe88 func obj_state_dispatch_thunk_1fe88 hand just calls 2001e
+0x1fec4 func obj_state_dispatch_thunk_1fec4 hand just calls 2001e
+0x20002 func obj_state_dispatch_thunk_20002 hand just calls 2001e
+0x20006 func obj_state_dispatch_thunk_20006 hand just calls 2001e
+0x20010 func obj_state_dispatch_thunk_20010 hand just calls 2001e
+0x2001a func obj_state_dispatch_thunk_2001a hand just calls 2001e
+0x2001e func obj_state_dispatch hand if D0 state != A4+0x1880 set it, clear substate/timer, jump table at 20052 by substate, call 19898
+0x20052 func obj_idle_anim0_spd100 hand copies facing, anim 0, speed 0x100
+0x20108 func obj_copy_facing hand ff009c = ff0012
+0x20138 func obj_wait_16_spd200 hand speed 0x200, anim 1, 16-frame timer then reset substate
+0x2017e func obj_wait_anim24 hand anim 0x24, timer then reset substate
+0x201ae func obj_wait_88_anim24 hand 0x58 frame timer anim 0x24 then substate 2
+0x20200 func obj_set_anim1_spd180 hand speed 0x180 anim 1 speed field 4
+0x202ba func obj_facing_from_table_a0 hand ff009c = byte[A0+D1] + D0
+0x2030e func obj_walk_timer15_table20d30 hand speed 8, anim 1, 15-frame timer, facing remap via 20d30
+0x20366 func obj_reset_state_score8 hand clears state/substate/timer, adds 8 to ff0128, sets ff0125 bit0
+0x20396 func enemy_st_jump_attack_arc_20396 hand copy of 1f57a with tables at 20d90.., dx-to-target facing flags, 0x10/0x20 timers
+0x205dc func enemy_end_face_by_pad_bits_205dc hand same as 1ee9a: facing flags from A4+0x101 bits, 29b8e, no-return 1140
+0x20878 func enemy_st_face_wait_60 hand facing 0x10/0x1000 by flag, 0x3c timer, then substate 2 with 0x20 timer
+0x208e4 func enemy_st_wait_anim15_to3 hand anim 0xf, timer expires to substate 3 with 0x40
+0x20914 func enemy_st_wait_anim23_to4 hand anim 0x23, timer expires to substate 4 with 0x40
+0x20944 func enemy_st_wait_anim15_reload hand anim 0xf, reload 0x40 timer on expiry
+0x2096e func enemy_st_walk_timer10_2096e hand 10-frame timer, anim 0x10, speed 6
+0x209b8 func enemy_st_run_timer10_anim12 hand 10-frame timer, anim 0x12, speed 0x10
+0x20a02 func enemy_st_run_remap_anim12 hand 10-frame timer anim 0x12 speed 6, facing remap via 20d30
+0x20a8c func enemy_st_stun_score2_20a8c hand 3-frame timer, adds 2 to ff0128, substate 2
+0x20aca func enemy_st_face_wait_until_f hand facing by flag, anim 0x10, resets substate when ff0010>0xe
+0x20b0e func enemy_reset_state_score14 hand clears state/substate/timer, adds 0xe to ff0128, sets ff0125 bit0
+0x20b3e func enemy_st_knockback_start hand facing by flag, speed 0x10, sets flag 0x80, anim 0xf, timers 6 then 4
+0x20bb0 func enemy_st_knockback_phase2 hand speed 8 anim 0xf, timer then substate 3 with 0x14
+0x20be0 func enemy_st_knockback_end hand speed 0 anim 0xf, on timer clears substate and flag 0x80
+0x20c98 func obj_set_substate2_timer10 hand substate=2, timer=10
+0x20ca8 func enemy_st_dying_anim_1a hand anim 0x1a/0x1016 by facing, anim 0x10, on timer no-return 1140
+0x20ce8 func obj_set_speed_from_d0_min3 hand speed = D0&0xff0f clamped low byte min 3, substate 1, timer 10
+0x20d0a func obj_clear_flags_score2 hand zero flags/state/timer words, adds 2 to ff0128, calls 19898
+0x21038 func obj_idle_anim0_spd100_21038 hand copies facing, anim 0, speed 0x100
+0x21058 func enemy_st_stand_timer15_spd180_21058 hand speed 0x180 anim 1, 15-frame timer reload facing
+0x210b6 func enemy_st_walk_facing_table_210b6 hand picks facing table 219ae/219ce by flag 4, anim 1, speed 8, 15-frame timer
+0x21164 func enemy_st_walk_facing_remap_21164 hand facing remapped via 2198e, anim 1, speed 8, 15-frame timer
+0x21202 func enemy_reset_state_score8_21202 hand clears state/substate/timer, adds 8 to ff0128, sets ff0125 bit0
+0x21232 func enemy_reset_state_score14_21232 hand clears state/substate/timer, adds 0xe to ff0128, sets ff0125 bit0
+0x21262 func enemy_reset_state_score20_21262 hand clears state/substate/timer, adds 0x14 to ff0128, sets ff0125 bit0
+0x21292 func enemy_st_jump_attack_arc_21292 hand copy of 1f57a with tables 219ee.., anim 0x13, dx-to-target facing flags, 0x10/0x20 timers
+0x214d8 func enemy_end_face_by_pad_bits_214d8 hand same as 1ee9a: facing flags from A4+0x101 bits, 29b8e, no-return 1140
+0x217d0 func enemy_idle_anim12_spd100 hand copies facing, anim 0x12, speed 0x100
+0x217f0 func enemy_st_walk_timer10_anim13 hand 10-frame timer, anim 0x13, speed 6, reload facing
+0x2183a func enemy_st_run_timer10_anim13 hand 10-frame timer, anim 0x13, speed 0x10, reload facing
+0x21884 func enemy_st_walk_remap_anim13 hand 10-frame timer anim 0x13, facing remapped via 2198e
+0x2190e func enemy_reset_state_score8_2190e hand clears state/substate/timer, adds 8 to ff0128, sets ff0125 bit0
+0x2193e func enemy_award_score14_substate1 hand zero timer, substate 1, adds 0xe to ff0128
+0x21968 func obj_clear_flags_score2_21968 hand zero flags/state/timer words, adds 2 to ff0128, calls 19898
+0x21a32 func enemy_end_face_by_pad_bits_21a32 hand same as 1ee9a: facing flags from A4+0x101 bits, 29b8e, no-return 1140
+0x21cec func obj_idle_anim0_spd80 hand copies facing, anim 0, speed 0x80
+0x21d0c func enemy_st_stand_timer15_spd80 hand speed 0x80 anim 1, 15-frame timer reload facing
+0x21d6a func enemy_st_walk_facing_table_21d6a hand picks facing table 22298/222b8 by flag 4, anim 1, speed 0x80, 15-frame timer
+0x21e18 func enemy_st_walk_facing_remap_21e18 hand facing remapped via 22278, anim 1, speed 0x80, 15-frame timer
+0x21eb6 func enemy_reset_state_score8_21eb6 hand clears state/substate/timer, adds 8 to ff0128, sets ff0125 bit0
+0x21ee6 func enemy_st_jump_attack_arc_21ee6 hand copy of 1f57a with tables 222d8.., slow speed 0x80, 0x10/0x20 timers
+0x22100 func enemy_reset_state_score14_22100 hand clears state/substate/timer, adds 0xe to ff0128, sets ff0125 bit0
+0x22130 func enemy_award_score2_substate1 hand substate 1, zero timer, adds 2 to ff0128, sets ff0125 bit0
+0x2215a func enemy_st_walk_remap_spd180_2215a hand facing remapped via 22278, speed 0x180, anim 1, substate 2, 15-frame timer
+0x221f8 func enemy_reset_state_score20_221f8 hand clears state/substate/timer, adds 0x14 to ff0128, sets ff0125 bit0
+0x22228 func enemy_award_score26_substate1 hand substate 1, zero timer, adds 0x1a to ff0128, sets ff0125 bit0
+0x22252 func obj_clear_flags_score2_22252 hand zero flags/state/timer words, adds 2 to ff0128, calls 19898
+0x223b4 func obj_state_dispatch_thunk_223b4 hand just calls 22522
+0x223f0 func obj_state_dispatch_thunk_223f0 hand just calls 22522
+0x223fa func enemy_ai_screen_edge_gate hand checks object x vs scroll limits ff0170/ff0171 and state ff0010 ranges, sets facing, then state dispatch via 22556 table
+0x2249c func obj_state_dispatch_thunk_2249c hand just calls 22522
+0x224aa func obj_state_dispatch_thunk_224aa hand just calls 22522
+0x224b4 func enemy_ai_state_gate hand if ff0010>7 dispatch via 22556 table else calls 22522, compares facing byte with target
+0x22522 func obj_state_dispatch_22522 hand set state byte from D0 if changed, jump table at 22556 by substate, call 19898
+0x22556 func obj_idle_anim0_spd100_22556 hand copies facing, anim 0, speed 0x100
+0x225aa func enemy_st_stand_timer15_spd180_225aa hand speed 0x180 anim 1, 15-frame timer reload facing
+0x22608 func enemy_st_walk_facing_table_22608 hand picks facing table 22f78/22f98 by flag 4, anim 1, speed 8, 15-frame timer
+0x226b6 func enemy_st_walk_facing_remap_226b6 hand facing remapped via 22f58, anim 1, speed 8, 15-frame timer
+0x22754 func enemy_reset_state_score8_22754 hand clears state/substate/timer, adds 8 to ff0128, sets ff0125 bit0
+0x22784 func enemy_reset_state_score14_22784 hand clears state/substate/timer, adds 0xe to ff0128, sets ff0125 bit0
+0x227b4 func enemy_reset_state_score20_227b4 hand clears state/substate/timer, adds 0x14 to ff0128, sets ff0125 bit0
+0x22d50 func enemy_idle_anim15_spd100 hand copies facing, anim 0xf, speed 0x100
+0x22d70 func enemy_st_walk_timer10_22d70 hand 10-frame timer, anim 0x10, speed 6, reload facing
+0x22dba func enemy_st_run_timer10_22dba hand 10-frame timer, anim 0x10, speed 0x10, reload facing
+0x22e04 func enemy_st_walk_remap_22e04 hand 10-frame timer anim 0x10, facing remapped via 22f58
+0x22e8e func enemy_reset_state_score8_22e8e hand clears state/substate/timer, adds 8 to ff0128, sets ff0125 bit0
+0x22ebe func enemy_award_score14_substate1_22ebe hand zero timer, substate 1, adds 0xe to ff0128
+0x22ee8 func enemy_reset_state_score20_22ee8 hand clears state/substate/timer, adds 0x14 to ff0128, sets ff0125 bit0
+0x22f18 func obj_clear_flags_score2_22f18 hand zero flags/state/timer words, adds 2 to ff0128, calls 19898
+0x22f3e func obj_clear_field_1980_score2 hand zero A4+0x1980, adds 2 to ff0128, calls 19898
+0x22ffc func col_player_vs_door_pickup_dispatch hand builds hitbox rects ff22ee.. from table 23d80 for both objects, dispatches on type A4+0x380 to 2326e/23478/234e0/2364c/23712/237ea
+0x2326e func col_pickup_item_overlap hand box overlap test then per-type 0xa..0xf sets ff00c2/ff018e, copies positions, flags ff00a0|0x1000
+0x23478 func col_box_overlap_set_flag10 hand rect overlap ff22ee..ff22fc then ff00a0|=0x10, stores ff00d0
+0x234e0 func col_player_box_vs_slot_obj hand when ff00a0 bit5 set, builds box of object slot ff00d1 (tables ff579e/ff5f9e/ff609e) and tests overlap with ff22f6.., plays sound cbe for types 5-7
+0x2364c func col_enemy_box_vs_player_hit hand if flag 2 set builds enemy box from table 23d84, overlap with player box then calls 23a66
+0x23712 func col_player_attack_box_vs_enemy hand if flag 2 builds box ff230e.. and overlap test, then calls 23868
+0x237ea func col_player_box_miss_or_grab hand no overlap clears flag 0x10 in 0x81 else calls 23c1c
+0x23868 func dmg_player_hit_react_by_type hand clears hit flags in ff00a0, sound ids 0x13/0x14/0x15 by damage type 0-3, sets knockback state ff00a8 0x10000..0x70000
+0x23a66 func dmg_player_hit_sfx_flags hand sets ff00a0|0x2000 and plays hit sounds (cbe) / 12104 depending on state bits 0x20, 0x20000, 0x40000
+0x23c1c func enemy_grab_player_start hand sets ff00a0 bit 0x2000000, copies position from target, calls 12104, sets grab timer ff0190=ff012c
+0x23cb6 func dmg_apply_health_loss hand damage from table 5a192 by type, halved if flag 0x4000, subtracts from health ff00b2 clamp 0
+0x291ca func col_player_vs_enemy_list_overlap hand loops 0xff-terminated list at ff226e, boxes from table 23d80, overlap then calls 12104 (hit)
+0x2946a func scroll_update_dispatch hand on ff0118 bits 0x10/2/1 calls 2955e vertical, 294b8 right, 29508 left
+0x294b8 func scroll_advance_x_right hand adds speed ff00ec to scroll x ff00f0, updates hscroll ff4e8e/90, draws new column via 295aa when crossing 8px
+0x29508 func scroll_advance_x_left hand subtracts speed ff00ec from scroll x, updates hscroll, draws column via 295aa
+0x2955e func scroll_advance_y hand adds speed to vscroll ff00f8/ff0114, updates ff520e, draws row via 29760 when crossing
+0x295aa func scroll_draw_column_vdp hand sets VDP reg 0x80, writes 5 tile columns of metatile data to vdp_Data from map pointer table
+0x29760 func scroll_draw_row_vdp hand sets VDP reg 2, writes 10 tile entries of a metatile row from map table to vdp_Data
+0x298f6 func scroll_fill_hscroll_table hand fills line scroll table ff4e0e/ff4e10 per-line from ff4e8e/ff4e90, parallax variant for stage 5
+0x29b8e func enemy_calc_dist_dir_to_player hand GUESS body empty in decompile, 16 callers, returns D4 distance D5 facing (caller grab_player uses D4<2, D5 to ff009c)
+0x29c8e func enemy_calc_dist_y_to_player hand GUESS body empty in decompile, called when D4 distance test in AI states, returns D4 value
+0x29d7a func enemy_ai_helper_29d7a hand GUESS body empty in decompile, 3 callers, undecoded AI helper
+0x29e66 func enemy_ai_helper_29e66 hand GUESS body empty in decompile, 40 callers, undecoded AI helper
+0x2a782 func hud_build_vdp_status_bars hand builds VDP write command list: timer digits (ff00b6/b8), score/lives digits, health bar tiles from ff00b2 using tables 2ab3a/2ab5e/2ab70
+0x6000c func snd_thunk_6001a hand just calls 6001a
+0x6001a func snd_driver_update_channels hand per-frame sound driver: loops 6 channels at ffe000 stride 0x58, parses note streams via jump table 60d06, builds Z80 ram a00800 command buffer under bus request a11100, then writes PSG port c00011 tone/volume
+0x607a8 func snd_driver_update_channels_tail hand GUESS 8-byte-size label but body is mid-function tail of 6001a: channel loop A5=ffe000+n*0x58, stream parse, Z80 bus request a11100, a00800 buffer, PSG c00011 writes
+0x607b0 func snd_driver_tick_607b0 hand body is the 68000 sound sequencer tick: loops 9 channels (0x58 stride at 0xffe000), parses note stream, then Z80 bus req + writes YM regs to Z80 RAM 0xa00800 and PSG port volume/freq
+0x6096c func snd_tick_chan_loop_6096c hand mid-tick entry of the sound sequencer: clears a channel, then continues channel loop parsing note data and falling into Z80 bus/YM/PSG update
+0x60a26 func snd_toggle_pause_60a26 hand toggles Z80 flag 0xa00804 and driver mute flag 0x63c, then handles queued music/sfx load by ptr tables 0x61a16/0x61a9e
+0x60a6e func snd_start_music_fade_60a6e hand sets fade flag 0x63a and clears fade counters, then processes pending sfx/music command bits and loads track pointers for channels
+0x60a80 func snd_stop_all_channels_60a80 hand clears sfx/music pending flags, resets all 9 channels (volume 0xf, key off), then flushes YM/PSG update via Z80 bus
+0x60b28 func snd_init_wrapper_60b28 hand tail-calls FUN_00060b34 sound init
+0x60b34 func snd_init_driver_60b34 hand resets Z80, copies Z80 sound driver code to 0xa00000, inits 9 channel structs at 0xffe000 and driver vars, then primes YM/PSG
+0x60c0c func snd_queue_command_60c0c hand sound command in D0: <0x20 sfx priority-compare to 0xffe631, <0x40 music id to 0xffe630, <0x78 Z80 cmd with priority table, else queue byte in 3-slot queue 0xffe633

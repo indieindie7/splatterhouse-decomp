@@ -1,0 +1,2185 @@
+F 00000200 exc_Reset USER_DEFINED 436
+C 00000608
+C 000004e6
+C 00001138
+C 0000058c
+C 0000a9ee
+C 00060004
+C 000009ba
+C 0000081c
+C 0000083a
+C 000077d4
+C 0000061c
+C 00007bc0
+C 00007cd8
+C 00007d50
+C 00007dc8
+C 00000a36
+C 00000b8c
+C 0000aa38
+C 000079bc
+C 0000081c
+C 000009da
+F 00000424 irq_VBlank USER_DEFINED 48
+C 00000708
+C 0000ad90
+C 0006000c
+F 00000454 irq_HBlank USER_DEFINED 2
+F 00000456 exc_Spurious_irq_Level1_irq_External_irq_Level3_irq_Level5_i USER_DEFINED 2
+F 00000480 mem_copy_200_bytes USER_DEFINED 102
+F 000004e6 game_init_region_defaults USER_DEFINED 154
+F 00000580 sys_delay_loop_60 USER_DEFINED 10
+F 0000058c game_init_ram_state USER_DEFINED 124
+C 00000a36
+C 00000bde
+C 0000125a
+C 00000926
+C 00000892
+C 000008c0
+C 000008f8
+F 00000608 mem_clear_workram_ff0000 USER_DEFINED 20
+F 0000061c vdp_dma_hscroll_table_f000 USER_DEFINED 236
+F 00000708 vdp_write_vsram_from_buffer USER_DEFINED 276
+F 0000081c vdp_display_on USER_DEFINED 30
+F 0000083a vdp_display_off USER_DEFINED 32
+F 0000085a vdp_clear_vsram_and_buffer USER_DEFINED 56
+F 00000892 vdp_clear_vram_block_6000 USER_DEFINED 46
+F 000008c0 vdp_clear_hscroll_table_and_buf USER_DEFINED 56
+F 000008f8 vdp_clear_sprite_table_f400 USER_DEFINED 46
+F 00000926 vdp_clear_planes_a_b USER_DEFINED 148
+F 000009ba irq_vblank_enable USER_DEFINED 32
+F 000009da irq_vblank_disable USER_DEFINED 24
+F 00000a04 vdp_set_reg10_from_d0 USER_DEFINED 16
+F 00000a24 vdp_set_hint_counter_0 USER_DEFINED 18
+F 00000a36 pad_read_both USER_DEFINED 190
+F 00000b8c vdp_regs_load_and_tick USER_DEFINED 82
+C 00000c80
+F 00000bde vdp_load_regs_table USER_DEFINED 34
+F 00000c04 game_unk_c04 USER_DEFINED 50
+F 00000c36 game_state_reset_sub USER_DEFINED 16
+F 00000c46 game_substate_inc USER_DEFINED 8
+F 00000c4e vdp_clear_all_and_bufs USER_DEFINED 50
+C 00000926
+C 000008c0
+C 0000085a
+C 000008f8
+C 00000cde
+C 00000d4c
+C 00000cd2
+C 00000cfa
+F 00000c80 game_state_dispatch_jump USER_DEFINED 14
+F 00000c8e snd_init_volume_7f USER_DEFINED 24
+C 00060000
+F 00000ca6 snd_set_value_if_changed USER_DEFINED 24
+C 00060000
+F 00000cbe snd_set_value_ff000c USER_DEFINED 20
+C 00060000
+F 00000cd2 game_wrapper_ace0 USER_DEFINED 12
+C 0000ace0
+F 00000cde mem_clear_obj_table_ff551e USER_DEFINED 28
+F 00000cfa mem_clear_six_small_tables USER_DEFINED 62
+F 00000d38 mem_clear_ff731e USER_DEFINED 20
+F 00000d4c mem_clear_ff4b0e USER_DEFINED 20
+F 00000d60 stage_load_table_ptrs_3 USER_DEFINED 30
+F 00000d9a stage_load_table_ptr_1 USER_DEFINED 26
+F 00000db4 game_substate_inc_db4 USER_DEFINED 10
+F 00000dbe txt_queue_4_words USER_DEFINED 130
+C 000010c2
+C 000010c2
+C 000010c2
+C 000010c2
+F 00000e40 txt_queue_1_word USER_DEFINED 86
+C 000010c2
+F 00000e96 txt_queue_2_words USER_DEFINED 116
+C 000010c2
+C 000010c2
+F 00000f0c txt_queue_string_a4 USER_DEFINED 106
+F 00000f76 txt_queue_string_2line USER_DEFINED 332
+F 000010c2 sys_nop_10c2 USER_DEFINED 24
+F 000010ea math_decimal_digits USER_DEFINED 54
+F 00001138 rng_seed_init USER_DEFINED 8
+F 00001140 rng_next USER_DEFINED 48
+F 00001170 sys_cmd_queue_push USER_DEFINED 62
+F 000011ae vdp_setup_mode_a USER_DEFINED 172
+F 0000125a vdp_setup_mode_b USER_DEFINED 172
+F 00001306 mem_init_list_ff01c8 USER_DEFINED 30
+F 000013c4 mem_list_append_word USER_DEFINED 12
+F 0000140c game_mode_set_5_140c USER_DEFINED 44
+F 00001438 game_substate_set_3_1438 USER_DEFINED 10
+F 000014b8 game_mode_set_6_14b8 USER_DEFINED 24
+F 000014d0 sys_nop_14d0 USER_DEFINED 2
+F 000014d2 title_init_screen_load USER_DEFINED 192
+C 0000083a
+C 000011ae
+C 00000c4e
+C 00000c8e
+C 00007678
+C 0000ad1c
+C 0000ad1c
+C 00000d60
+C 00000d9a
+C 0000a7e2
+C 0000a7e2
+C 0000b01e
+C 00000db4
+F 00001592 title_logo_update USER_DEFINED 202
+C 0000ad1c
+C 0000ad1c
+C 0000a9ee
+F 0000165c title_menu_dispatch_setup USER_DEFINED 252
+F 0000175c game_mode_set_5_175c USER_DEFINED 44
+F 00001788 stage_init_vars USER_DEFINED 128
+C 00000c8e
+C 000114fe
+C 000119ca
+C 00000db4
+F 00001808 stage_init_screen_load USER_DEFINED 198
+C 0000083a
+C 0000125a
+C 00000c4e
+C 0000b1a6
+C 0000de04
+C 0000d1ee
+C 000109b2
+C 0001104e
+C 000115a6
+C 0002a782
+C 0000a9ee
+C 00001138
+C 0000b01e
+F 000018ce stage_fade_in_wait USER_DEFINED 86
+C 00000db4
+C 0000081c
+C 00011b9c
+C 0000b660
+C 00007e40
+C 0000b05c
+F 00001924 stage_demo_loop_exit_on_start USER_DEFINED 158
+C 0000b660
+C 00011b9c
+C 000298f6
+C 00010472
+C 0002a782
+C 00007e40
+F 00001a28 intro_scene_script_init USER_DEFINED 98
+C 0001186c
+C 0000b1a6
+C 00000c8e
+C 00000db4
+F 00001a8a game_mode_set_5_1a8a USER_DEFINED 44
+F 00001aba intro_scene_load_layers USER_DEFINED 418
+C 0000083a
+C 000011ae
+C 00000c4e
+C 00007678
+C 0000ad1c
+C 0000ad1c
+C 0000ad1c
+C 00000d60
+C 00000d9a
+C 0000a7e2
+C 00000d60
+C 00000d9a
+C 0000a7e2
+C 00000d60
+C 00000d9a
+C 0000a7e2
+C 00000d60
+C 00000d9a
+C 0000a7e2
+C 00000d60
+C 00000d9a
+C 0000a7e2
+C 00000d60
+C 00000d9a
+C 0000a7e2
+C 0000b01e
+C 00000db4
+F 00001c5c intro_scene_script_update USER_DEFINED 350
+C 0000b2fe
+C 00011f92
+F 00001dbe game_mode_set_6_1dbe USER_DEFINED 68
+F 00001e02 game_substate_set_3_1e02 USER_DEFINED 10
+F 00001e0c game_mode_set_1_fade USER_DEFINED 34
+F 00001e2e intro_scene_update_fadein USER_DEFINED 276
+C 0000b2fe
+C 00011f92
+C 0000b05c
+F 00001f42 intro_scene_update_fadeout USER_DEFINED 274
+C 0000b2fe
+C 00011f92
+C 0000ae84
+F 00002054 script_cmd_spawn_actor USER_DEFINED 126
+C 0001186c
+C 0000b296
+F 000020d2 script_cmd_set_field_5d9e USER_DEFINED 30
+F 000020f0 script_cmd_set_field_5e1e USER_DEFINED 30
+F 0000210e script_cmd_set_delay USER_DEFINED 24
+F 00002128 script_cmd_alloc_until_2e USER_DEFINED 44
+C 0001186c
+C 0000b1a6
+F 00002154 script_cmd_fade_out_sub4 USER_DEFINED 26
+F 0000216e script_cmd_fade_in_1 USER_DEFINED 32
+C 0000081c
+F 0000218e script_cmd_fade_in_8 USER_DEFINED 32
+C 0000081c
+F 000021ae script_cmd_fade_out_sub1 USER_DEFINED 26
+F 000021c8 script_cmd_fadeA_sub8 USER_DEFINED 32
+C 0000a9ee
+F 000021e8 script_cmd_fadeB_sub8 USER_DEFINED 32
+C 0000a9ee
+F 00002208 script_cmd_substate_6 USER_DEFINED 10
+F 0000226c script_cmd_init_scroll_ptr USER_DEFINED 36
+F 00002290 script_cmd_call_a9ee USER_DEFINED 8
+C 0000a9ee
+F 00002298 script_cmd_set_scroll_xy USER_DEFINED 50
+F 000022ca script_cmd_set_snd_a USER_DEFINED 22
+C 00000ca6
+F 000022e0 script_cmd_set_snd_b USER_DEFINED 22
+C 00000cbe
+F 000022f6 script_cmd_set_obj_pos USER_DEFINED 36
+F 0000231a script_cmd_set_obj_flag_2000 USER_DEFINED 36
+F 00002978 game_mode_set_5_2978 USER_DEFINED 24
+F 00002b0c game_mode_set_6_2b0c USER_DEFINED 18
+F 00002b1e menu_wait_start_or_timeout USER_DEFINED 150
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000db4
+F 00002e64 game_mode_set_5_2e64 USER_DEFINED 18
+F 00002e76 game_substate_set_3_2e76 USER_DEFINED 10
+F 00002e80 game_set_substate_0x11 USER_DEFINED 18
+F 00002fa4 game_mode_set_6_2fa4 USER_DEFINED 18
+F 00002fb6 game_timer_then_fade USER_DEFINED 32
+C 00000db4
+F 00002ff0 game_mode_set_5_2ff0 USER_DEFINED 18
+F 00003100 game_mode_set_5_3100 USER_DEFINED 18
+F 00003210 game_mode_set_7_3210 USER_DEFINED 24
+F 00003378 obj_set_flags_player3 USER_DEFINED 14
+F 00003394 obj_set_flags_player2 USER_DEFINED 14
+F 000033a2 obj_select_slot_by_compare USER_DEFINED 74
+C 0000346c
+F 00003400 game_set_mode3_fade8 USER_DEFINED 38
+F 0000346c sys_nop_3494 DEFAULT 4
+F 00003494 sys_nop_3494 USER_DEFINED 2
+F 00003496 game_timer_then_snd_state11 USER_DEFINED 48
+C 00000ca6
+F 0000351c game_mode_set_5_351c USER_DEFINED 24
+F 00003688 game_mode_set_0xd_3688 USER_DEFINED 18
+F 000036d0 game_mode_set_5_36d0 USER_DEFINED 24
+F 000036e8 game_snd_init_substate8 USER_DEFINED 16
+C 00000c8e
+F 0000375c game_mode_set_5_375c USER_DEFINED 18
+F 000038cc game_mode_set_0xd_38cc USER_DEFINED 24
+F 00003914 game_mode_set_5_3914 USER_DEFINED 18
+F 00003926 game_inc_ff0138_substate_0x12 USER_DEFINED 16
+F 00003a0a game_select_ending_by_score USER_DEFINED 92
+F 00003bb8 game_set_ff0099_0x11 USER_DEFINED 10
+F 00003bc2 game_advance_stage_index USER_DEFINED 140
+F 000040c0 game_mode_set_5_40c0 USER_DEFINED 18
+F 0000436c game_mode_set_6_436c USER_DEFINED 18
+F 00004924 snd_menu_input_beep USER_DEFINED 114
+C 00060000
+C 00060000
+C 00060000
+C 00060000
+C 00060000
+F 00004996 sys_nop_4996 USER_DEFINED 2
+F 0000499a sys_nop_499a USER_DEFINED 2
+F 0000499c sys_nop_499c USER_DEFINED 2
+F 000049d8 game_mode_set_5_49d8 USER_DEFINED 18
+F 000049ea menu_password_init USER_DEFINED 328
+C 0000083a
+C 000011ae
+C 00000c4e
+C 00000c8e
+C 00007678
+C 00007678
+C 0000ad1c
+C 0000ad1c
+C 0000ad1c
+C 0000ad1c
+C 00000d60
+C 00000d9a
+C 0000a7e2
+C 0000a7e2
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 0000b01e
+C 00000db4
+F 00004b4c game_mode_set_6_4b4c USER_DEFINED 18
+F 00004c2c menu_password_input USER_DEFINED 478
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000db4
+F 000051d4 game_mode_set_5_51d4 USER_DEFINED 44
+F 00005200 menu_options_init USER_DEFINED 302
+C 0000083a
+C 0000125a
+C 00000c4e
+C 00000c8e
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000dbe
+C 00000dbe
+C 00000dbe
+C 00007678
+C 0000ace0
+C 0000b01e
+C 00000db4
+F 0000532e game_mode_set_6_532e USER_DEFINED 44
+F 0000535a menu_options_input_update USER_DEFINED 774
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00005692
+C 000056e6
+C 00000dbe
+C 00000f0c
+C 00005692
+C 000056e6
+C 00000dbe
+C 00000f0c
+C 00005692
+C 000056e6
+C 00000dbe
+C 00000f0c
+C 0000083a
+C 00000db4
+F 00005660 menu_options_init2 USER_DEFINED 28
+C 00007726
+C 0000ace0
+C 00000db4
+F 0000567e game_display_on_substate2 USER_DEFINED 16
+C 0000081c
+F 0000568e sys_nop_568e USER_DEFINED 2
+F 00005690 sys_nop_5690 USER_DEFINED 2
+F 00005692 sys_nop_5692 USER_DEFINED 84
+F 000056e6 sys_nop_56e6 USER_DEFINED 84
+F 000057ac game_mode_set_5_57ac USER_DEFINED 44
+F 000057da menu_viewer_init USER_DEFINED 298
+C 0000083a
+C 0000125a
+C 00000c4e
+C 00000c8e
+C 00007678
+C 00007726
+C 0000ace0
+C 00000f0c
+C 00000f0c
+C 00000dbe
+C 0000b01e
+C 0000d1ee
+F 00005904 game_mode_set_6_5904 USER_DEFINED 44
+F 00005930 menu_viewer_input USER_DEFINED 356
+C 00001170
+C 00001170
+C 00001170
+C 00001170
+C 00001170
+C 00001170
+C 00000dbe
+C 0000b2fe
+F 00005a94 sys_nop_5a94 USER_DEFINED 2
+F 00005a96 sys_nop_5a96 USER_DEFINED 2
+F 00005a98 sys_nop_5a98 USER_DEFINED 2
+F 00005a9a sys_nop_5a9a USER_DEFINED 2
+F 00005ad8 game_mode_set_5_5ad8 USER_DEFINED 50
+C 0000a9ee
+F 00005b0a game_continue_screen_init USER_DEFINED 452
+C 0000083a
+C 0000125a
+C 00000c4e
+C 00000c8e
+C 00007678
+C 00007726
+C 00007726
+C 0000ad1c
+C 0000ad1c
+C 0000ad1c
+C 0000ad1c
+C 00000d60
+C 00000d9a
+C 0000a7e2
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00005f30
+C 0001186c
+C 0000b296
+C 0000b01e
+C 00000db4
+F 00005cce game_continue_fade_wait USER_DEFINED 54
+C 00000ca6
+C 00000db4
+C 0000081c
+C 00011b9c
+C 0000b05c
+F 00005d04 game_continue_input USER_DEFINED 392
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000ca6
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000f0c
+C 00000ca6
+C 00000db4
+F 00005e8c game_continue_timer USER_DEFINED 94
+C 00000ca6
+C 00000db4
+C 00000ca6
+C 00000db4
+C 00011b9c
+F 00005eea game_mode_set_5_5eea USER_DEFINED 44
+F 00005f16 game_reset_to_mode0 USER_DEFINED 26
+F 00005f30 game_pick_stage_text_index USER_DEFINED 718
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+C 00006302
+F 00006302 txt_print_stage_string USER_DEFINED 80
+S SECOLQ
+
+S SORABV
+
+S HCTERG	
+C 00000f0c
+C 00000f0c
+F 000065c0 game_mode_set_5_65c0 USER_DEFINED 50
+C 0000a9ee
+F 000065f2 credits_screen_init USER_DEFINED 206
+C 0000083a
+C 000011ae
+C 00000c4e
+C 00000c8e
+C 00007678
+C 00007678
+C 00000d60
+C 00000d9a
+C 0000a7e2
+C 0000a7e2
+C 0000ad1c
+C 0000ad1c
+C 0000b01e
+C 00000db4
+F 000066c0 credits_fade_wait USER_DEFINED 48
+C 00000ca6
+C 00000db4
+C 0000081c
+C 0000b05c
+F 000066f0 credits_scroll_text_update USER_DEFINED 200
+C 00000db4
+S 
+Splatter House 3
+S 
+Splatter House 3
+C 00000f76
+S                                         
+C 00000f76
+F 000067b8 credits_wait_or_skip USER_DEFINED 88
+C 00000ca6
+C 00000db4
+C 00000ca6
+C 00000db4
+F 00006810 game_mode_set_5_6810 USER_DEFINED 44
+F 0000683c intro_text_init USER_DEFINED 314
+C 0000083a
+C 00000c4e
+C 00000c8e
+C 00007678
+C 0000ad1c
+C 0000ad1c
+S Thanks!!
+C 00000f76
+S Congratulations!!
+C 00000f76
+S Yes!!
+C 00000f76
+S By beating this setting you@ve
+C 00000f76
+S shown yourself to be a cut above
+C 00000f76
+S the majority of gamers,
+C 00000f76
+S Congratulations!!
+C 00000f76
+S There@s no stopping you!!
+C 00000f76
+S Welcome
+C 00000f76
+S to the elite league of players.
+C 00000f76
+C 0000b01e
+C 00000db4
+F 00006976 intro_text_init2 USER_DEFINED 196
+S Are you up
+C 00000f76
+S to the Game Master level?
+C 00000f76
+S KAL
+C 00000f76
+S Our games are made for you,
+C 00000f76
+S Game Master!!!!!
+C 00000f76
+S Rip@em up
+C 00000f76
+F 00006a3a intro_text_wait USER_DEFINED 64
+C 00000db4
+C 00000db4
+F 00006a7a game_mode_set_5_6a7a USER_DEFINED 44
+F 00006aa6 sys_soft_reset_main_loop USER_DEFINED 18
+C 000009da
+F 00007200 menu_stage_select_cursor_spawn USER_DEFINED 174
+C 00001170
+C 0001186c
+C 0000b1b8
+C 00000db4
+F 000072ae menu_stage_select_load_map USER_DEFINED 142
+C 0000ad1c
+C 00001170
+C 00000d60
+C 00000d9a
+C 0000a7e2
+C 00000d60
+C 00000d9a
+C 00000db4
+F 0000733c vdp_window_slide_up USER_DEFINED 56
+C 00000db4
+F 00007378 menu_stage_select_start_clear_objs USER_DEFINED 140
+C 0001186c
+C 0000b2aa
+C 0001186c
+C 0000b2aa
+C 00000db4
+C 0000b2fe
+F 00007404 vdp_window_slide_down USER_DEFINED 74
+F 0000749a vdp_copy_words_to_vram USER_DEFINED 92
+F 000074f6 dma_rom_to_vram USER_DEFINED 230
+C 0000749a
+F 00007676 sys_nop_7676 USER_DEFINED 2
+F 00007678 tile_load_set_list_a USER_DEFINED 174
+C 000078a8
+C 000078ba
+F 00007726 tile_load_set_list_b USER_DEFINED 174
+C 000078a8
+C 000078ba
+F 000077d4 tile_stream_queue_step USER_DEFINED 212
+F 000078a8 vdp_write_16_zero_words USER_DEFINED 18
+F 000078ba tile_decode_256_blocks USER_DEFINED 50
+C 000078ec
+F 000078ec tile_decode_block_masked USER_DEFINED 72
+F 000079bc spr_build_sprite_list USER_DEFINED 212
+C 00007a90
+F 00007a90 spr_build_obj_sprites USER_DEFINED 304
+F 00007bc0 vdp_upload_sprite_table_f400 USER_DEFINED 122
+F 00007c3a vdp_write_tile_block_from_table USER_DEFINED 146
+C 00007ccc
+F 00007ccc math_calc_vram_offset_xy USER_DEFINED 12
+F 00007cd8 vdp_flush_queue_plane_a USER_DEFINED 120
+F 00007d50 vdp_flush_queue_plane_b USER_DEFINED 120
+F 00007dc8 vdp_flush_queue_vram_6000 USER_DEFINED 120
+F 00007e40 tile_anim_update_slots USER_DEFINED 320
+F 00007f80 txt_queue_string_ptr_2line USER_DEFINED 368
+S                                        
+S                                        
+F 00008114 intro_script_load_ptr USER_DEFINED 88
+C 00000db4
+F 0000816c intro_script_print_line USER_DEFINED 104
+C 00007f80
+C 00000db4
+F 00008234 game_substate_from_ff0004 USER_DEFINED 12
+F 00008240 sys_nop_8240 USER_DEFINED 2
+F 0000846c game_substate_set_6_846c USER_DEFINED 10
+F 00008476 game_substate_inc_db4 DEFAULT 4
+F 0000847a game_call_ad1c_substate_0x10 USER_DEFINED 24
+C 0000ad1c
+F 00008492 game_substate_set_1_8492 USER_DEFINED 10
+F 0000849c game_restore_mode_substate USER_DEFINED 22
+F 000084b2 intro_wait_counter_8 USER_DEFINED 74
+C 0000ad1c
+C 00000db4
+C 0000ad1c
+F 000084fc intro_script_print_lines USER_DEFINED 132
+C 00007f80
+C 00000db4
+F 00008580 game_ad1c_x2_substate_1 USER_DEFINED 38
+C 0000ad1c
+C 0000ad1c
+F 000085a6 game_display_on_substate_inc USER_DEFINED 12
+C 0000081c
+C 00000db4
+F 000085c8 game_wrapper_b05c USER_DEFINED 8
+C 0000b05c
+F 000085e4 game_wrapper_ae84 USER_DEFINED 8
+C 0000ae84
+F 000085ec obj_slot0_apply_pos USER_DEFINED 46
+C 0000b2fe
+F 0000a6ba map_write_block_4x4 USER_DEFINED 220
+C 0000a796
+F 0000a796 vdp_calc_nametable_addr_cmd USER_DEFINED 76
+F 0000a7e2 map_draw_8x8_block_grid USER_DEFINED 234
+C 0000a6ba
+F 0000a8cc map_draw_grid_plane_a_0 USER_DEFINED 12
+F 0000a8d8 map_draw_grid_plane_b_0 USER_DEFINED 70
+C 0000a970
+F 0000a91e map_draw_grid_plane_a_c00 USER_DEFINED 12
+F 0000a92a map_draw_grid_plane_b_c00 USER_DEFINED 70
+C 0000a970
+F 0000a970 map_draw_block_rows USER_DEFINED 126
+C 0000a6ba
+F 0000a9ee pal_fade_state_clear USER_DEFINED 74
+F 0000aa38 pal_anim_script_update USER_DEFINED 668
+C 0000ad1c
+C 0000ad1c
+F 0000ace0 pal_load_all_from_table USER_DEFINED 60
+C 0000ad1c
+F 0000ad1c pal_load_16_to_buffer USER_DEFINED 116
+F 0000ad90 pal_upload_cram_flagged USER_DEFINED 244
+F 0000ae84 pal_fade_step_a USER_DEFINED 90
+C 0000aede
+F 0000aede sys_nop_aede USER_DEFINED 56
+F 0000af16 pal_fade_step_single USER_DEFINED 160
+C 0000aede
+F 0000afb6 pal_clear_fade_buffer USER_DEFINED 26
+F 0000b01e pal_fade_out_start USER_DEFINED 62
+F 0000b05c pal_fade_step_b USER_DEFINED 100
+F 0000b13c game_ptr_b13c_calls_081c_db4 USER_DEFINED 12
+C 0000081c
+C 00000db4
+F 0000b148 game_fade_wait_b_then_restore USER_DEFINED 40
+C 0000b05c
+F 0000b180 game_fade_wait_a_then_restore USER_DEFINED 38
+C 0000ae84
+F 0000b1a6 obj_order_list_clear USER_DEFINED 18
+F 0000b1b8 obj_order_list_insert USER_DEFINED 82
+F 0000b20a obj_order_list_sort USER_DEFINED 140
+F 0000b296 obj_order_list_find_end USER_DEFINED 20
+F 0000b2aa obj_order_list_remove USER_DEFINED 84
+F 0000b2fe player_anim_step_update USER_DEFINED 286
+C 0000b41c
+C 0000b41c
+C 0000b41c
+C 0000b41c
+C 0000b51a
+C 0000b41c
+C 0000b51a
+F 0000b41c player_anim_load_frame USER_DEFINED 254
+C 0000b51a
+F 0000b51a player_anim_load_sub_script USER_DEFINED 190
+C 000074f6
+F 0000b5d8 player_set_frame_from_table USER_DEFINED 64
+F 0000b628 player_anim_run_then_restore USER_DEFINED 40
+C 0000b660
+F 0000b660 player_state_update_main USER_DEFINED 4294
+C 0000d51a
+C 000122f6
+C 000122f6
+C 000122f6
+C 000122f6
+C 00000cbe
+C 00000cbe
+C 00000cbe
+C 00000cbe
+C 00000cbe
+C 00000cbe
+C 00000cbe
+C 000122f6
+C 0000c898
+C 000121b6
+C 000122f6
+C 00000cbe
+C 00000cbe
+C 000122f6
+C 0000c72e
+C 000122f6
+C 0000c9ec
+C 000122f6
+C 0000ca0c
+C 0000cf24
+C 0000cd46
+C 0000cc1c
+C 0000b2fe
+C 00001170
+C 00001170
+C 00001170
+C 0000d10c
+C 00012104
+C 00012104
+C 00012104
+C 00012104
+C 00000cbe
+C 00001170
+C 00012104
+C 00012104
+C 00012104
+C 00012104
+C 00012104
+C 0000ca0c
+F 0000c72e player_set_state_from_buttons USER_DEFINED 362
+C 00000cbe
+C 00000cbe
+C 00000cbe
+C 00000cbe
+F 0000c898 player_start_jump_or_special USER_DEFINED 340
+C 000122f6
+C 00000cbe
+C 000122f6
+C 00000cbe
+C 00012104
+F 0000c9ec player_jump_arc_init USER_DEFINED 32
+F 0000ca0c player_jump_arc_step USER_DEFINED 528
+F 0000cc1c player_land_ground_check USER_DEFINED 298
+C 00000cbe
+C 00000cbe
+C 00000cbe
+F 0000cd46 scroll_follow_player_horiz USER_DEFINED 478
+C 0000d0e4
+C 0002946a
+C 0002946a
+C 0002946a
+C 0002946a
+C 0000d0e4
+C 0000d0f8
+C 0000d0e4
+C 0000d0f8
+F 0000cf24 scroll_follow_player_clamped USER_DEFINED 448
+C 0000d0e4
+C 0000d0e4
+C 0000d0f8
+C 0000d0e4
+C 0000d0f8
+F 0000d0e4 scroll_player_x_on_screen USER_DEFINED 20
+F 0000d0f8 scroll_player_y_on_screen USER_DEFINED 20
+F 0000d10c obj_spawn_player_shot_by_facing USER_DEFINED 226
+C 0001186c
+C 0000b296
+F 0000d1ee player_init_stage_start USER_DEFINED 812
+C 00007726
+C 00007726
+C 00007726
+C 0000ad1c
+C 00010738
+C 00010738
+C 00010738
+C 00010738
+C 0000b2fe
+C 0000b296
+F 0000d51a pad_scripted_input_step USER_DEFINED 884
+C 00000ca6
+F 0000de04 stage_load_section_params USER_DEFINED 942
+C 00000d9a
+C 00007678
+C 0000ad1c
+C 00000d60
+C 0000a7e2
+C 0000a7e2
+C 0000a7e2
+C 0000a7e2
+C 0000a7e2
+C 0000a7e2
+C 00007678
+C 00000d60
+C 00000d9a
+C 0000a8cc
+C 00000d60
+C 00000d9a
+C 0000a91e
+C 00000d60
+C 00000d9a
+C 000298f6
+F 00010472 stage_scroll_lock_check USER_DEFINED 710
+C 00010c18
+C 000111f8
+C 00000ca6
+C 00001170
+C 00001170
+C 0001084a
+C 0000b296
+F 00010738 obj_spawn_marker_by_screen_edge USER_DEFINED 274
+C 0000b296
+F 0001084a obj_spawn_enemy_by_entry_side USER_DEFINED 360
+C 0001186c
+F 000109b2 stage_load_wave_spawn_list USER_DEFINED 514
+C 00010c50
+C 0000ad1c
+C 00010c50
+C 00010c50
+C 000119e6
+C 000119e6
+C 000119e6
+C 000119e6
+C 000119e6
+C 000119e6
+F 00010bb4 stage_spawn_run_and_save_ptr USER_DEFINED 100
+C 00010c50
+F 00010c18 stage_spawn_run_skip4 USER_DEFINED 56
+C 00010c50
+F 00010c50 stage_spawn_list_interpreter USER_DEFINED 1022
+C 00007726
+C 0000ad1c
+C 0000ad1c
+C 0000b296
+C 0001186c
+F 0001104e stage_spawn_scenery_objs USER_DEFINED 426
+C 00007726
+C 0000ad1c
+C 0000ad1c
+C 0000b296
+C 0001186c
+F 000111f8 obj_spawn_go_arrow USER_DEFINED 200
+C 0001186c
+C 0000b1b8
+F 000112c0 obj_spawn_item_drop USER_DEFINED 254
+C 0001186c
+C 0000b1b8
+C 00000cbe
+F 000114fe stage_load_static_objs USER_DEFINED 168
+C 00000d38
+C 00007726
+F 000115a6 obj_activate_static_in_view USER_DEFINED 350
+C 0001186c
+C 0000b296
+F 0001186c obj_slot_clear USER_DEFINED 350
+F 000119ca mem_clear_ff24ee_256b USER_DEFINED 28
+F 000119e6 sys_jmp_1140_119e6 USER_DEFINED 40
+C 00001140
+F 00011a0e mem_load_byte_tbl_d0 USER_DEFINED 14
+F 00011aaa obj_cull_update_all USER_DEFINED 242
+F 00011b9c obj_cull_update_all_11b9c USER_DEFINED 362
+C 00011d0e
+C 0000b20a
+F 00011d0e obj_update_anim_move_clamp USER_DEFINED 644
+C 000177c8
+C 00011f92
+C 00012042
+C 00022ffc
+C 000291ca
+C 0000b5d8
+C 0000b2fe
+F 00011f92 obj_apply_dir_offset_table USER_DEFINED 170
+F 00012042 obj_fall_arc_step USER_DEFINED 194
+F 00012104 obj_set_anim_script_ptr USER_DEFINED 178
+F 000121b6 player_input_combo_record USER_DEFINED 202
+C 00012280
+C 000122f6
+C 000122f6
+F 00012280 player_combo_match_check USER_DEFINED 118
+C 000122f6
+F 000122f6 player_combo_buffer_reset USER_DEFINED 58
+F 0001242e enemy_a_end_group_if_44 USER_DEFINED 12
+C 000174b8
+F 0001243a enemy_a_pick_hit_react_anim USER_DEFINED 22
+C 00017452
+F 0001245c enemy_a_set_dir_anim USER_DEFINED 26
+C 00017584
+C 000124dc
+F 0001247c enemy_a_pick_attack_anim USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 000124dc enemy_a_load_anim_rec USER_DEFINED 24
+C 000173be
+F 000124f4 enemy_a_sync_flag_0134 USER_DEFINED 102
+C 00012584
+C 000175ba
+F 00012578 enemy_a_clear_state_anim USER_DEFINED 12
+C 000173be
+F 00012584 rng_next DEFAULT 6
+C 00001140
+F 0001258a enemy_a_idle_wait_roll USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 00012762 enemy_a2_ai_update USER_DEFINED 344
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00029c8e
+C 00017584
+C 00017452
+F 00012932 enemy_a2_sync_flag_0134 USER_DEFINED 146
+C 000175ba
+C 000173be
+C 00001140
+F 000129c8 enemy_a2_idle_wait_roll USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 00012ba0 enemy_b_ai_update USER_DEFINED 300
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00017452
+F 00012cd8 enemy_b_set_dir_anim USER_DEFINED 26
+C 00017584
+C 00012d54
+F 00012cf8 enemy_b_pick_attack_anim USER_DEFINED 92
+C 00029e66
+C 0001755e
+F 00012d54 enemy_b_load_anim_rec USER_DEFINED 24
+C 000173be
+F 00012d6c enemy_b_sync_flag_0134 USER_DEFINED 102
+C 00012dfc
+C 000175ba
+F 00012df0 enemy_b_clear_state_anim USER_DEFINED 12
+C 000173be
+F 00012dfc rng_next DEFAULT 6
+C 00001140
+F 00012e02 enemy_b_idle_wait_roll USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 000138bc enemy_c_set_dir_anim USER_DEFINED 26
+C 00017584
+C 0001393c
+F 000138dc enemy_c_pick_attack_anim USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 0001393c enemy_c_load_anim_rec USER_DEFINED 24
+C 000173be
+F 00013954 enemy_c_sync_flag_0134 USER_DEFINED 118
+C 000139ea
+C 00001140
+C 000173be
+F 00013992 enemy_c_reset_ai_timer USER_DEFINED 28
+C 000175ba
+F 000139ea rng_next DEFAULT 6
+C 00001140
+F 000139f0 enemy_c_idle_wait_roll USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 00013bc8 enemy_c2_ai_update_13bc8 USER_DEFINED 8
+F 00013bd0 enemy_c2_ai_update USER_DEFINED 292
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00017452
+F 00013d00 enemy_c2_set_dir_anim USER_DEFINED 26
+C 00017584
+C 00013d80
+F 00013d20 enemy_c2_pick_attack_anim USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 00013d80 enemy_c2_load_anim_rec USER_DEFINED 24
+C 000173be
+F 00013d98 enemy_c2_sync_flag_0134 USER_DEFINED 118
+C 00013e2e
+C 00001140
+C 000173be
+F 00013dd6 enemy_c2_reset_ai_timer USER_DEFINED 28
+C 000175ba
+F 00013e2e rng_next DEFAULT 6
+C 00001140
+F 00013e34 enemy_c2_idle_wait_roll USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 0001400c enemy_d_ai_update_1400c USER_DEFINED 8
+F 00014014 enemy_d_ai_update USER_DEFINED 292
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00017452
+F 00014144 enemy_d_set_dir_anim USER_DEFINED 26
+C 00017584
+C 000141c4
+F 00014164 enemy_d_pick_attack_anim USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 000141c4 enemy_d_load_anim_rec USER_DEFINED 24
+C 000173be
+F 000141dc enemy_d_sync_flag_0134 USER_DEFINED 118
+C 00014272
+C 00001140
+C 000173be
+F 0001421a enemy_d_reset_ai_timer USER_DEFINED 28
+C 000175ba
+F 00014272 rng_next DEFAULT 6
+C 00001140
+F 00014278 enemy_d_idle_wait_roll USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 0001458c enemy_e_set_dir_anim USER_DEFINED 26
+C 00017584
+C 0001460c
+F 000145ac enemy_e_pick_attack_anim USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 0001460c enemy_e_load_anim_rec USER_DEFINED 24
+C 000173be
+F 00014624 enemy_e_sync_flag_0134 USER_DEFINED 118
+C 000146ba
+C 00001140
+C 000173be
+F 00014678 mem_store_d1_then_next USER_DEFINED 6
+C 000175ba
+F 0001467e rng_next DEFAULT 4
+F 000146ba rng_next DEFAULT 6
+C 00001140
+F 000146c0 enemy_e_idle_wait_roll USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 000149d4 enemy_f_set_dir_anim USER_DEFINED 50
+C 00017584
+C 000173be
+F 00014bd8 enemy_g_resume_script USER_DEFINED 18
+C 00019898
+F 00014bea enemy_g_script_start_anim USER_DEFINED 28
+F 00014c14 enemy_g_resume_script_14c14 USER_DEFINED 18
+C 00019898
+F 00014c26 enemy_ai_next_anim_lane_pick DEFAULT 4
+F 00014c2a enemy_g_pause_timer_idle USER_DEFINED 44
+C 000173be
+F 00014fc4 enemy_h_clear_state_anim USER_DEFINED 12
+C 000173be
+F 00015098 enemy_h_resume_script DEFAULT 4
+F 0001509c enemy_h_set_script_2cfd6 USER_DEFINED 10
+F 000150a6 enemy_h_resume_script USER_DEFINED 18
+C 00019898
+F 000150b8 enemy_h_script_start_anim USER_DEFINED 14
+F 000150d4 enemy_h_resume_script_150e2 DEFAULT 4
+F 000150d8 enemy_h_set_script_2d008 USER_DEFINED 10
+F 000150e2 enemy_h_resume_script_150e2 USER_DEFINED 18
+C 00019898
+F 000150f4 enemy_ai_next_anim_lane_pick DEFAULT 4
+F 000150f8 enemy_h_pause_timer_idle USER_DEFINED 44
+C 000173be
+F 00015370 enemy_aiA_facing_then_step USER_DEFINED 26
+C 00017584
+C 000153f0
+F 00015390 enemy_aiA_hit_react USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 000153f0 enemy_aiA_set_anim_a0 USER_DEFINED 24
+C 000173be
+F 00015408 enemy_aiA_token_claim USER_DEFINED 118
+C 000154e2
+C 00001140
+C 000173be
+F 0001547c enemy_aiA_run_script DEFAULT 4
+F 00015480 enemy_aiA_set_script_2d1a2 USER_DEFINED 10
+F 0001548a enemy_aiA_run_script USER_DEFINED 24
+C 00019898
+F 000154a2 enemy_ai_next_anim_lane_pick DEFAULT 4
+F 000154e2 rng_next DEFAULT 6
+C 00001140
+F 000154e8 enemy_aiA_attack_branch USER_DEFINED 194
+C 000175ba
+C 000175ba
+F 000155b8 enemy_aiA_run_script_155b8 USER_DEFINED 18
+C 00019898
+F 000155ca enemy_aiA_pick_grab_or_anim USER_DEFINED 28
+F 000155f4 enemy_aiA_run_script_155f4 USER_DEFINED 18
+C 00019898
+F 00015606 enemy_ai_next_anim_lane_pick DEFAULT 4
+F 0001560a enemy_aiA_idle_wait_set USER_DEFINED 44
+C 000173be
+F 0001575a enemy_aiB_tick USER_DEFINED 294
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00017452
+F 0001588c enemy_aiB_face_then_step USER_DEFINED 26
+C 00017584
+C 0001590c
+F 000158ac enemy_aiB_hit_react USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 0001590c enemy_aiB_set_anim_a0 USER_DEFINED 24
+C 000173be
+F 00015924 enemy_aiB_token_claim USER_DEFINED 118
+C 000159ba
+C 00001140
+C 000173be
+F 00015962 enemy_aiB_clear_1b01_next_anim USER_DEFINED 28
+C 000175ba
+F 000159ba rng_next DEFAULT 6
+C 00001140
+F 000159c0 enemy_aiB_attack_branch USER_DEFINED 194
+C 000175ba
+C 000175ba
+F 00015a90 enemy_aiB_run_script_15a90 USER_DEFINED 18
+C 00019898
+F 00015aa2 enemy_aiB_pick_grab_or_anim USER_DEFINED 28
+F 00015acc enemy_aiB_run_script_15acc USER_DEFINED 18
+C 00019898
+F 00015ade enemy_ai_next_anim_lane_pick DEFAULT 4
+F 00015ae2 enemy_aiB_idle_wait_set USER_DEFINED 44
+C 000173be
+F 00015e7c enemy_aiC_clear_9a_step USER_DEFINED 12
+C 000173be
+F 00015f50 enemy_aiC_run_script DEFAULT 4
+F 00015f54 enemy_aiC_set_script_2d384 USER_DEFINED 10
+F 00015f5e enemy_aiC_run_script USER_DEFINED 18
+C 00019898
+F 00015f70 enemy_aiC_pick_grab_or_anim USER_DEFINED 14
+F 00015f8c enemy_aiC_run_script_15f9a DEFAULT 4
+F 00015f90 enemy_aiC_set_script_2d3b8 USER_DEFINED 10
+F 00015f9a enemy_aiC_run_script_15f9a USER_DEFINED 18
+C 00019898
+F 00015fac enemy_ai_next_anim_lane_pick DEFAULT 4
+F 00015fb0 enemy_aiC_idle_wait_set USER_DEFINED 44
+C 000173be
+F 000160f8 enemy_aiD_tick USER_DEFINED 262
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+F 00016200 enemy_aiD_bset_then_return USER_DEFINED 6
+C 000174b8
+F 00016206 enemy_aiD_hit_react_full USER_DEFINED 22
+C 00017452
+F 00016228 enemy_aiD_face_then_step USER_DEFINED 26
+C 00017584
+C 000162a8
+F 00016248 enemy_aiD_hit_react USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 000162a8 enemy_aiD_set_anim_a0 USER_DEFINED 24
+C 000173be
+F 000162c0 enemy_aiD_token_claim USER_DEFINED 118
+C 0001639a
+C 00001140
+C 000173be
+F 000162fe enemy_aiD_pick_grab_or_anim USER_DEFINED 40
+F 00016334 enemy_aiD_run_script DEFAULT 4
+F 00016338 enemy_aiD_set_script_2d50a USER_DEFINED 10
+F 00016342 enemy_aiD_run_script USER_DEFINED 24
+C 00019898
+F 0001635a enemy_ai_next_anim_lane_pick DEFAULT 4
+F 0001639a rng_next DEFAULT 6
+C 00001140
+F 000163a0 enemy_aiD_attack_branch USER_DEFINED 172
+C 00016418
+C 00016418
+C 000175ba
+F 00016418 enemy_aiD_next_anim_16418 USER_DEFINED 22
+C 000175ba
+F 00016470 enemy_aiD_run_script_16470 USER_DEFINED 18
+C 00019898
+F 00016482 enemy_aiD_pick_grab_or_anim_16482 USER_DEFINED 28
+F 000164ac enemy_aiD_run_script_164ac USER_DEFINED 18
+C 00019898
+F 000164be enemy_ai_next_anim_lane_pick DEFAULT 4
+F 000164c2 enemy_aiD_idle_wait_set USER_DEFINED 44
+C 000173be
+F 00016600 enemy_aiE_tick USER_DEFINED 594
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00029c8e
+C 00017584
+C 00017452
+C 00029e66
+C 000174b8
+C 0001755e
+C 000173be
+C 000168b6
+C 00001140
+C 000173be
+F 0001681a enemy_aiE_pick_grab_or_anim USER_DEFINED 40
+F 00016850 enemy_aiE_run_script DEFAULT 4
+F 00016854 enemy_aiE_set_script_2d660 USER_DEFINED 10
+F 0001685e enemy_aiE_run_script USER_DEFINED 24
+C 00019898
+F 00016876 enemy_ai_next_anim_lane_pick DEFAULT 4
+F 000168b6 rng_next DEFAULT 6
+C 00001140
+F 000168bc enemy_aiE_attack_branch USER_DEFINED 334
+C 000175ba
+C 000175ba
+C 00019898
+C 00019898
+C 000175ba
+C 000173be
+F 00016b2e enemy_aiF_tick USER_DEFINED 294
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00017452
+F 00016c60 enemy_aiF_face_then_step USER_DEFINED 26
+C 00017584
+C 00016ce0
+F 00016c80 enemy_aiF_hit_react USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 00016ce0 enemy_aiF_set_anim_a0 USER_DEFINED 24
+C 000173be
+F 00016cf8 enemy_aiF_token_claim USER_DEFINED 118
+C 00016d8e
+C 00001140
+C 000173be
+F 00016d36 enemy_aiF_clear_1b01_next_anim USER_DEFINED 28
+C 000175ba
+F 00016d8e rng_next DEFAULT 6
+C 00001140
+F 00016d94 enemy_aiF_attack_branch USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 00016f78 enemy_ai_assign_tokens_16f78 USER_DEFINED 36
+F 00016f9c enemy_ai_assign_tokens USER_DEFINED 252
+C 00029b8e
+C 0001716c
+C 00001140
+F 00017098 enemy_ai_pick_attacker_of3 USER_DEFINED 58
+C 000171c6
+C 00001140
+F 000170d2 enemy_ai_pick_attacker_of2 USER_DEFINED 52
+C 000171c6
+C 00001140
+F 00017106 enemy_ai_pick_attacker_of1 USER_DEFINED 60
+C 000171c6
+C 00001140
+C 0001726e
+F 0001716c enemy_ai_update_target_tile USER_DEFINED 90
+F 000171c6 enemy_ai_grant_attack_token USER_DEFINED 168
+F 0001726e enemy_ai_surround_flag_update USER_DEFINED 192
+F 000173be obj_anim_apply_flip_run USER_DEFINED 98
+C 00019898
+C 00019898
+C 00019898
+C 00019898
+F 00017420 enemy_ai_hurt_stagger_check USER_DEFINED 20
+C 00017452
+C 000173be
+F 00017434 enemy_ai_hurt_stagger USER_DEFINED 30
+C 000173be
+F 00017452 enemy_ai_set_face_9d USER_DEFINED 28
+F 0001746e enemy_ai_idle_face_player USER_DEFINED 10
+F 00017478 enemy_ai_walk_state_10 USER_DEFINED 60
+C 000173be
+C 000173be
+F 000174b8 enemy_ai_resume_script_step USER_DEFINED 42
+C 00001140
+F 0001755e enemy_ai_clear_token_resume USER_DEFINED 38
+C 000173be
+F 00017584 enemy_ai_apply_anim_step_flag4 USER_DEFINED 54
+C 000173be
+F 000175ba enemy_ai_next_anim_lane_pick USER_DEFINED 150
+C 00017650
+C 00017650
+C 000173be
+F 00017650 enemy_ai_lane_occupancy_map USER_DEFINED 258
+C 00017752
+F 00017752 enemy_ai_find_free_lane USER_DEFINED 86
+F 000177c8 script_op_call_0c80 USER_DEFINED 682
+C 00000c80
+C 00019898
+F 00017a72 script_op_set_9d_byte USER_DEFINED 36
+C 00019898
+F 00017a96 script_op_set_9c_byte USER_DEFINED 36
+C 00019898
+F 00017aba script_op_set_obj_901 USER_DEFINED 34
+C 00019898
+F 00017adc script_op_set_9a_frame USER_DEFINED 40
+C 00019898
+F 00017b04 script_op_set_obj_580_pair USER_DEFINED 40
+C 00019898
+F 00017b54 script_op_skip4_clear_1480 DEFAULT 4
+F 00017b58 script_op_wait_counter USER_DEFINED 44
+C 00017b86
+C 00017b86
+F 00017b86 script_op_skip4_clear_1480 USER_DEFINED 16
+C 00019898
+F 00017bd8 script_op_nop_skip2_17bd8 USER_DEFINED 18
+C 00019898
+F 00017c2c script_op_nop_skip2_17c2c USER_DEFINED 18
+C 00019898
+F 00017c6c script_op_nop_skip2_17c6c USER_DEFINED 18
+C 00019898
+F 00017c7e script_op_set_facing_from_flip USER_DEFINED 74
+C 00019898
+F 00017cc8 script_op_set_anim_table USER_DEFINED 72
+C 00019898
+F 00017d10 script_op_set_9a_hi_if_anim_end USER_DEFINED 46
+C 00019898
+F 00017d3e script_op_set_pos_offset_flip USER_DEFINED 106
+C 00019898
+F 00017da8 script_op_wait_until_00a0_bit25 USER_DEFINED 34
+C 00019898
+F 00017dca script_op_set_flag_100 USER_DEFINED 26
+C 00019898
+F 00017de4 script_op_clear_flag_100 USER_DEFINED 26
+C 00019898
+F 00017dfe script_op_jump_abs USER_DEFINED 36
+C 00019898
+F 00017e22 script_op_clear_flag_1 USER_DEFINED 26
+C 00019898
+F 00018000 script_op_skip4_18000 USER_DEFINED 26
+C 00019898
+F 0001801a script_op_goto_saved_1300 USER_DEFINED 24
+C 00019898
+F 00018032 script_op_wait_hit_frames USER_DEFINED 172
+C 00012104
+C 00019898
+F 000180de script_op_copy_parent_pos USER_DEFINED 52
+C 00019898
+F 000182a0 script_op_write_byte_term USER_DEFINED 28
+C 00019898
+F 000182c0 script_op_remove_from_list_set_380 USER_DEFINED 162
+C 00019898
+F 00018362 script_op_end_object USER_DEFINED 64
+C 0000b2aa
+C 00010bb4
+C 00019898
+F 000183a2 script_op_spawn_object_a USER_DEFINED 220
+C 0001186c
+C 0000b296
+C 00019898
+F 0001847e script_op_grab_player_if_close USER_DEFINED 122
+C 00029b8e
+C 00019898
+F 00018560 script_return_stub_19898 DEFAULT 4
+F 00018564 script_op_spawn_object_b USER_DEFINED 238
+C 0001186c
+C 0000b296
+C 00019898
+F 00018652 script_op_set_x_from_screen USER_DEFINED 68
+C 00019898
+F 00018696 script_op_turn_toward_player USER_DEFINED 282
+C 00029b8e
+C 00019898
+F 000187b8 script_op_branch_if_dist_le USER_DEFINED 100
+C 00029b8e
+C 00019898
+F 0001881c script_op_flip_facing USER_DEFINED 48
+C 00019898
+F 0001884c script_op_branch_if_dist_xy USER_DEFINED 156
+C 00029b8e
+C 00019898
+F 000188e8 script_op_branch_if_hp_gt USER_DEFINED 60
+C 00019898
+F 00018924 script_op_goto_table_script USER_DEFINED 108
+C 00019898
+F 00018990 script_op_morph_self_from_args USER_DEFINED 142
+C 0001186c
+C 00019898
+F 00018a1e script_op_set_flag_2000 USER_DEFINED 40
+C 00019898
+F 00018a46 script_op_clear_flag_2000 USER_DEFINED 24
+C 00019898
+F 00018a5e script_op_call_subscript USER_DEFINED 34
+C 00019898
+F 00018a80 script_op_return_subscript USER_DEFINED 34
+C 00019898
+F 00018b10 script_op_end_attack_reset USER_DEFINED 58
+C 00012104
+C 00018bd4
+F 00018b90 script_op_end_attack_reset_set_980 USER_DEFINED 62
+C 00012104
+C 00018bd4
+F 00018bd4 script_return_stub_19898 DEFAULT 12
+C 00019898
+F 00018be0 script_op_loop_until_hit_frames USER_DEFINED 134
+C 00012104
+C 00019898
+F 00018c66 script_op_call_0ca6 USER_DEFINED 38
+C 00000ca6
+C 00019898
+F 00018c8c script_op_call_0ca6_if_slot_active USER_DEFINED 74
+C 00000ca6
+C 00019898
+F 00018cd6 script_op_call_0cbe USER_DEFINED 38
+C 00000cbe
+C 00019898
+F 00018cfc script_op_set_pos_from_table_flip USER_DEFINED 134
+C 00019898
+F 00018d82 script_op_call_1170 USER_DEFINED 38
+C 00001170
+C 00019898
+F 00018da8 script_op_set_2242_arg USER_DEFINED 56
+C 00019898
+F 00018e04 script_op_copy_z_from_a2 USER_DEFINED 22
+C 00019898
+F 00019270 script_op_spawn_object_c USER_DEFINED 112
+C 0000b296
+C 00019898
+F 000192e0 script_op_spawn_object_d USER_DEFINED 272
+C 0001186c
+C 0000b296
+C 00019898
+F 000193f0 script_op_branch_if_dist_gt USER_DEFINED 90
+C 00029d7a
+C 00019898
+F 00019514 script_op_nop_skip2_19514 USER_DEFINED 18
+C 00019898
+F 00019526 script_op_branch_on_input_bits USER_DEFINED 90
+C 00019898
+F 000195a8 script_op_skip4_clear_1480 DEFAULT 4
+F 000195ac script_op_wait_counter_input USER_DEFINED 66
+C 00017b86
+C 00017b86
+C 00017b86
+F 000195ee script_op_gate_dist_input USER_DEFINED 42
+C 00029b8e
+C 00001140
+C 00001140
+F 00019640 script_op_branch_if_d0_lt USER_DEFINED 62
+C 00019898
+F 0001967e script_op_wait_hit_frames_b USER_DEFINED 108
+C 00012104
+C 00019898
+F 00019898 script_return_stub_19898 USER_DEFINED 6
+F 0001989e math_remap_facing_by_tables USER_DEFINED 82
+F 00019b42 enemy_aiG_tick USER_DEFINED 250
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00017452
+F 00019c48 enemy_aiG_face_then_step USER_DEFINED 26
+C 00017584
+C 00019cc8
+F 00019c68 enemy_aiG_hit_react USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 00019cc8 enemy_aiG_set_anim_a0 USER_DEFINED 24
+C 000173be
+F 00019ce0 enemy_aiG_token_claim USER_DEFINED 118
+C 00019d76
+C 00001140
+C 000173be
+F 00019d1e enemy_aiG_clear_1b01_next_anim USER_DEFINED 28
+C 000175ba
+F 00019d76 rng_next DEFAULT 6
+C 00001140
+F 00019d7c enemy_aiG_attack_branch USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 00019f58 enemy_aiH_tick USER_DEFINED 8
+F 00019f60 enemy_ai_tick_19f60 USER_DEFINED 300
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00017452
+F 0001a098 enemy_set_dir_then_frame_1a098 USER_DEFINED 26
+C 00017584
+C 0001a118
+F 0001a0b8 enemy_pick_attack_script_1a0b8 USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 0001a118 enemy_apply_anim_frame_1a118 USER_DEFINED 24
+C 000173be
+F 0001a130 enemy_sync_flag_check_1a130 USER_DEFINED 118
+C 0001a1c6
+C 00001140
+C 000173be
+F 0001a16e enemy_clear_substate_next_1a16e USER_DEFINED 28
+C 000175ba
+F 0001a1c6 rng_next DEFAULT 6
+C 00001140
+F 0001a1cc enemy_hit_reaction_branch_1a1cc USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 0001a3b0 enemy_ai_tick_1a3b0 USER_DEFINED 292
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00017452
+F 0001a4e0 enemy_set_dir_then_frame_1a4e0 USER_DEFINED 26
+C 00017584
+C 0001a560
+F 0001a500 enemy_pick_attack_script_1a500 USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 0001a560 enemy_apply_anim_frame_1a560 USER_DEFINED 24
+C 000173be
+F 0001a578 enemy_sync_flag_check_1a578 USER_DEFINED 80
+C 0001a650
+C 00001140
+F 0001a5c4 enemy_clear_substate_next_1a5c4 USER_DEFINED 22
+C 000175ba
+F 0001a5fc enemy_set_script_from_ff0128_1a5fc USER_DEFINED 24
+C 00019898
+F 0001a614 rng_next DEFAULT 4
+F 0001a644 enemy_clear_anim_frame_1a644 USER_DEFINED 12
+C 000173be
+F 0001a650 rng_next DEFAULT 6
+C 00001140
+F 0001a656 enemy_hit_reaction_branch_1a656 USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 0001a832 enemy_ai_tick_1a832 USER_DEFINED 580
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00029c8e
+C 00017584
+C 00017452
+C 0001ab2a
+C 00029e66
+C 000174b8
+C 0001755e
+C 000173be
+C 0001aa96
+C 00001140
+C 000173be
+F 0001aa3e enemy_clear_substate_next_1aa3e USER_DEFINED 28
+C 000175ba
+F 0001aa96 rng_next DEFAULT 6
+C 00001140
+F 0001aa9c enemy_hit_reaction_script_load_1aa9c USER_DEFINED 80
+C 000175ba
+F 0001aabc enemy_jmp_next_step_1aabc USER_DEFINED 6
+C 0001ab14
+F 0001aac2 enemy_reaction_pick_1aac2 USER_DEFINED 20
+C 0001ab14
+F 0001ab14 enemy_next_script_step_1ab14 USER_DEFINED 22
+C 000175ba
+F 0001ab2a enemy_pick_script_from_table_1ab2a USER_DEFINED 52
+F 0001ab6c enemy_set_script_from_ff0128_1ab6c USER_DEFINED 18
+C 00019898
+F 0001ab7e enemy_load_script_frame_1ab7e USER_DEFINED 28
+F 0001aba8 enemy_set_script_from_ff0128_1aba8 USER_DEFINED 18
+C 00019898
+F 0001abba enemy_ai_next_anim_lane_pick DEFAULT 4
+F 0001abbe enemy_set_wait_delay_1abbe USER_DEFINED 82
+C 00019898
+C 000173be
+F 0001ac10 enemy_ai_tick_1ac10 USER_DEFINED 256
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00017452
+F 0001ad1c enemy_set_dir_then_frame_1ad1c USER_DEFINED 26
+C 00017584
+C 0001ad9c
+F 0001ad3c enemy_pick_attack_script_1ad3c USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 0001ad9c enemy_apply_anim_frame_1ad9c USER_DEFINED 24
+C 000173be
+F 0001adb4 enemy_sync_flag_check_1adb4 USER_DEFINED 118
+C 0001ae4a
+C 00001140
+C 000173be
+F 0001adf2 enemy_clear_substate_next_1adf2 USER_DEFINED 28
+C 000175ba
+F 0001ae4a rng_next DEFAULT 6
+C 00001140
+F 0001ae50 enemy_hit_reaction_branch_1ae50 USER_DEFINED 194
+C 000175ba
+C 000175ba
+F 0001af20 enemy_set_script_from_ff0128_1af20 USER_DEFINED 18
+C 00019898
+F 0001af32 enemy_load_script_frame_1af32 USER_DEFINED 28
+F 0001af5c enemy_set_script_from_ff0128_1af5c USER_DEFINED 18
+C 00019898
+F 0001af6e enemy_ai_next_anim_lane_pick DEFAULT 4
+F 0001af72 enemy_set_wait_delay_1af72 USER_DEFINED 90
+C 00000cbe
+C 00019898
+C 000173be
+F 0001b358 enemy_state_lt2_or_apply_1b358 USER_DEFINED 44
+C 00017584
+C 000173be
+F 0001b474 enemy_clear_anim_frame_1b474 USER_DEFINED 12
+C 000173be
+F 0001b548 enemy_set_script_from_ff0128_1b556 DEFAULT 4
+F 0001b54c enemy_set_script_2dac0_1b54c USER_DEFINED 10
+F 0001b556 enemy_set_script_from_ff0128_1b556 USER_DEFINED 18
+C 00019898
+F 0001b568 enemy_load_script_frame_1b568 USER_DEFINED 14
+F 0001b584 enemy_set_script_from_ff0128_1b592 DEFAULT 4
+F 0001b588 enemy_set_script_2daea_1b588 USER_DEFINED 10
+F 0001b592 enemy_set_script_from_ff0128_1b592 USER_DEFINED 18
+C 00019898
+F 0001b5a4 enemy_ai_next_anim_lane_pick DEFAULT 4
+F 0001b5a8 enemy_set_wait_delay_1b5a8 USER_DEFINED 82
+C 00019898
+C 000173be
+F 0001b784 enemy_apply_anim_frame_1b784 USER_DEFINED 26
+C 000173be
+F 0001b828 enemy_clear_anim_frame_1b828 USER_DEFINED 12
+C 000173be
+F 0001b8fc enemy_set_script_from_ff0128_1b90a DEFAULT 4
+F 0001b900 enemy_set_script_2dac0_1b900 USER_DEFINED 10
+F 0001b90a enemy_set_script_from_ff0128_1b90a USER_DEFINED 18
+C 00019898
+F 0001b91c enemy_load_script_frame_1b91c USER_DEFINED 14
+F 0001b938 enemy_set_script_from_ff0128_1b946 DEFAULT 4
+F 0001b93c enemy_set_script_2daea_1b93c USER_DEFINED 10
+F 0001b946 enemy_set_script_from_ff0128_1b946 USER_DEFINED 18
+C 00019898
+F 0001b958 enemy_ai_next_anim_lane_pick DEFAULT 4
+F 0001b95c enemy_set_wait_delay_1b95c USER_DEFINED 90
+C 00000cbe
+C 00019898
+C 000173be
+F 0001bf6c enemy_set_script_from_ff0128_1bf6c USER_DEFINED 18
+C 00019898
+F 0001bf7e enemy_load_script_frame_1bf7e USER_DEFINED 28
+F 0001bfa8 enemy_set_script_from_ff0128_1bfa8 USER_DEFINED 18
+C 00019898
+F 0001bfba enemy_ai_next_anim_lane_pick DEFAULT 4
+F 0001bfbe enemy_set_wait_delay_1bfbe USER_DEFINED 82
+C 00019898
+C 000173be
+F 0001c010 enemy_ai_tick_1c010 USER_DEFINED 256
+C 000173be
+C 00016f9c
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00017452
+F 0001c11c enemy_set_dir_then_frame_1c11c USER_DEFINED 26
+C 00017584
+C 0001c19c
+F 0001c13c enemy_pick_attack_script_1c13c USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 0001c19c enemy_apply_anim_frame_1c19c USER_DEFINED 24
+C 000173be
+F 0001c1b4 enemy_sync_flag_check_1c1b4 USER_DEFINED 118
+C 0001c24a
+C 00001140
+C 000173be
+F 0001c1f2 enemy_clear_substate_next_1c1f2 USER_DEFINED 28
+C 000175ba
+F 0001c24a rng_next DEFAULT 6
+C 00001140
+F 0001c250 enemy_hit_reaction_branch_1c250 USER_DEFINED 194
+C 000175ba
+C 000175ba
+F 0001c320 enemy_set_script_from_ff0128_1c320 USER_DEFINED 18
+C 00019898
+F 0001c332 enemy_load_script_frame_1c332 USER_DEFINED 28
+F 0001c35c enemy_set_script_from_ff0128_1c35c USER_DEFINED 18
+C 00019898
+F 0001c36e enemy_ai_next_anim_lane_pick DEFAULT 4
+F 0001c372 enemy_set_wait_delay_1c372 USER_DEFINED 90
+C 00000cbe
+C 00019898
+C 000173be
+F 0001c7b8 enemy_set_dir_then_frame_1c7b8 USER_DEFINED 26
+C 00017584
+C 0001c838
+F 0001c7d8 enemy_pick_attack_script_1c7d8 USER_DEFINED 96
+C 00029e66
+C 000174b8
+C 0001755e
+F 0001c838 enemy_apply_anim_frame_1c838 USER_DEFINED 24
+C 000173be
+F 0001c850 enemy_sync_flag_check_1c850 USER_DEFINED 156
+C 000175ba
+C 000173be
+C 00001140
+F 0001c8f0 enemy_hit_reaction_branch_1c8f0 USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 0001cc08 enemy_state_lt3_or_apply_1cc08 USER_DEFINED 16
+C 00017584
+C 0001cc54
+F 0001cc18 enemy_special_script_2ddb0_1cc18 USER_DEFINED 60
+C 00019898
+F 0001cc54 enemy_apply_anim_frame_1ccc2 DEFAULT 4
+F 0001cc5e enemy_apply_anim_frame_1ccc2 DEFAULT 4
+F 0001ccc2 enemy_apply_anim_frame_1ccc2 USER_DEFINED 24
+C 000173be
+F 0001cd64 enemy_clear_anim_frame_1cd64 USER_DEFINED 12
+C 000173be
+F 0001ce38 enemy_set_script_from_ff0128_1ce46 DEFAULT 4
+F 0001ce3c enemy_set_script_2dd7a_1ce3c USER_DEFINED 10
+F 0001ce46 enemy_set_script_from_ff0128_1ce46 USER_DEFINED 18
+C 00019898
+F 0001ce58 enemy_load_script_frame_1ce58 USER_DEFINED 14
+F 0001ce74 enemy_set_script_from_ff0128_1ce82 DEFAULT 4
+F 0001ce78 enemy_set_script_2dd94_1ce78 USER_DEFINED 10
+F 0001ce82 enemy_set_script_from_ff0128_1ce82 USER_DEFINED 18
+C 00019898
+F 0001ce94 enemy_ai_next_anim_lane_pick DEFAULT 4
+F 0001ce98 enemy_set_idle_delay_1ce98 USER_DEFINED 44
+C 000173be
+F 0001d066 enemy_ai_tick_1d066 USER_DEFINED 508
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00029c8e
+C 00017584
+C 00017452
+C 00029e66
+C 000174b8
+C 0001755e
+C 000173be
+C 0001d282
+C 00001140
+C 000173be
+F 0001d22a enemy_clear_substate_next_1d22a USER_DEFINED 28
+C 000175ba
+F 0001d282 rng_next DEFAULT 6
+C 00001140
+F 0001d288 enemy_hit_reaction_branch_1d288 USER_DEFINED 212
+C 000175ba
+C 000175ba
+C 000175ba
+C 000173be
+F 0001d4f2 enemy_ai_tick_1d4f2 USER_DEFINED 508
+C 00017420
+C 00017434
+C 0001746e
+C 00017478
+C 0001746e
+C 00017478
+C 000174b8
+C 00029c8e
+C 00017584
+C 00017452
+C 00029e66
+C 000174b8
+C 0001755e
+C 000173be
+C 0001d70e
+C 00001140
+C 000173be
+F 0001d6b6 enemy_clear_substate_next_1d6b6 USER_DEFINED 28
+C 000175ba
+F 0001d70e rng_next DEFAULT 6
+C 00001140
+F 0001d714 enemy_hit_reaction_branch_1d714 USER_DEFINED 194
+C 000175ba
+C 000175ba
+F 0001d7e4 enemy_set_script_from_ff0128_1d7e4 USER_DEFINED 18
+C 00019898
+F 0001d7f6 enemy_load_script_frame_1d7f6 USER_DEFINED 28
+F 0001d820 enemy_set_script_from_ff0128_1d820 USER_DEFINED 18
+C 00019898
+F 0001d832 enemy_ai_next_anim_lane_pick DEFAULT 4
+F 0001d836 enemy_set_idle_delay_1d836 USER_DEFINED 44
+C 000173be
+F 0001dacc enemy_state_lt3_or_apply_1dacc USER_DEFINED 16
+C 00017584
+C 0001db20
+F 0001dadc enemy_special_script_2e0de_1dadc USER_DEFINED 68
+C 00019898
+F 0001db20 enemy_apply_anim_frame_1db8e DEFAULT 4
+F 0001db2a enemy_apply_anim_frame_1db8e DEFAULT 4
+F 0001db8e enemy_apply_anim_frame_1db8e USER_DEFINED 24
+C 000173be
+F 0001dc30 enemy_clear_anim_frame_1dc30 USER_DEFINED 12
+C 000173be
+F 0001dd04 enemy_set_script_from_ff0128_1dd12 DEFAULT 4
+F 0001dd08 enemy_set_script_2e0a8_1dd08 USER_DEFINED 10
+F 0001dd12 enemy_set_script_from_ff0128_1dd12 USER_DEFINED 18
+C 00019898
+F 0001dd24 enemy_load_script_frame_1dd24 USER_DEFINED 14
+F 0001dd40 enemy_set_script_from_ff0128_1dd4e DEFAULT 4
+F 0001dd44 enemy_set_script_2e0c2_1dd44 USER_DEFINED 10
+F 0001dd4e enemy_set_script_from_ff0128_1dd4e USER_DEFINED 18
+C 00019898
+F 0001dd60 enemy_ai_next_anim_lane_pick DEFAULT 4
+F 0001dd64 enemy_set_idle_delay_1dd64 USER_DEFINED 44
+C 000173be
+F 0001deb4 enemy_pick_anim_state_1deb4 USER_DEFINED 824
+C 00029b8e
+C 00029c8e
+C 00019898
+F 0001e244 enemy_st_idle_1e244 USER_DEFINED 32
+F 0001e264 enemy_st_walk_timer_1e264 USER_DEFINED 94
+F 0001e2c2 enemy_st_walk_dirtable_1e2c2 USER_DEFINED 174
+F 0001e370 enemy_st_walk_table_1e370 USER_DEFINED 158
+F 0001e40e enemy_st_script_skip_1e40e USER_DEFINED 104
+F 0001e476 enemy_st_script_skip_1e476 USER_DEFINED 144
+F 0001e506 enemy_st_reset_state_1e506 USER_DEFINED 48
+F 0001e57a enemy_st_anim_from_table_1e57a USER_DEFINED 80
+F 0001e5ca enemy_st_hop_dodge_1e5ca USER_DEFINED 582
+F 0001e8ac obj_state6_dispatch USER_DEFINED 62
+C 00019898
+F 0001eb0e obj_st6_idle_pose USER_DEFINED 88
+F 0001eb66 obj_st6_walk_timer10 USER_DEFINED 74
+F 0001ebb0 obj_st6_walk_timer10_remap USER_DEFINED 138
+F 0001ec3a obj_st6_hit_flash_score2 USER_DEFINED 64
+F 0001ec7a obj_st6_award_score8 USER_DEFINED 42
+F 0001ee02 obj_score_step_by_counter USER_DEFINED 152
+C 00019898
+F 0001ee9a obj_end_face_by_pad_bits USER_DEFINED 112
+C 00029b8e
+C 00001140
+F 0001f1cc enemy_st_hold_72_anim27 USER_DEFINED 110
+C 00000cbe
+C 00000cbe
+F 0001f23a enemy_st_stand_timer15_spd180 USER_DEFINED 94
+F 0001f298 enemy_st_walk_facing_table USER_DEFINED 174
+F 0001f346 enemy_st_walk_facing_remap USER_DEFINED 158
+F 0001f3e4 enemy_st_stun_score14 USER_DEFINED 104
+F 0001f4b0 enemy_set_facing_7c_score14 USER_DEFINED 44
+F 0001f4dc enemy_st_reset_state_score8 USER_DEFINED 48
+F 0001f50c enemy_award_score14 USER_DEFINED 30
+F 0001f52a enemy_award_score14_facing_adj USER_DEFINED 80
+F 0001f57a enemy_st_jump_attack_arc USER_DEFINED 582
+F 0001f7c0 enemy_end_face_by_pad_bits_1f7c0 USER_DEFINED 112
+C 00029b8e
+C 00001140
+F 0001fa8c enemy_st_wait_16_anim15 USER_DEFINED 84
+F 0001fae0 enemy_st_wait_8_then_die USER_DEFINED 82
+C 00001140
+F 0001fb32 obj_set_pal_bits_timer8 USER_DEFINED 18
+F 0001fb44 enemy_st_walk_timer10_1fb44 USER_DEFINED 74
+F 0001fb8e enemy_st_walk_timer10_remap_1fb8e USER_DEFINED 138
+F 0001fc18 enemy_st_stun_score2_1fc18 USER_DEFINED 64
+F 0001fc58 enemy_st_reset_score8_1fc58 USER_DEFINED 42
+F 0001fc82 enemy_st_reset_score14_1fc82 USER_DEFINED 42
+F 0001fe88 obj_state_dispatch_thunk_1fe88 USER_DEFINED 10
+C 0002001e
+F 0001fec4 obj_state_dispatch_thunk_1fec4 USER_DEFINED 10
+C 0002001e
+F 00020002 obj_state_dispatch_thunk_20002 USER_DEFINED 4
+C 0002001e
+F 00020006 obj_state_dispatch_thunk_20006 USER_DEFINED 10
+C 0002001e
+F 00020010 obj_state_dispatch_thunk_20010 USER_DEFINED 4
+C 0002001e
+F 00020016 obj_state_dispatch DEFAULT 4
+F 0002001a obj_state_dispatch_thunk_2001a USER_DEFINED 4
+C 0002001e
+F 0002001e obj_state_dispatch USER_DEFINED 52
+C 00019898
+F 00020052 obj_idle_anim0_spd100 USER_DEFINED 100
+F 00020108 obj_copy_facing USER_DEFINED 12
+F 00020138 obj_wait_16_spd200 USER_DEFINED 70
+F 0002017e obj_wait_anim24 USER_DEFINED 48
+F 000201ae obj_wait_88_anim24 USER_DEFINED 80
+F 00020200 obj_set_anim1_spd180 USER_DEFINED 26
+F 000202ba obj_facing_from_table_a0 USER_DEFINED 14
+F 0002030e obj_walk_timer15_table20d30 USER_DEFINED 88
+F 00020366 obj_reset_state_score8 USER_DEFINED 48
+F 00020396 enemy_st_jump_attack_arc_20396 USER_DEFINED 582
+F 000205dc enemy_end_face_by_pad_bits_205dc USER_DEFINED 112
+C 00029b8e
+C 00001140
+F 00020878 enemy_st_face_wait_60 USER_DEFINED 108
+F 000208e4 enemy_st_wait_anim15_to3 USER_DEFINED 48
+F 00020914 enemy_st_wait_anim23_to4 USER_DEFINED 48
+F 00020944 enemy_st_wait_anim15_reload USER_DEFINED 42
+F 0002096e enemy_st_walk_timer10_2096e USER_DEFINED 74
+F 000209b8 enemy_st_run_timer10_anim12 USER_DEFINED 74
+F 00020a02 enemy_st_run_remap_anim12 USER_DEFINED 138
+F 00020a8c enemy_st_stun_score2_20a8c USER_DEFINED 62
+F 00020aca enemy_st_face_wait_until_f USER_DEFINED 68
+F 00020b0e enemy_reset_state_score14 USER_DEFINED 48
+F 00020b3e enemy_st_knockback_start USER_DEFINED 114
+F 00020bb0 enemy_st_knockback_phase2 USER_DEFINED 48
+F 00020be0 enemy_st_knockback_end USER_DEFINED 48
+F 00020c98 obj_set_substate2_timer10 USER_DEFINED 16
+F 00020ca8 enemy_st_dying_anim_1a USER_DEFINED 64
+C 00001140
+F 00020ce8 obj_set_speed_from_d0_min3 USER_DEFINED 34
+F 00020d0a obj_clear_flags_score2 USER_DEFINED 38
+C 00019898
+F 00021038 obj_idle_anim0_spd100_21038 USER_DEFINED 32
+F 00021058 enemy_st_stand_timer15_spd180_21058 USER_DEFINED 94
+F 000210b6 enemy_st_walk_facing_table_210b6 USER_DEFINED 174
+F 00021164 enemy_st_walk_facing_remap_21164 USER_DEFINED 158
+F 00021202 enemy_reset_state_score8_21202 USER_DEFINED 48
+F 00021232 enemy_reset_state_score14_21232 USER_DEFINED 48
+F 00021262 enemy_reset_state_score20_21262 USER_DEFINED 48
+F 00021292 enemy_st_jump_attack_arc_21292 USER_DEFINED 582
+F 000214d8 enemy_end_face_by_pad_bits_214d8 USER_DEFINED 112
+C 00029b8e
+C 00001140
+F 000217d0 enemy_idle_anim12_spd100 USER_DEFINED 32
+F 000217f0 enemy_st_walk_timer10_anim13 USER_DEFINED 74
+F 0002183a enemy_st_run_timer10_anim13 USER_DEFINED 74
+F 00021884 enemy_st_walk_remap_anim13 USER_DEFINED 138
+F 0002190e enemy_reset_state_score8_2190e USER_DEFINED 48
+F 0002193e enemy_award_score14_substate1 USER_DEFINED 42
+F 00021968 obj_clear_flags_score2_21968 USER_DEFINED 38
+C 00019898
+F 00021a32 enemy_end_face_by_pad_bits_21a32 USER_DEFINED 112
+C 00029b8e
+C 00001140
+F 00021cec obj_idle_anim0_spd80 USER_DEFINED 32
+F 00021d0c enemy_st_stand_timer15_spd80 USER_DEFINED 94
+F 00021d6a enemy_st_walk_facing_table_21d6a USER_DEFINED 174
+F 00021e18 enemy_st_walk_facing_remap_21e18 USER_DEFINED 158
+F 00021eb6 enemy_reset_state_score8_21eb6 USER_DEFINED 48
+F 00021ee6 enemy_st_jump_attack_arc_21ee6 USER_DEFINED 538
+F 00022100 enemy_reset_state_score14_22100 USER_DEFINED 48
+F 00022130 enemy_award_score2_substate1 USER_DEFINED 42
+F 0002215a enemy_st_walk_remap_spd180_2215a USER_DEFINED 158
+F 000221f8 enemy_reset_state_score20_221f8 USER_DEFINED 48
+F 00022228 enemy_award_score26_substate1 USER_DEFINED 42
+F 00022252 obj_clear_flags_score2_22252 USER_DEFINED 38
+C 00019898
+F 000223b4 obj_state_dispatch_thunk_223b4 USER_DEFINED 10
+C 00022522
+F 000223f0 obj_state_dispatch_thunk_223f0 USER_DEFINED 10
+C 00022522
+F 000223fa enemy_ai_screen_edge_gate USER_DEFINED 148
+C 00022522
+C 00022522
+C 00022522
+C 00022522
+C 00029c8e
+F 0002249c obj_state_dispatch_thunk_2249c USER_DEFINED 10
+C 00022522
+F 000224a6 enemy_ai_state_gate DEFAULT 4
+F 000224aa obj_state_dispatch_thunk_224aa USER_DEFINED 10
+C 00022522
+F 000224b4 enemy_ai_state_gate USER_DEFINED 102
+C 00022522
+C 00022522
+C 00022522
+C 00022522
+F 00022522 obj_state_dispatch_22522 USER_DEFINED 52
+C 00019898
+F 00022556 obj_idle_anim0_spd100_22556 USER_DEFINED 84
+F 000225aa enemy_st_stand_timer15_spd180_225aa USER_DEFINED 94
+F 00022608 enemy_st_walk_facing_table_22608 USER_DEFINED 174
+F 000226b6 enemy_st_walk_facing_remap_226b6 USER_DEFINED 158
+F 00022754 enemy_reset_state_score8_22754 USER_DEFINED 48
+F 00022784 enemy_reset_state_score14_22784 USER_DEFINED 48
+F 000227b4 enemy_reset_state_score20_227b4 USER_DEFINED 48
+F 00022d50 enemy_idle_anim15_spd100 USER_DEFINED 32
+F 00022d70 enemy_st_walk_timer10_22d70 USER_DEFINED 74
+F 00022dba enemy_st_run_timer10_22dba USER_DEFINED 74
+F 00022e04 enemy_st_walk_remap_22e04 USER_DEFINED 138
+F 00022e8e enemy_reset_state_score8_22e8e USER_DEFINED 48
+F 00022ebe enemy_award_score14_substate1_22ebe USER_DEFINED 42
+F 00022ee8 enemy_reset_state_score20_22ee8 USER_DEFINED 48
+F 00022f18 obj_clear_flags_score2_22f18 USER_DEFINED 38
+C 00019898
+F 00022f3e obj_clear_field_1980_score2 USER_DEFINED 26
+C 00019898
+F 00022ffc col_player_vs_door_pickup_dispatch USER_DEFINED 626
+C 00029b8e
+C 0002326e
+C 00023712
+C 00012104
+C 00012104
+C 00023478
+C 00023478
+C 000234e0
+C 0002364c
+C 00023712
+C 000237ea
+F 0002326e col_pickup_item_overlap USER_DEFINED 522
+F 00023478 col_box_overlap_set_flag10 USER_DEFINED 104
+F 000234e0 col_player_box_vs_slot_obj USER_DEFINED 364
+C 00000cbe
+C 00000cbe
+C 00000cbe
+C 00012104
+F 0002364c col_enemy_box_vs_player_hit USER_DEFINED 198
+C 00023a66
+F 00023712 col_player_attack_box_vs_enemy USER_DEFINED 216
+C 00023868
+F 000237ea col_player_box_miss_or_grab USER_DEFINED 126
+C 00023c1c
+F 00023868 dmg_player_hit_react_by_type USER_DEFINED 510
+C 00012104
+C 00012104
+C 00023cb6
+C 00000cbe
+C 00000cbe
+C 00000cbe
+C 00000cbe
+F 00023a66 dmg_player_hit_sfx_flags USER_DEFINED 438
+C 00012104
+C 00012104
+C 00012104
+C 00000cbe
+C 00000cbe
+C 00000cbe
+C 00012104
+C 00000cbe
+C 00012104
+F 00023c1c enemy_grab_player_start USER_DEFINED 154
+C 00012104
+F 00023cb6 dmg_apply_health_loss USER_DEFINED 202
+C 000112c0
+F 000291ca col_player_vs_enemy_list_overlap USER_DEFINED 672
+C 00012104
+C 00012104
+C 00012104
+F 0002946a scroll_update_dispatch USER_DEFINED 78
+C 0002955e
+C 000294b8
+C 00029508
+F 000294b8 scroll_advance_x_right USER_DEFINED 80
+C 000295aa
+F 00029508 scroll_advance_x_left USER_DEFINED 86
+C 000295aa
+F 0002955e scroll_advance_y USER_DEFINED 76
+C 00029760
+F 000295aa scroll_draw_column_vdp USER_DEFINED 438
+C 0000a796
+F 00029760 scroll_draw_row_vdp USER_DEFINED 406
+C 0000a796
+F 000298f6 scroll_fill_hscroll_table USER_DEFINED 278
+F 00029b8e enemy_calc_dist_dir_to_player USER_DEFINED 256
+F 00029c8e enemy_calc_dist_y_to_player USER_DEFINED 236
+F 00029d7a enemy_ai_helper_29d7a USER_DEFINED 236
+F 00029e66 enemy_ai_helper_29e66 USER_DEFINED 212
+F 0002a782 hud_build_vdp_status_bars USER_DEFINED 952
+C 000010ea
+C 000010ea
+C 000010ea
+F 00060000 snd_queue_command_60c0c DEFAULT 4
+F 00060004 snd_init_wrapper_60b28 DEFAULT 4
+F 0006000c snd_thunk_6001a USER_DEFINED 14
+C 0006001a
+F 0006001a snd_driver_update_channels USER_DEFINED 2056
+F 000607a8 snd_driver_update_channels_tail USER_DEFINED 8
+F 000607b0 snd_driver_tick_607b0 USER_DEFINED 10
+F 0006096c snd_tick_chan_loop_6096c USER_DEFINED 64
+F 00060a26 snd_toggle_pause_60a26 USER_DEFINED 72
+F 00060a6e snd_start_music_fade_60a6e USER_DEFINED 18
+F 00060a80 snd_stop_all_channels_60a80 USER_DEFINED 72
+F 00060b28 snd_init_wrapper_60b28 USER_DEFINED 12
+C 00060b34
+F 00060b34 snd_init_driver_60b34 USER_DEFINED 216
+F 00060c0c snd_queue_command_60c0c USER_DEFINED 218
